@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 package doanoop;
-
+import view.*;
 /**
  *
  * @author huylequang
@@ -15,6 +15,8 @@ public class DoAnOOP {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        JFrame_Main frm_main = new JFrame_Main();
+        frm_main.setVisible(true);
     }
     
 }
