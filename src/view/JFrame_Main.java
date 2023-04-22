@@ -3,20 +3,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package view;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 /**
  *
  * @author huylequang
  */
 public class JFrame_Main extends javax.swing.JFrame {
-
     /**
      * Creates new form JFrame_Main
      */
     public JFrame_Main() {
-        setTitle("66IT2 - Nhóm 1 - Hệ Thống Quản Lý Phòng Họp");
         initComponents();
+        setTitle("66IT2 - Nhóm 1 - Hệ Thống Quản Lý Phòng Họp");
     }
 
     /**
@@ -36,8 +33,6 @@ public class JFrame_Main extends javax.swing.JFrame {
         jMenu_CoSoVatChat = new javax.swing.JMenu();
         jMenu_PhienThue = new javax.swing.JMenu();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
         jLabel1.setText("ĐỒ ÁN OOP");
 
@@ -45,9 +40,27 @@ public class JFrame_Main extends javax.swing.JFrame {
         jLabel2.setText("ĐỀ TÀI: HỆ THỐNG QUẢN LÝ PHÒNG HỌP");
 
         jMenu_PhongHop.setText("Phòng Họp");
+        jMenu_PhongHop.addMenuListener(new javax.swing.event.MenuListener() {
+            public void menuCanceled(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuDeselected(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuSelected(javax.swing.event.MenuEvent evt) {
+                jMenu_PhongHopMenuSelected(evt);
+            }
+        });
         jMenuBar1.add(jMenu_PhongHop);
 
         jMenu_KhachHang.setText("Khách Hàng");
+        jMenu_KhachHang.addMenuListener(new javax.swing.event.MenuListener() {
+            public void menuCanceled(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuDeselected(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuSelected(javax.swing.event.MenuEvent evt) {
+                jMenu_KhachHangMenuSelected(evt);
+            }
+        });
         jMenuBar1.add(jMenu_KhachHang);
 
         jMenu_CoSoVatChat.setText("Cơ Sở Vật Chất");
@@ -65,25 +78,36 @@ public class JFrame_Main extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addComponent(jLabel2))
+                        .addGap(151, 151, 151)
+                        .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(154, 154, 154)
-                        .addComponent(jLabel1)))
-                .addContainerGap(48, Short.MAX_VALUE))
+                        .addGap(42, 42, 42)
+                        .addComponent(jLabel2)))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(76, 76, 76)
+                .addGap(74, 74, 74)
                 .addComponent(jLabel1)
-                .addGap(49, 49, 49)
+                .addGap(36, 36, 36)
                 .addComponent(jLabel2)
-                .addContainerGap(104, Short.MAX_VALUE))
+                .addContainerGap(119, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMenu_PhongHopMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenu_PhongHopMenuSelected
+        // TODO add your handling code here:
+      
+    }//GEN-LAST:event_jMenu_PhongHopMenuSelected
+
+    private void jMenu_KhachHangMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenu_KhachHangMenuSelected
+        // TODO add your handling code here:
+        JFrame_KhachHang frm_khachhang = new JFrame_KhachHang();
+        frm_khachhang.setVisible(true);
+    }//GEN-LAST:event_jMenu_KhachHangMenuSelected
 
     
 
