@@ -33,6 +33,8 @@ public class JFrame_Main extends javax.swing.JFrame {
         jMenu_CoSoVatChat = new javax.swing.JMenu();
         jMenu_PhienThue = new javax.swing.JMenu();
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
         jLabel1.setText("ĐỒ ÁN OOP");
 
@@ -64,9 +66,27 @@ public class JFrame_Main extends javax.swing.JFrame {
         jMenuBar1.add(jMenu_KhachHang);
 
         jMenu_CoSoVatChat.setText("Cơ Sở Vật Chất");
+        jMenu_CoSoVatChat.addMenuListener(new javax.swing.event.MenuListener() {
+            public void menuCanceled(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuDeselected(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuSelected(javax.swing.event.MenuEvent evt) {
+                jMenu_CoSoVatChatMenuSelected(evt);
+            }
+        });
         jMenuBar1.add(jMenu_CoSoVatChat);
 
         jMenu_PhienThue.setText("Phiên Thuê");
+        jMenu_PhienThue.addMenuListener(new javax.swing.event.MenuListener() {
+            public void menuCanceled(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuDeselected(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuSelected(javax.swing.event.MenuEvent evt) {
+                jMenu_PhienThueMenuSelected(evt);
+            }
+        });
         jMenuBar1.add(jMenu_PhienThue);
 
         setJMenuBar(jMenuBar1);
@@ -97,7 +117,7 @@ public class JFrame_Main extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+//Bắt sự kiện khi bấm nút ở trên các Menu
     private void jMenu_PhongHopMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenu_PhongHopMenuSelected
         // TODO add your handling code here:
       
@@ -108,6 +128,14 @@ public class JFrame_Main extends javax.swing.JFrame {
         JFrame_KhachHang frm_khachhang = new JFrame_KhachHang();
         frm_khachhang.setVisible(true);
     }//GEN-LAST:event_jMenu_KhachHangMenuSelected
+
+    private void jMenu_CoSoVatChatMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenu_CoSoVatChatMenuSelected
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu_CoSoVatChatMenuSelected
+
+    private void jMenu_PhienThueMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenu_PhienThueMenuSelected
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenu_PhienThueMenuSelected
 
     
 
