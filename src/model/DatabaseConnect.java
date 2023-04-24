@@ -6,13 +6,11 @@ package model;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import com.mysql.cj.jdbc.Driver;
-import java.sql.Statement;
-import java.sql.ResultSet;
+
 
 /**
  *
@@ -21,8 +19,8 @@ import java.sql.ResultSet;
 public class DatabaseConnect {
     private Connection conn;
     String url = "jdbc:mysql://localhost:3306/NguoiDung";
-    String user;//root
-    String password;//@Quanghuydeple03
+    String user;
+    String password;
 
     public DatabaseConnect(){
         
