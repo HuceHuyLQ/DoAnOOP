@@ -4,6 +4,7 @@
  */
 package view;
 import model.*;
+import javax.swing.*;
 
 /**
  *
@@ -123,7 +124,8 @@ public class JFrame_Login extends javax.swing.JFrame {
            FormMain.setVisible(true);
            this.setVisible(false);
        }else{
-           System.out.println("Login Failed");
+           JFrame frame = new JFrame();
+           JOptionPane.showMessageDialog(frame, "Đăng nhập không thành công");
        }
         
     }//GEN-LAST:event_btn_DangNhapActionPerformed
