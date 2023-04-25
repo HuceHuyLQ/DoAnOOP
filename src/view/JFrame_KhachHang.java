@@ -43,8 +43,6 @@ public class JFrame_KhachHang extends javax.swing.JFrame {
         lbl_TieuDeBang = new javax.swing.JLabel();
         btn_TimKhachHang = new javax.swing.JButton();
 
-        setPreferredSize(new java.awt.Dimension(1080, 720));
-
         lbl_MaKH.setText("Mã Khách Hàng");
 
         lbl_TenKhachHang.setText("Tên Khách Hàng");

@@ -43,8 +43,6 @@ public class JFrame_PhongHop extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         jPanel1.setPreferredSize(new java.awt.Dimension(1080, 720));
 
         lbl_MaPhong.setText("Mã Phòng");
