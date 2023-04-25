@@ -14,6 +14,7 @@ public class JFrame_Main extends javax.swing.JFrame {
     public JFrame_Main() {
         initComponents();
         setTitle("66IT2 - Nhóm 1 - Hệ Thống Quản Lý Phòng Họp");
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -27,19 +28,23 @@ public class JFrame_Main extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu_PhongHop = new javax.swing.JMenu();
         jMenu_KhachHang = new javax.swing.JMenu();
         jMenu_CoSoVatChat = new javax.swing.JMenu();
         jMenu_PhienThue = new javax.swing.JMenu();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
         jLabel1.setText("ĐỒ ÁN OOP");
 
         jLabel2.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         jLabel2.setText("ĐỀ TÀI: HỆ THỐNG QUẢN LÝ PHÒNG HỌP");
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/logohuce_1.png"))); // NOI18N
 
         jMenu_PhongHop.setText("Phòng Họp");
         jMenu_PhongHop.addMenuListener(new javax.swing.event.MenuListener() {
@@ -95,24 +100,35 @@ public class JFrame_Main extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 33, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(22, 22, 22))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(151, 151, 151)
+                        .addGap(196, 196, 196)
+                        .addComponent(jLabel3))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(136, 136, 136)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addComponent(jLabel2)))
-                .addContainerGap(42, Short.MAX_VALUE))
+                        .addGap(161, 161, 161)
+                        .addComponent(jLabel5)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(74, 74, 74)
+                .addGap(40, 40, 40)
+                .addComponent(jLabel5)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel1)
-                .addGap(36, 36, 36)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
-                .addContainerGap(119, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         pack();
@@ -143,6 +159,8 @@ public class JFrame_Main extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenu_CoSoVatChat;
     private javax.swing.JMenu jMenu_KhachHang;

@@ -18,6 +18,7 @@ public class JFrame_Login extends javax.swing.JFrame {
      */
     public JFrame_Login() {
         setTitle("Hệ Thống Quản Lý Phòng Họp | Đăng Nhập");
+        this.setLocationRelativeTo(null);
         initComponents();
     }
 
