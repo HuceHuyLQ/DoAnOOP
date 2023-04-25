@@ -12,6 +12,7 @@ import javax.swing.*;
  */
 public class JFrame_Login extends javax.swing.JFrame {
     DatabaseConnect DBConnect = new DatabaseConnect();
+    JFrame frame = new JFrame();
     /**
      * Creates new form JFrame_Login
      */
@@ -119,14 +120,21 @@ public class JFrame_Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         String user = this.txt_TaiKhoan.getText();
         String password = this.passwordField.getText();
-       if(DBConnect.Connect(user, password)){
-           JFrame_Main FormMain = new JFrame_Main();
-           FormMain.setVisible(true);
-           this.setVisible(false);
-       }else{
-           JFrame frame = new JFrame();
-           JOptionPane.showMessageDialog(frame, "Đăng nhập không thành công");
-       }
+        if(this.txt_TaiKhoan.getText().equals("")&&this.passwordField.getText().equals("")){
+            JOptionPane.showMessageDialog(frame,"Không được để trống thông tin đăng nhập");
+        }else if(this.txt_TaiKhoan.getText().equals("")){
+            JOptionPane.showMessageDialog(frame,"Không được để trống TÀI KHOẢN!!!");
+        }else if(this.passwordField.getText().equals("")){
+            JOptionPane.showMessageDialog(frame, "Không được để trống MẬT KHẨU!!!");
+        }else{
+            if(DBConnect.Connect(user, password)){
+                JFrame_Main FormMain = new JFrame_Main();
+                FormMain.setVisible(true);
+                this.setVisible(false);
+            }else{
+               JOptionPane.showMessageDialog(frame, "Thông tin đăng nhập không đúng");
+            }
+        }
         
     }//GEN-LAST:event_btn_DangNhapActionPerformed
 
