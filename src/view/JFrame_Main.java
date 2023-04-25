@@ -120,7 +120,8 @@ public class JFrame_Main extends javax.swing.JFrame {
 //Bắt sự kiện khi bấm nút ở trên các Menu
     private void jMenu_PhongHopMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenu_PhongHopMenuSelected
         // TODO add your handling code here:
-      
+        JFrame_PhongHop frm_phonghop = new JFrame_PhongHop();
+        frm_phonghop.setVisible(true);
     }//GEN-LAST:event_jMenu_PhongHopMenuSelected
 
     private void jMenu_KhachHangMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenu_KhachHangMenuSelected

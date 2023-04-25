@@ -126,6 +126,9 @@
               <SubComponents>
                 <Component class="javax.swing.JLabel" name="jlb_title">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Helvetica Neue" size="13" style="1"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Qu&#x1ea3;n L&#xfd; Ph&#xf2;ng"/>
                   </Properties>
                 </Component>
