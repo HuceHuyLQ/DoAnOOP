@@ -148,6 +148,8 @@ public class JFrame_Main extends javax.swing.JFrame {
 
     private void jMenu_CoSoVatChatMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenu_CoSoVatChatMenuSelected
         // TODO add your handling code here:
+        JFrame_CSVC frm_csvc = new JFrame_CSVC();
+        frm_csvc.setVisible(true);
     }//GEN-LAST:event_jMenu_CoSoVatChatMenuSelected
 
     private void jMenu_PhienThueMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenu_PhienThueMenuSelected
