@@ -154,6 +154,8 @@ public class JFrame_Main extends javax.swing.JFrame {
 
     private void jMenu_PhienThueMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenu_PhienThueMenuSelected
         // TODO add your handling code here:
+        JFrame_LuotThue frm_luotthue = new JFrame_LuotThue();
+        frm_luotthue.setVisible(true);
     }//GEN-LAST:event_jMenu_PhienThueMenuSelected
 
     
