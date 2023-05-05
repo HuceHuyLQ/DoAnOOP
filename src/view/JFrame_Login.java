@@ -132,6 +132,7 @@ public class JFrame_Login extends javax.swing.JFrame {
                 JFrame_Main FormMain = new JFrame_Main();
                 FormMain.setVisible(true);
                 this.setVisible(false);
+                System.out.println("Dang nhap thanh cong");
             }else{
                JOptionPane.showMessageDialog(frame, "Thông tin đăng nhập không đúng");
             }
