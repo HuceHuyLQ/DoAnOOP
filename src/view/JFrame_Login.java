@@ -120,11 +120,6 @@ public class JFrame_Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.txt_TaiKhoan.setText("");
         this.passwordField.setText("");
-        try {
-            nvdao.layThongTinNhanVien(1);
-        } catch (SQLException ex) {
-            Logger.getLogger(JFrame_Login.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }//GEN-LAST:event_btn_HuyActionPerformed
 
     private void btn_DangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_DangNhapActionPerformed
@@ -145,6 +140,12 @@ public class JFrame_Login extends javax.swing.JFrame {
                     FormMain.setVisible(true);
                     this.setVisible(false);
                     System.out.println("Dang nhap thanh cong");
+                    try {
+                        JOptionPane.showMessageDialog(frame, "Welcome "+nvdao.layThongTinNhanVien(usertoCheck).getHoTenNV());
+                        nvdao.layThongTinNhanVien(usertoCheck).getHoTenNV();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(JFrame_Login.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }else{
                     JOptionPane.showMessageDialog(frame, "Thông tin đăng nhập không đúng");
                 }
