@@ -3,6 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package view;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import model.*;
 import javax.swing.*;
 
@@ -13,6 +16,7 @@ import javax.swing.*;
 public class JFrame_Login extends javax.swing.JFrame {
     DatabaseConnect DBConnect = new DatabaseConnect();
     JFrame frame = new JFrame();
+    NhanVienDao nvdao = new NhanVienDao();
     /**
      * Creates new form JFrame_Login
      */
@@ -20,6 +24,7 @@ public class JFrame_Login extends javax.swing.JFrame {
         setTitle("Hệ Thống Quản Lý Phòng Họp | Đăng Nhập");
         this.setLocationRelativeTo(null);
         initComponents();
+        DBConnect.Connect("root","@Quanghuydeple03");//password của CSDL điền vào đây
     }
 
     /**
@@ -115,26 +120,36 @@ public class JFrame_Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.txt_TaiKhoan.setText("");
         this.passwordField.setText("");
+        try {
+            nvdao.layThongTinNhanVien(1);
+        } catch (SQLException ex) {
+            Logger.getLogger(JFrame_Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btn_HuyActionPerformed
 
     private void btn_DangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_DangNhapActionPerformed
         // TODO add your handling code here:
         String user = this.txt_TaiKhoan.getText();
-        String password = this.passwordField.getText();
-        if(this.txt_TaiKhoan.getText().equals("")&&this.passwordField.getText().equals("")){
+        int usertoCheck = Integer.parseInt(this.txt_TaiKhoan.getText());
+        String password = new String(this.passwordField.getPassword());
+        if(user.equals("")&&password.equals("")){
             JOptionPane.showMessageDialog(frame,"Không được để trống thông tin đăng nhập");
-        }else if(this.txt_TaiKhoan.getText().equals("")){
+        }else if(user.equals("")){
             JOptionPane.showMessageDialog(frame,"Không được để trống TÀI KHOẢN!!!");
-        }else if(this.passwordField.getText().equals("")){
+        }else if(password.equals("")){
             JOptionPane.showMessageDialog(frame, "Không được để trống MẬT KHẨU!!!");
         }else{
-            if(DBConnect.Connect(user, password)){
-                JFrame_Main FormMain = new JFrame_Main();
-                FormMain.setVisible(true);
-                this.setVisible(false);
-                System.out.println("Dang nhap thanh cong");
-            }else{
-               JOptionPane.showMessageDialog(frame, "Thông tin đăng nhập không đúng");
+            try {
+                if(nvdao.kiemTraDangNhap(usertoCheck,password)){
+                    JFrame_Main FormMain = new JFrame_Main();
+                    FormMain.setVisible(true);
+                    this.setVisible(false);
+                    System.out.println("Dang nhap thanh cong");
+                }else{
+                    JOptionPane.showMessageDialog(frame, "Thông tin đăng nhập không đúng");
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(JFrame_Login.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         

@@ -17,8 +17,8 @@ import com.mysql.cj.jdbc.Driver;
  * @author huylequang
  */
 public class DatabaseConnect {
-    private Connection conn;
-    String url = "jdbc:mysql://localhost:3306/NguoiDung";
+    public Connection conn;
+    String url = "jdbc:mysql://localhost:3306/QuanLyPhong";
     String user;
     String password;
 
@@ -32,16 +32,14 @@ public class DatabaseConnect {
         this.password = password;
     }
     
-    public boolean Connect(String user, String password) {
+    public void Connect(String user, String password) {
         Connection conn;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection(url, user, password);
-            System.out.println("CONNECTED");
-            return true;
+            System.out.println("CONNECTED TO DATABASE");
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
-            return false;
         }
     }
 }
