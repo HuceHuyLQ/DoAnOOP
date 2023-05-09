@@ -41,6 +41,7 @@ public class JFrame_Login extends javax.swing.JFrame {
         passwordField = new javax.swing.JPasswordField();
         btn_DangNhap = new javax.swing.JButton();
         btn_Huy = new javax.swing.JButton();
+        btn_DangKy = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,9 +60,18 @@ public class JFrame_Login extends javax.swing.JFrame {
         });
 
         btn_Huy.setText("HUỶ");
+        btn_Huy.setMaximumSize(new java.awt.Dimension(105, 23));
+        btn_Huy.setMinimumSize(new java.awt.Dimension(105, 23));
         btn_Huy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_HuyActionPerformed(evt);
+            }
+        });
+
+        btn_DangKy.setText("ĐĂNG KÝ");
+        btn_DangKy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_DangKyActionPerformed(evt);
             }
         });
 
@@ -70,25 +80,26 @@ public class JFrame_Login extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_MatKhau)
+                    .addComponent(lbl_TaiKhoan))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txt_TaiKhoan)
+                    .addComponent(passwordField)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(82, 82, 82)
-                        .addComponent(btn_DangNhap)
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_Huy, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbl_MatKhau)
-                            .addComponent(lbl_TaiKhoan))
-                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(lbl_TieuDeDangNhap)
-                                .addGap(0, 77, Short.MAX_VALUE))
-                            .addComponent(txt_TaiKhoan)
-                            .addComponent(passwordField))))
+                                .addComponent(btn_DangNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btn_DangKy, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btn_Huy, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(59, 59, 59)
+                                .addComponent(lbl_TieuDeDangNhap)))
+                        .addGap(0, 90, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -104,11 +115,12 @@ public class JFrame_Login extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_MatKhau)
                     .addComponent(passwordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(46, 46, 46)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_DangNhap)
-                    .addComponent(btn_Huy))
-                .addContainerGap(25, Short.MAX_VALUE))
+                    .addComponent(btn_DangKy)
+                    .addComponent(btn_Huy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();
@@ -154,11 +166,18 @@ public class JFrame_Login extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btn_DangNhapActionPerformed
 
+    private void btn_DangKyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_DangKyActionPerformed
+        // TODO add your handling code here:
+        JFrame_DangKy frm_dangky = new JFrame_DangKy();
+        frm_dangky.setVisible(true);
+    }//GEN-LAST:event_btn_DangKyActionPerformed
+
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_DangKy;
     private javax.swing.JButton btn_DangNhap;
     private javax.swing.JButton btn_Huy;
     private javax.swing.JLabel lbl_MatKhau;
