@@ -120,6 +120,7 @@ public class JFrame_Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.txt_TaiKhoan.setText("");
         this.passwordField.setText("");
+        System.out.println("");
     }//GEN-LAST:event_btn_HuyActionPerformed
 
     private void btn_DangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_DangNhapActionPerformed
