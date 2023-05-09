@@ -25,6 +25,13 @@ public class DatabaseConnect {
     public DatabaseConnect(){
         
     };
+
+    public DatabaseConnect(String user, String password) {
+        this.user = user;
+        this.password = password;
+    }
+    
+    
     
     public void Init(Connection conn, String user, String password) {
         this.conn = conn;

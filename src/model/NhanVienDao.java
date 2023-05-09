@@ -14,7 +14,7 @@ import java.sql.SQLException;
  * @author huylequang
  */
 public class NhanVienDao {
-    private static DatabaseConnect Database = new DatabaseConnect();
+    private static DatabaseConnect database = new DatabaseConnect();
     private static String url = "jdbc:mysql://localhost:3306/QuanLyPhong";
     private static String user = "root";
     private static String password = ""; //Điền mật khẩu CSDL vào đây
