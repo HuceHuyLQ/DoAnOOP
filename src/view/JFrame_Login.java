@@ -14,7 +14,6 @@ import javax.swing.*;
  * @author huylequang
  */
 public class JFrame_Login extends javax.swing.JFrame {
-    DatabaseConnect DBConnect = new DatabaseConnect();
     JFrame frame = new JFrame();
     NhanVienDao nvdao = new NhanVienDao();
     /**
@@ -24,7 +23,6 @@ public class JFrame_Login extends javax.swing.JFrame {
         setTitle("Hệ Thống Quản Lý Phòng Họp | Đăng Nhập");
         this.setLocationRelativeTo(null);
         initComponents();
-        DBConnect.Connect("root","");//password của CSDL điền vào đây
     }
 
     /**
