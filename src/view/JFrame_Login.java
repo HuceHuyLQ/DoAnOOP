@@ -24,7 +24,7 @@ public class JFrame_Login extends javax.swing.JFrame {
         setTitle("Hệ Thống Quản Lý Phòng Họp | Đăng Nhập");
         this.setLocationRelativeTo(null);
         initComponents();
-        DBConnect.Connect("root","@Quanghuydeple03");//password của CSDL điền vào đây
+        DBConnect.Connect("root","");//password của CSDL điền vào đây
     }
 
     /**

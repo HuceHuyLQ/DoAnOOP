@@ -33,10 +33,9 @@ public class DatabaseConnect {
     }
     
     public void Connect(String user, String password) {
-        Connection conn;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            conn = DriverManager.getConnection(url, user, password);
+            this.conn = DriverManager.getConnection(this.url,user,password);
             System.out.println("CONNECTED TO DATABASE");
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
