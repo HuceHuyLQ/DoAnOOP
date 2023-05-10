@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import model.*;
 import view.*;
@@ -63,6 +64,14 @@ public class LoginController {
                 frm_login.clearForm();
             }
             
+        });
+        frm_login.getBtn_Huy().addActionListener((ActionEvent e) -> {
+            frm_login.clearForm();
+        });
+        
+        frm_login.getBtn_DangKy().addActionListener((ActionEvent e) -> {
+            JFrame_DangKy frm_dangky = new JFrame_DangKy();
+            frm_dangky.setVisible(true);
         });
     }
     

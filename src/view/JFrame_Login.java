@@ -128,8 +128,7 @@ public class JFrame_Login extends javax.swing.JFrame {
 
     private void btn_HuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_HuyActionPerformed
         // TODO add your handling code here:
-        this.txt_TaiKhoan.setText("");
-        this.passwordField.setText("");
+
     }//GEN-LAST:event_btn_HuyActionPerformed
 
     private void btn_DangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_DangNhapActionPerformed
@@ -168,8 +167,7 @@ public class JFrame_Login extends javax.swing.JFrame {
 
     private void btn_DangKyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_DangKyActionPerformed
         // TODO add your handling code here:
-        JFrame_DangKy frm_dangky = new JFrame_DangKy();
-        frm_dangky.setVisible(true);
+
     }//GEN-LAST:event_btn_DangKyActionPerformed
     
     /**
