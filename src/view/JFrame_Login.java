@@ -15,7 +15,7 @@ import javax.swing.*;
  */
 public class JFrame_Login extends javax.swing.JFrame {
     JFrame frame = new JFrame();
-    NhanVienDao nvdao = new NhanVienDao();
+    //NhanVienDao nvdao = new NhanVienDao();
     /**
      * Creates new form JFrame_Login
      */
@@ -134,7 +134,7 @@ public class JFrame_Login extends javax.swing.JFrame {
 
     private void btn_DangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_DangNhapActionPerformed
         // TODO add your handling code here:
-        String user = this.txt_TaiKhoan.getText();
+        /*String user = this.txt_TaiKhoan.getText();
         int usertoCheck = Integer.parseInt(this.txt_TaiKhoan.getText());
         String password = new String(this.passwordField.getPassword());
         if(user.equals("")&&password.equals("")){
@@ -162,7 +162,7 @@ public class JFrame_Login extends javax.swing.JFrame {
             } catch (SQLException ex) {
                 Logger.getLogger(JFrame_Login.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
+        }*/
         
     }//GEN-LAST:event_btn_DangNhapActionPerformed
 
@@ -171,10 +171,53 @@ public class JFrame_Login extends javax.swing.JFrame {
         JFrame_DangKy frm_dangky = new JFrame_DangKy();
         frm_dangky.setVisible(true);
     }//GEN-LAST:event_btn_DangKyActionPerformed
-
+    
     /**
-     * @param args the command line arguments
+     * @param message
      */
+    
+    public void showMessage(String message) {
+        JOptionPane.showMessageDialog(this, message, "", JOptionPane.INFORMATION_MESSAGE);
+    }
+    public void clearForm(){
+        txt_TaiKhoan.setText("");
+        passwordField.setText("");
+    }
+    public JFrame getFrame() {
+        return frame;
+    }
+
+    public JButton getBtn_DangKy() {
+        return btn_DangKy;
+    }
+
+    public JButton getBtn_DangNhap() {
+        return btn_DangNhap;
+    }
+
+    public JButton getBtn_Huy() {
+        return btn_Huy;
+    }
+
+    public JLabel getLbl_MatKhau() {
+        return lbl_MatKhau;
+    }
+
+    public JLabel getLbl_TaiKhoan() {
+        return lbl_TaiKhoan;
+    }
+
+    public JLabel getLbl_TieuDeDangNhap() {
+        return lbl_TieuDeDangNhap;
+    }
+
+    public JPasswordField getPasswordField() {
+        return passwordField;
+    }
+
+    public JTextField getTxt_TaiKhoan() {
+        return txt_TaiKhoan;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_DangKy;

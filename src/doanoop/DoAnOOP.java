@@ -4,6 +4,8 @@
  */
 package doanoop;
 import view.*;
+import model.*;
+import controller.*;
 /**
  *
  * @author huylequang
@@ -16,7 +18,8 @@ public class DoAnOOP {
     public static void main(String[] args) {
         // TODO code application logic here
         JFrame_Login FormLogin = new JFrame_Login();
-        FormLogin.setVisible(true);
+        NhanVienDao NhanVien = new NhanVienDao();
+        LoginController LoginControl = new LoginController(FormLogin,NhanVien);
     }
     
 }
