@@ -16,7 +16,7 @@ import java.sql.SQLException;
 public class NhanVienDao {
     private static String url = "jdbc:mysql://localhost:3306/QuanLyPhong";
     private static String user = "root";
-    private static String password = "Dod@ihoc2021"; //Điền mật khẩu CSDL vào đây
+    private static String password = "Dod@aihoc2021"; //Điền mật khẩu CSDL vào đây
     public static NhanVien layThongTinNhanVien(int maNV) throws SQLException {
         Connection conn = DriverManager.getConnection(url, user, password);
         PreparedStatement statement = null;
@@ -35,7 +35,6 @@ public class NhanVienDao {
                 String sdtNV = resultSet.getString("SDTNV");
                 String matKhauNV = resultSet.getString("MatKhauNV");
                 nhanVien = new NhanVien(maNVResult, hoTenNV, sdtNV, matKhauNV);
-                System.out.println(nhanVien.getHoTenNV());
             }
         } catch(SQLException ex){
             ex.getStackTrace();
