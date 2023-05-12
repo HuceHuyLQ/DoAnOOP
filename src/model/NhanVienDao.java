@@ -16,10 +16,10 @@ import java.sql.SQLException;
 public class NhanVienDao {
     private static String url = "jdbc:mysql://localhost:3306/QuanLyPhong";
     private static String user = "root";
-    private static String password = "Dod@aihoc2021"; //Điền mật khẩu CSDL vào đây
+    private static String password = "@Quanghuydeple03"; //Điền mật khẩu CSDL vào đây
     private static DatabaseConnect dbconnect = new DatabaseConnect();
+    private static Connection conn = dbconnect.Connect(user, password);
     public static NhanVien layThongTinNhanVien(int maNV) throws SQLException {
-        Connection conn = dbconnect.Connect(user, password);
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         NhanVien nhanVien = null;
@@ -52,7 +52,6 @@ public class NhanVienDao {
 
         try {
             String sql = "SELECT * FROM NhanVien WHERE MaNV = ? AND MatKhauNV = ?";
-            Connection conn = DriverManager.getConnection(url, user, password);
             statement = conn.prepareStatement(sql);
             statement.setInt(1, maNV);
             statement.setString(2, matKhau);
