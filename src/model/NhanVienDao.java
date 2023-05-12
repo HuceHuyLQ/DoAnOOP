@@ -17,8 +17,9 @@ public class NhanVienDao {
     private static String url = "jdbc:mysql://localhost:3306/QuanLyPhong";
     private static String user = "root";
     private static String password = "Dod@aihoc2021"; //Điền mật khẩu CSDL vào đây
+    private static DatabaseConnect dbconnect = new DatabaseConnect();
     public static NhanVien layThongTinNhanVien(int maNV) throws SQLException {
-        Connection conn = DriverManager.getConnection(url, user, password);
+        Connection conn = dbconnect.Connect(user, password);
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         NhanVien nhanVien = null;

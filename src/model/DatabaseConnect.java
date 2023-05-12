@@ -39,7 +39,7 @@ public class DatabaseConnect {
         this.password = password;
     }
     
-    public void Connect(String user, String password) {
+    public Connection Connect(String user, String password) {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             this.conn = DriverManager.getConnection(this.url,user,password);
@@ -47,5 +47,6 @@ public class DatabaseConnect {
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
+        return this.conn;
     }
 }
