@@ -17,6 +17,7 @@ public class KhachHangFormController {
         this.frm_khachhang = frm_khachhang;
         
         frm_khachhang.setVisible(true);
+        
     }
     
     
