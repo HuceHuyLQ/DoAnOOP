@@ -3,6 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package controller;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import view.*;
 import model.*;
 
@@ -12,11 +15,12 @@ import model.*;
  */
 public class KhachHangFormController {
     JFrame_KhachHang frm_khachhang = new JFrame_KhachHang();
-
-    public KhachHangFormController(JFrame_KhachHang frm_khachhang) {
+    KhachHangDao khachhangdao = new KhachHangDao();
+    public KhachHangFormController(JFrame_KhachHang frm_khachhang, KhachHangDao khachhangdao) {
         this.frm_khachhang = frm_khachhang;
-        
+        this.khachhangdao = khachhangdao;
         frm_khachhang.setVisible(true);
+        
         
     }
     

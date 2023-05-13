@@ -25,7 +25,8 @@ public class MainFormController {
             @Override
             public void menuSelected(MenuEvent e) {
                 JFrame_KhachHang frm_khachhang = new JFrame_KhachHang();
-                KhachHangFormController khachhangctrl = new KhachHangFormController(frm_khachhang);
+                KhachHangDao khachhangdao = new KhachHangDao();
+                KhachHangFormController khachhangctrl = new KhachHangFormController(frm_khachhang,khachhangdao);
             }
 
             @Override
