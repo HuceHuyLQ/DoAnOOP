@@ -12,9 +12,7 @@ import java.sql.*;
  */
 public class KhachHangDao {
     private static DatabaseConnect dbconnect = new DatabaseConnect();
-    private static String user = "root";
-    private static String password = "@Quanghuydeple03";
-    private static Connection conn = dbconnect.Connect(user, password);
+    private static Connection conn = dbconnect.Connect();
     
     public List<KhachHang> layDanhSachKhachHang() throws SQLException{
         List<KhachHang> danhSachKH = new ArrayList<KhachHang>();

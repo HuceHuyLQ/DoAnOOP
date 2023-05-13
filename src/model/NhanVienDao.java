@@ -14,11 +14,8 @@ import java.sql.SQLException;
  * @author huylequang
  */
 public class NhanVienDao {
-    private static String url = "jdbc:mysql://localhost:3306/QuanLyPhong";
-    private static String user = "root";
-    private static String password = "@Quanghuydeple03"; //Điền mật khẩu CSDL vào đây
     private static DatabaseConnect dbconnect = new DatabaseConnect();
-    private static Connection conn = dbconnect.Connect(user, password);
+    private static Connection conn = dbconnect.Connect();
     public static NhanVien layThongTinNhanVien(int maNV) throws SQLException {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
