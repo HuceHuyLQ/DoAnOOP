@@ -3,6 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package view;
+
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+
 /**
  *
  * @author huylequang
@@ -142,8 +147,6 @@ public class JFrame_Main extends javax.swing.JFrame {
 
     private void jMenu_KhachHangMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenu_KhachHangMenuSelected
         // TODO add your handling code here:
-        JFrame_KhachHang frm_khachhang = new JFrame_KhachHang();
-        frm_khachhang.setVisible(true);
     }//GEN-LAST:event_jMenu_KhachHangMenuSelected
 
     private void jMenu_CoSoVatChatMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenu_CoSoVatChatMenuSelected
@@ -158,7 +161,79 @@ public class JFrame_Main extends javax.swing.JFrame {
         frm_luotthue.setVisible(true);
     }//GEN-LAST:event_jMenu_PhienThueMenuSelected
 
-    
+    public JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    public void setjLabel1(JLabel jLabel1) {
+        this.jLabel1 = jLabel1;
+    }
+
+    public JLabel getjLabel2() {
+        return jLabel2;
+    }
+
+    public void setjLabel2(JLabel jLabel2) {
+        this.jLabel2 = jLabel2;
+    }
+
+    public JLabel getjLabel3() {
+        return jLabel3;
+    }
+
+    public void setjLabel3(JLabel jLabel3) {
+        this.jLabel3 = jLabel3;
+    }
+
+    public JLabel getjLabel5() {
+        return jLabel5;
+    }
+
+    public void setjLabel5(JLabel jLabel5) {
+        this.jLabel5 = jLabel5;
+    }
+
+    public JMenuBar getjMenuBar1() {
+        return jMenuBar1;
+    }
+
+    public void setjMenuBar1(JMenuBar jMenuBar1) {
+        this.jMenuBar1 = jMenuBar1;
+    }
+
+    public JMenu getjMenu_CoSoVatChat() {
+        return jMenu_CoSoVatChat;
+    }
+
+    public void setjMenu_CoSoVatChat(JMenu jMenu_CoSoVatChat) {
+        this.jMenu_CoSoVatChat = jMenu_CoSoVatChat;
+    }
+
+    public JMenu getjMenu_KhachHang() {
+        return jMenu_KhachHang;
+    }
+
+    public void setjMenu_KhachHang(JMenu jMenu_KhachHang) {
+        this.jMenu_KhachHang = jMenu_KhachHang;
+    }
+
+    public JMenu getjMenu_PhienThue() {
+        return jMenu_PhienThue;
+    }
+
+    public void setjMenu_PhienThue(JMenu jMenu_PhienThue) {
+        this.jMenu_PhienThue = jMenu_PhienThue;
+    }
+
+    public JMenu getjMenu_PhongHop() {
+        return jMenu_PhongHop;
+    }
+
+    public void setjMenu_PhongHop(JMenu jMenu_PhongHop) {
+        this.jMenu_PhongHop = jMenu_PhongHop;
+    }
+
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
