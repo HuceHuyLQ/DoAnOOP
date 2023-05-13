@@ -45,9 +45,8 @@ public class LoginController {
                     try {
                         if(nhanvien.kiemTraDangNhap(usertoCheck,password)){
                             JFrame_Main FormMain = new JFrame_Main();
-                            FormMain.setVisible(true);
+                            MainFormController mainfrmctrl = new MainFormController(FormMain);
                             frm_login.setVisible(false);
-                            System.out.println("Dang nhap thanh cong");
                             try {
                                 frm_login.showMessage("Welcome "+nhanvien.layThongTinNhanVien(usertoCheck).getHoTenNV());
                                 nhanvien.layThongTinNhanVien(usertoCheck).getHoTenNV();
