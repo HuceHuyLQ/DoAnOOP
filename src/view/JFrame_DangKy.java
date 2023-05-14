@@ -4,6 +4,8 @@
  */
 package view;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author huylequang
@@ -14,6 +16,8 @@ public class JFrame_DangKy extends javax.swing.JFrame {
      * Creates new form JFrame_DangKy
      */
     public JFrame_DangKy() {
+        setTitle("Đăng ký tài khoản");
+        this.setLocationRelativeTo(null);
         initComponents();
     }
 
@@ -26,32 +30,192 @@ public class JFrame_DangKy extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        button1 = new java.awt.Button();
         lbl_DangKy = new javax.swing.JLabel();
+        lbl_TaoTenNV = new javax.swing.JLabel();
+        txt_TaoTenNV = new javax.swing.JTextField();
+        lbl_TaoTK = new javax.swing.JLabel();
+        txt_TaoTK = new javax.swing.JTextField();
+        lbl_TaoMK = new javax.swing.JLabel();
+        pw_TaoMK = new javax.swing.JPasswordField();
+        lbl_XacNhanMK = new javax.swing.JLabel();
+        pw_XacNhanMK = new javax.swing.JPasswordField();
+        lbl_SDTNV = new javax.swing.JLabel();
+        txt_SDTNV = new javax.swing.JTextField();
+        txt_MailNV = new javax.swing.JTextField();
+        lbl_MailNV = new javax.swing.JLabel();
+        btn_DangKy = new javax.swing.JButton();
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
+
+        button1.setLabel("button1");
 
         setPreferredSize(new java.awt.Dimension(450, 600));
 
         lbl_DangKy.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
         lbl_DangKy.setText("ĐĂNG KÝ");
 
+        lbl_TaoTenNV.setText("Tên của bạn:");
+
+        txt_TaoTenNV.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txt_TaoTenNV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_TaoTenNVActionPerformed(evt);
+            }
+        });
+
+        lbl_TaoTK.setText("Tên tài khoản:");
+
+        txt_TaoTK.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txt_TaoTK.setToolTipText("");
+        txt_TaoTK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_TaoTKActionPerformed(evt);
+            }
+        });
+
+        lbl_TaoMK.setText("Mật khẩu:");
+
+        lbl_XacNhanMK.setText("Xác nhận mật khẩu:");
+
+        pw_XacNhanMK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pw_XacNhanMKActionPerformed(evt);
+            }
+        });
+
+        lbl_SDTNV.setText("Số Điện Thoại của bạn:");
+
+        txt_SDTNV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_SDTNVActionPerformed(evt);
+            }
+        });
+
+        txt_MailNV.setToolTipText("");
+        txt_MailNV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_MailNVActionPerformed(evt);
+            }
+        });
+
+        lbl_MailNV.setText("Email của bạn:");
+
+        btn_DangKy.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btn_DangKy.setText("Đăng Ký");
+        btn_DangKy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_DangKyActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(193, 193, 193)
+                        .addComponent(pw_XacNhanMK, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lbl_TaoTK)
+                                    .addComponent(lbl_TaoTenNV)
+                                    .addComponent(lbl_TaoMK)
+                                    .addComponent(lbl_SDTNV)
+                                    .addComponent(lbl_MailNV))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(txt_MailNV)
+                                            .addComponent(txt_TaoTenNV)
+                                            .addComponent(txt_SDTNV, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(41, 41, 41)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txt_TaoTK, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(pw_TaoMK, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(lbl_XacNhanMK))))
+                .addContainerGap(96, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(191, Short.MAX_VALUE)
-                .addComponent(lbl_DangKy)
-                .addGap(186, 186, 186))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbl_DangKy, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btn_DangKy, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(204, 204, 204))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(18, 18, 18)
                 .addComponent(lbl_DangKy)
-                .addContainerGap(437, Short.MAX_VALUE))
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_TaoTenNV)
+                    .addComponent(txt_TaoTenNV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_SDTNV)
+                    .addComponent(txt_SDTNV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_MailNV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_MailNV))
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_TaoTK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_TaoTK))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_TaoMK)
+                    .addComponent(pw_TaoMK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_XacNhanMK)
+                    .addComponent(pw_XacNhanMK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(62, 62, 62)
+                .addComponent(btn_DangKy)
+                .addContainerGap(74, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txt_TaoTenNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_TaoTenNVActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_TaoTenNVActionPerformed
+
+    private void txt_TaoTKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_TaoTKActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_TaoTKActionPerformed
+
+    private void txt_SDTNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_SDTNVActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_SDTNVActionPerformed
+
+    private void pw_XacNhanMKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pw_XacNhanMKActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pw_XacNhanMKActionPerformed
+
+    private void txt_MailNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_MailNVActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_MailNVActionPerformed
+
+    private void btn_DangKyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_DangKyActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this, "Đăng ký thành công", "Thông báo",JOptionPane.INFORMATION_MESSAGE);
+        JFrame_Main frame_Main = new JFrame_Main();
+        frame_Main.setVisible(true);
+    }//GEN-LAST:event_btn_DangKyActionPerformed
 
     /**
      * @param args the command line arguments
@@ -85,6 +249,22 @@ public class JFrame_DangKy extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_DangKy;
+    private java.awt.Button button1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel lbl_DangKy;
+    private javax.swing.JLabel lbl_MailNV;
+    private javax.swing.JLabel lbl_SDTNV;
+    private javax.swing.JLabel lbl_TaoMK;
+    private javax.swing.JLabel lbl_TaoTK;
+    private javax.swing.JLabel lbl_TaoTenNV;
+    private javax.swing.JLabel lbl_XacNhanMK;
+    private javax.swing.JPasswordField pw_TaoMK;
+    private javax.swing.JPasswordField pw_XacNhanMK;
+    private javax.swing.JTextField txt_MailNV;
+    private javax.swing.JTextField txt_SDTNV;
+    private javax.swing.JTextField txt_TaoTK;
+    private javax.swing.JTextField txt_TaoTenNV;
     // End of variables declaration//GEN-END:variables
 }
