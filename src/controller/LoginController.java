@@ -33,7 +33,6 @@ public class LoginController {
             
             public void actionPerformed(ActionEvent e) {
                 String user = frm_login.getTxt_TaiKhoan().getText();
-                int usertoCheck = Integer.parseInt(frm_login.getTxt_TaiKhoan().getText());
                 String password = new String(frm_login.getPasswordField().getPassword());
                 if(user.equals("")&&password.equals("")){
                     frm_login.showMessage("Không được để trống thông tin đăng nhập");
@@ -43,16 +42,10 @@ public class LoginController {
                     frm_login.showMessage("Không được để trống MẬT KHẨU!!!");
                 }else{
                     try {
-                        if(nhanvien.kiemTraDangNhap(usertoCheck,password)){
+                        if(nhanvien.kiemTraDangNhap(user,password)){
                             JFrame_Main FormMain = new JFrame_Main();
                             MainFormController mainfrmctrl = new MainFormController(FormMain);
                             frm_login.setVisible(false);
-                            try {
-                                frm_login.showMessage("Welcome "+nhanvien.layThongTinNhanVien(usertoCheck).getHoTenNV());
-                                nhanvien.layThongTinNhanVien(usertoCheck).getHoTenNV();
-                            } catch (SQLException ex) {
-                                Logger.getLogger(JFrame_Login.class.getName()).log(Level.SEVERE, null, ex);
-                            }
                         }else{
                             frm_login.showMessage("Thông tin đăng nhập không đúng");
                         }

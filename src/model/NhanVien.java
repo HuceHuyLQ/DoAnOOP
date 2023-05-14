@@ -12,12 +12,14 @@ public class NhanVien {
     private int MaNV;
     private String HoTenNV;
     private String SDTNV;
+    private String TaiKhoanNV;
     private String MatKhauNV;
 
-    public NhanVien(int MaNV, String HoTenNV, String SDTNV, String MatKhauNV) {
+    public NhanVien(int MaNV, String HoTenNV, String SDTNV,String TaiKhoanNV, String MatKhauNV) {
         this.MaNV = MaNV;
         this.HoTenNV = HoTenNV;
         this.SDTNV = SDTNV;
+        this.TaiKhoanNV = TaiKhoanNV;
         this.MatKhauNV = MatKhauNV;
     }
 
@@ -43,6 +45,14 @@ public class NhanVien {
 
     public void setSDTNV(String SDTNV) {
         this.SDTNV = SDTNV;
+    }
+
+    public String getTaiKhoanNV() {
+        return TaiKhoanNV;
+    }
+
+    public void setTaiKhoanNV(String TaiKhoanNV) {
+        this.TaiKhoanNV = TaiKhoanNV;
     }
 
     public String getMatKhauNV() {

@@ -28,8 +28,16 @@ public class KhachHangDao {
         return danhSachKH;
     }
     
+    public void themKhachHang(String makh, String hoten, String sdt) throws SQLException{
+        PreparedStatement preparedStatement = conn.prepareStatement("INSERT INTO KhachHang(MaKhachHang, HoTenKhachHang, SdtKhachHang) VALUES(?,?,?)");
+        preparedStatement.setString(1,makh);
+        preparedStatement.setString(2,hoten);
+        preparedStatement.setString(3,sdt);
+        preparedStatement.executeUpdate();
+    }
+    
     public KhachHang timKhachHangBangMaKH(String MaKH) throws SQLException{
-        PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM KhachHang WHERE MaKH=?");
+        PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM KhachHang WHERE MaKhachHang=?");
         preparedStatement.setString(1,MaKH);
         ResultSet resultSet = preparedStatement.executeQuery();
         if(resultSet.next()){
@@ -40,5 +48,11 @@ public class KhachHangDao {
         }else{
             return null;
         }
+    }
+    
+    public void xoaKhachHang(KhachHang khachhang) throws SQLException{
+        PreparedStatement preparedStatement = conn.prepareStatement("DELETE FROM KhachHang WHERE MaKhachHang=?");
+        preparedStatement.setString(1, khachhang.getMaKH());
+        preparedStatement.executeUpdate();
     }
 }

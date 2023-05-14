@@ -4,6 +4,13 @@
  */
 package view;
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JSeparator;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+
 /**
  *
  * @author huylequang
@@ -152,6 +159,129 @@ public class JFrame_KhachHang extends javax.swing.JFrame {
      * @param args the command line arguments
      */
 
+    public JButton getBtn_SuaKhachHang() {
+        return btn_SuaKhachHang;
+    }
+
+    public void setBtn_SuaKhachHang(JButton btn_SuaKhachHang) {
+        this.btn_SuaKhachHang = btn_SuaKhachHang;
+    }
+
+    public JButton getBtn_ThemKhachHang() {
+        return btn_ThemKhachHang;
+    }
+
+    public void setBtn_ThemKhachHang(JButton btn_ThemKhachHang) {
+        this.btn_ThemKhachHang = btn_ThemKhachHang;
+    }
+
+    public JButton getBtn_TimKhachHang() {
+        return btn_TimKhachHang;
+    }
+
+    public void setBtn_TimKhachHang(JButton btn_TimKhachHang) {
+        this.btn_TimKhachHang = btn_TimKhachHang;
+    }
+
+    public JButton getBtn_XoaKhachHang() {
+        return btn_XoaKhachHang;
+    }
+
+    public void setBtn_XoaKhachHang(JButton btn_XoaKhachHang) {
+        this.btn_XoaKhachHang = btn_XoaKhachHang;
+    }
+
+    public JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    public void setjLabel1(JLabel jLabel1) {
+        this.jLabel1 = jLabel1;
+    }
+
+    public JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    public void setjScrollPane1(JScrollPane jScrollPane1) {
+        this.jScrollPane1 = jScrollPane1;
+    }
+
+    public JSeparator getjSeparator1() {
+        return jSeparator1;
+    }
+
+    public void setjSeparator1(JSeparator jSeparator1) {
+        this.jSeparator1 = jSeparator1;
+    }
+
+    public JLabel getLbl_MaKH() {
+        return lbl_MaKH;
+    }
+
+    public void setLbl_MaKH(JLabel lbl_MaKH) {
+        this.lbl_MaKH = lbl_MaKH;
+    }
+
+    public JLabel getLbl_SDTKhachHang() {
+        return lbl_SDTKhachHang;
+    }
+
+    public void setLbl_SDTKhachHang(JLabel lbl_SDTKhachHang) {
+        this.lbl_SDTKhachHang = lbl_SDTKhachHang;
+    }
+
+    public JLabel getLbl_TenKhachHang() {
+        return lbl_TenKhachHang;
+    }
+
+    public void setLbl_TenKhachHang(JLabel lbl_TenKhachHang) {
+        this.lbl_TenKhachHang = lbl_TenKhachHang;
+    }
+
+    public JLabel getLbl_TieuDeBang() {
+        return lbl_TieuDeBang;
+    }
+
+    public void setLbl_TieuDeBang(JLabel lbl_TieuDeBang) {
+        this.lbl_TieuDeBang = lbl_TieuDeBang;
+    }
+
+    public JTable getTbl_KhachHang() {
+        return tbl_KhachHang;
+    }
+
+    public void setTbl_KhachHang(JTable tbl_KhachHang) {
+        this.tbl_KhachHang = tbl_KhachHang;
+    }
+
+    public JTextField getTxt_MaKH() {
+        return txt_MaKH;
+    }
+
+    public void setTxt_MaKH(JTextField txt_MaKH) {
+        this.txt_MaKH = txt_MaKH;
+    }
+
+    public JTextField getTxt_SDTKhachHang() {
+        return txt_SDTKhachHang;
+    }
+
+    public void setTxt_SDTKhachHang(JTextField txt_SDTKhachHang) {
+        this.txt_SDTKhachHang = txt_SDTKhachHang;
+    }
+
+    public JTextField getTxt_TenKhachHang() {
+        return txt_TenKhachHang;
+    }
+
+    /**
+     * @param args the command line arguments
+     */
+    public void setTxt_TenKhachHang(JTextField txt_TenKhachHang) {
+        this.txt_TenKhachHang = txt_TenKhachHang;
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_SuaKhachHang;
     private javax.swing.JButton btn_ThemKhachHang;
