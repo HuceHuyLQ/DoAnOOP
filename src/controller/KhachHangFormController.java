@@ -35,8 +35,24 @@ public class KhachHangFormController {
             Logger.getLogger(KhachHangFormController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    private void updateTable() {
+        model = (DefaultTableModel) this.mainForm.getTbl_KhachHang().getModel();
+        
+        try {
+            model.setRowCount(0);
+            List<KhachHang> khachhang = khachhangdao.layDanhSachKhachHang();
+            for (KhachHang khachHang : khachhang) {
+                Object[] rowData = {khachHang.getMaKH(), khachHang.getHoTenKH(), khachHang.getSDTKH()};
+                model.addRow(rowData); // Add a new row to the table model
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(KhachHangFormController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     public KhachHangFormController(MainForm frm_khachhang, KhachHangDao khachhangdao) {
-        this.LoadModel();
+        //this.LoadModel();
+        this.updateTable();
         this.mainForm = frm_khachhang;
         this.khachhangdao = khachhangdao;
         frm_khachhang.setVisible(true);
@@ -52,35 +68,22 @@ public class KhachHangFormController {
                 } catch (SQLException ex) {
                     Logger.getLogger(KhachHangFormController.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                
+                model = (DefaultTableModel) mainForm.getTbl_KhachHang().getModel();
                 try {
-                        model.setRowCount(0);
-                        List<KhachHang> khachhang = khachhangdao.layDanhSachKhachHang();
-                        for (KhachHang khachHang : khachhang) {
-                            Object[] rowData = {khachHang.getMaKH(), khachHang.getHoTenKH(), khachHang.getSDTKH()};
-                        }
-                    } catch (SQLException ex) {
-                        Logger.getLogger(KhachHangFormController.class.getName()).log(Level.SEVERE, null, ex);
+                    model.setRowCount(0);
+                    List<KhachHang> khachhang = khachhangdao.layDanhSachKhachHang();
+                    for (KhachHang khachHang : khachhang) {
+                        Object[] rowData = {khachHang.getMaKH(), khachHang.getHoTenKH(), khachHang.getSDTKH()};
+                        model.addRow(rowData); // Add a new row to the table model
                     }
-            }
-        
-        });
-        
-        frm_khachhang.getTbl_KhachHang().getModel().addTableModelListener(new TableModelListener(){
-            @Override
-            public void tableChanged(TableModelEvent e) {
-                if(e.getType() == TableModelEvent.INSERT || e.getType() == TableModelEvent.UPDATE || e.getType() == TableModelEvent.DELETE){
-                    try {
-                        model.setRowCount(0);
-                        List<KhachHang> khachhang = khachhangdao.layDanhSachKhachHang();
-                        for (KhachHang khachHang : khachhang) {
-                            Object[] rowData = {khachHang.getMaKH(), khachHang.getHoTenKH(), khachHang.getSDTKH()};
-                        }
-                    } catch (SQLException ex) {
-                        Logger.getLogger(KhachHangFormController.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                } catch (SQLException ex) {
+                    Logger.getLogger(KhachHangFormController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });
+        
+        
         
     }
     
