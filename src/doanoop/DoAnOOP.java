@@ -17,9 +17,13 @@ public class DoAnOOP {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        JFrame_Login FormLogin = new JFrame_Login();
+        /*JFrame_Login FormLogin = new JFrame_Login();
         NhanVienDao NhanVien = new NhanVienDao();
-        LoginController LoginControl = new LoginController(FormLogin,NhanVien);
+        LoginController LoginControl = new LoginController(FormLogin,NhanVien);*/
+        MainForm main = new MainForm();
+        main.setVisible(true);
+        KhachHangDao khdao = new KhachHangDao();
+        KhachHangFormController khctrl = new KhachHangFormController(main,khdao);
     }
     
 }

@@ -43,9 +43,9 @@ public class LoginController {
                 }else{
                     try {
                         if(nhanvien.kiemTraDangNhap(user,password)){
-                            JFrame_Main FormMain = new JFrame_Main();
-                            MainFormController mainfrmctrl = new MainFormController(FormMain);
                             frm_login.setVisible(false);
+                            MainForm mainForm = new MainForm();
+                            mainForm.setVisible(true);
                         }else{
                             frm_login.showMessage("Thông tin đăng nhập không đúng");
                         }
