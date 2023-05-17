@@ -17,6 +17,7 @@ public class JFrame_DangKy extends javax.swing.JFrame {
      */
     public JFrame_DangKy() {
         setTitle("Đăng ký tài khoản");
+        System.out.println("Test commit");
         this.setLocationRelativeTo(null);
         initComponents();
     }
