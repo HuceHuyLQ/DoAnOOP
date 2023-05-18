@@ -3,12 +3,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package controller;
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableModel;
@@ -20,21 +22,9 @@ import model.*;
  * @author huylequang
  */
 public class KhachHangFormController {
-    MainForm mainForm = new MainForm();
+    MainForm mainForm;
     KhachHangDao khachhangdao = new KhachHangDao();
     DefaultTableModel model = (DefaultTableModel)mainForm.getTbl_KhachHang().getModel();
-    private void LoadModel(){
-        try {
-            model.setRowCount(0);
-            List<KhachHang> khachhang = khachhangdao.layDanhSachKhachHang();
-            for (KhachHang khachHang : khachhang) {
-                Object[] rowData = {khachHang.getMaKH(), khachHang.getHoTenKH(), khachHang.getSDTKH()};
-                model.addRow(rowData);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(KhachHangFormController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
     private void updateTable() {
         model = (DefaultTableModel) this.mainForm.getTbl_KhachHang().getModel();
         
@@ -51,12 +41,12 @@ public class KhachHangFormController {
     }
     
     public KhachHangFormController(MainForm frm_khachhang, KhachHangDao khachhangdao) {
-        //this.LoadModel();
         this.updateTable();
         this.mainForm = frm_khachhang;
         this.khachhangdao = khachhangdao;
         frm_khachhang.setVisible(true);
         frm_khachhang.getTbl_KhachHang().setModel(model);
+        
         frm_khachhang.getBtn_ThemKhachHang().addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -68,19 +58,28 @@ public class KhachHangFormController {
                 } catch (SQLException ex) {
                     Logger.getLogger(KhachHangFormController.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                
-                model = (DefaultTableModel) mainForm.getTbl_KhachHang().getModel();
-                try {
-                    model.setRowCount(0);
-                    List<KhachHang> khachhang = khachhangdao.layDanhSachKhachHang();
-                    for (KhachHang khachHang : khachhang) {
-                        Object[] rowData = {khachHang.getMaKH(), khachHang.getHoTenKH(), khachHang.getSDTKH()};
-                        model.addRow(rowData); // Add a new row to the table model
+                updateTable();
+            }
+        });
+        
+        frm_khachhang.getBtn_XoaKhachHang().addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int choice = JOptionPane.showConfirmDialog((Component)null,"Xoá khách hàng?","XOÁ",JOptionPane.YES_NO_OPTION);
+                System.out.println(choice);
+                if(choice == 0){
+                    int row = frm_khachhang.getTbl_KhachHang().getSelectedRow();
+                    String cell = frm_khachhang.getTbl_KhachHang().getModel().getValueAt(row, 0).toString();
+                    try {
+                        khachhangdao.xoaKhachHang(cell);
+                        JOptionPane.showMessageDialog(null, "Đã xoá khách hàng "+ cell);
+                        updateTable();
+                    } catch (SQLException ex) {
+                        Logger.getLogger(KhachHangFormController.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                } catch (SQLException ex) {
-                    Logger.getLogger(KhachHangFormController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
+            
         });
         
         

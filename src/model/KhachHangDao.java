@@ -50,9 +50,9 @@ public class KhachHangDao {
         }
     }
     
-    public void xoaKhachHang(KhachHang khachhang) throws SQLException{
+    public void xoaKhachHang(String makhachhang) throws SQLException{
         PreparedStatement preparedStatement = conn.prepareStatement("DELETE FROM KhachHang WHERE MaKhachHang=?");
-        preparedStatement.setString(1, khachhang.getMaKH());
+        preparedStatement.setString(1, makhachhang);
         preparedStatement.executeUpdate();
     }
 }
