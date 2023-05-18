@@ -16,24 +16,25 @@ import java.sql.SQLException;
 public class NhanVienDao {
     private static DatabaseConnect dbconnect = new DatabaseConnect();
     private static Connection conn = dbconnect.Connect();
+    private static NhanVien nhanVien = new NhanVien();
     public static NhanVien layThongTinNhanVienTheoMaNV(int maNV) throws SQLException {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
-        NhanVien nhanVien = null;
 
         try{
-            String sql = "SELECT * FROM NhanVien WHERE MaNV = ?";
+            String sql = "SELECT * FROM NhanVien WHERE MaNhanVien = ?";
             statement = conn.prepareStatement(sql);
             statement.setInt(1, maNV);
             resultSet = statement.executeQuery();
 
             if (resultSet.next()) {
-                int maNVResult = resultSet.getInt("MaNV");
+                String maNVResult = resultSet.getString("MaNV");
                 String hoTenNV = resultSet.getString("HoTenNV");
                 String sdtNV = resultSet.getString("SDTNV");
+                String email = resultSet.getString("Email");
                 String taiKhoanNV = resultSet.getString("TaiKhoanNV");
                 String matKhauNV = resultSet.getString("MatKhauNV");
-                nhanVien = new NhanVien(maNVResult, hoTenNV, sdtNV, taiKhoanNV, matKhauNV);
+                nhanVien = new NhanVien(maNVResult, hoTenNV, sdtNV, email, taiKhoanNV, matKhauNV);
             }
         } catch(SQLException ex){
             ex.getStackTrace();
@@ -44,21 +45,21 @@ public class NhanVienDao {
     public static NhanVien layThongTinNhanVienTheoUsername(String username) throws SQLException {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
-        NhanVien nhanVien = null;
 
         try{
-            String sql = "SELECT * FROM NhanVien WHERE TaiKhoanNV = ?";
+            String sql = "SELECT * FROM NhanVien WHERE TenTK = ?";
             statement = conn.prepareStatement(sql);
             statement.setString(1, username);
             resultSet = statement.executeQuery();
 
             if (resultSet.next()) {
-                int maNVResult = resultSet.getInt("MaNV");
-                String hoTenNV = resultSet.getString("HoTenNV");
-                String sdtNV = resultSet.getString("SDTNV");
-                String taiKhoanNV = resultSet.getString("TaiKhoanNV");
-                String matKhauNV = resultSet.getString("MatKhauNV");
-                nhanVien = new NhanVien(maNVResult, hoTenNV, sdtNV, taiKhoanNV, matKhauNV);
+                String maNVResult = resultSet.getString("MaNhanVien");
+                String hoTenNV = resultSet.getString("TenNhanVien");
+                String sdtNV = resultSet.getString("SdtNV");
+                String email = resultSet.getString("Email");
+                String taiKhoanNV = resultSet.getString("TenTK");
+                String matKhauNV = resultSet.getString("MatKhau"); 
+                nhanVien = new NhanVien(maNVResult, hoTenNV, sdtNV, email, taiKhoanNV, matKhauNV);
             }
         } catch(SQLException ex){
             ex.getStackTrace();
@@ -74,13 +75,14 @@ public class NhanVienDao {
         boolean ketQua = false;
 
         try {
-            String sql = "SELECT * FROM NhanVien WHERE TaiKhoanNV = ? AND MatKhauNV = ?";
+            String sql = "SELECT * FROM NhanVien WHERE TenTK = ? AND MatKhau = ?";
             statement = conn.prepareStatement(sql);
             statement.setString(1, taiKhoan);
             statement.setString(2, matKhau);
             resultSet = statement.executeQuery();
 
             if (resultSet.next()) {
+                nhanVien = layThongTinNhanVienTheoUsername(taiKhoan);
                 ketQua = true;
             }
         } catch(SQLException ex){
@@ -89,4 +91,9 @@ public class NhanVienDao {
 
         return ketQua;
     }
+
+    public NhanVien getNhanVien() {
+        return nhanVien;
+    }
+    
 }

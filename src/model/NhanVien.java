@@ -9,58 +9,76 @@ import java.util.Optional;
  * @author huylequang
  */
 public class NhanVien {
-    private int MaNV;
-    private String HoTenNV;
-    private String SDTNV;
-    private String TaiKhoanNV;
-    private String MatKhauNV;
+    private String MaNhanVien;
+    private String TenNhanVien;
+    private String SdtNV;
+    private String Email;
+    private String TenTK;
+    private String MatKhau;
 
-    public NhanVien(int MaNV, String HoTenNV, String SDTNV,String TaiKhoanNV, String MatKhauNV) {
-        this.MaNV = MaNV;
-        this.HoTenNV = HoTenNV;
-        this.SDTNV = SDTNV;
-        this.TaiKhoanNV = TaiKhoanNV;
-        this.MatKhauNV = MatKhauNV;
+    public NhanVien() {
     }
 
-    public int getMaNV() {
-        return MaNV;
+    
+    
+    public NhanVien(String MaNhanVien, String TenNhanVien, String SdtNV, String Email, String TenTK, String MatKhau) {
+        this.MaNhanVien = MaNhanVien;
+        this.TenNhanVien = TenNhanVien;
+        this.SdtNV = SdtNV;
+        this.Email = Email;
+        this.TenTK = TenTK;
+        this.MatKhau = MatKhau;
     }
 
-    public void setMaNV(int MaNV) {
-        this.MaNV = MaNV;
+    
+
+    public String getMaNhanVien() {
+        return MaNhanVien;
     }
 
-    public String getHoTenNV() {
-        return HoTenNV;
+    public void setMaNhanVien(String MaNhanVien) {
+        this.MaNhanVien = MaNhanVien;
     }
 
-    public void setHoTenNV(String HoTenNV) {
-        this.HoTenNV = HoTenNV;
+    public String getTenNhanVien() {
+        return TenNhanVien;
     }
 
-    public String getSDTNV() {
-        return SDTNV;
+    public void setTenNhanVien(String TenNhanVien) {
+        this.TenNhanVien = TenNhanVien;
     }
 
-    public void setSDTNV(String SDTNV) {
-        this.SDTNV = SDTNV;
+    public String getSdtNV() {
+        return SdtNV;
     }
 
-    public String getTaiKhoanNV() {
-        return TaiKhoanNV;
+    public void setSdtNV(String SdtNV) {
+        this.SdtNV = SdtNV;
     }
 
-    public void setTaiKhoanNV(String TaiKhoanNV) {
-        this.TaiKhoanNV = TaiKhoanNV;
+    public String getEmail() {
+        return Email;
     }
 
-    public String getMatKhauNV() {
-        return MatKhauNV;
+    public void setEmail(String Email) {
+        this.Email = Email;
     }
 
-    public void setMatKhauNV(String MatKhauNV) {
-        this.MatKhauNV = MatKhauNV;
+    public String getTenTK() {
+        return TenTK;
     }
+
+    public void setTenTK(String TenTK) {
+        this.TenTK = TenTK;
+    }
+
+    public String getMatKhau() {
+        return MatKhau;
+    }
+
+    public void setMatKhau(String MatKhau) {
+        this.MatKhau = MatKhau;
+    }
+
     
 }

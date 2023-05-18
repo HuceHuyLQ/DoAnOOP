@@ -20,6 +20,7 @@ import view.*;
  */
 public class LoginController {
     private JFrame_Login frm_login = new JFrame_Login();
+    private MainForm frm_main = new MainForm();
     private NhanVienDao nhanvien = new NhanVienDao();
     
     public LoginController(JFrame_Login frm_login, NhanVienDao nhanvien) {
@@ -44,8 +45,9 @@ public class LoginController {
                     try {
                         if(nhanvien.kiemTraDangNhap(user,password)){
                             frm_login.setVisible(false);
-                            MainForm mainForm = new MainForm();
-                            mainForm.setVisible(true);
+                            getFrm_main().getLbl_Username().setText(nhanvien.getNhanVien().getTenTK());
+                            getFrm_main().getLbl_headerMaNV().setText(nhanvien.getNhanVien().getMaNhanVien());
+                            getFrm_main().setVisible(true);
                         }else{
                             frm_login.showMessage("Thông tin đăng nhập không đúng");
                         }
@@ -71,6 +73,30 @@ public class LoginController {
                 frm_dangky.setVisible(true);
             }
         });
+    }
+
+    public JFrame_Login getFrm_login() {
+        return frm_login;
+    }
+
+    public void setFrm_login(JFrame_Login frm_login) {
+        this.frm_login = frm_login;
+    }
+
+    public NhanVienDao getNhanvien() {
+        return nhanvien;
+    }
+
+    public void setNhanvien(NhanVienDao nhanvien) {
+        this.nhanvien = nhanvien;
+    }
+
+    public MainForm getFrm_main() {
+        return frm_main;
+    }
+
+    public void setFrm_main(MainForm frm_main) {
+        this.frm_main = frm_main;
     }
     
     
