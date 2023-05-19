@@ -59,13 +59,6 @@ public class LoginController {
             }
             
         });
-        frm_login.getBtn_Huy().addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                frm_login.clearForm();
-            }
-            
-        });
         frm_login.getBtn_DangKy().addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {

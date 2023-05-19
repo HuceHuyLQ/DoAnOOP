@@ -442,11 +442,11 @@ public class MainForm extends javax.swing.JFrame {
 
         lbl_UserIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/pngegg.png"))); // NOI18N
 
-        lbl_Username.setText("huylq");
+        lbl_Username.setText("null");
 
         lbl_IdTag.setText("ID:");
 
-        lbl_headerMaNV.setText("NV001");
+        lbl_headerMaNV.setText("null");
 
         javax.swing.GroupLayout pnl_UserLayout = new javax.swing.GroupLayout(pnl_User);
         pnl_User.setLayout(pnl_UserLayout);
@@ -492,7 +492,7 @@ public class MainForm extends javax.swing.JFrame {
                     .addComponent(lbl_DeTai, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lbl_GVHD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(lbl_ThucHien, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 615, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 633, Short.MAX_VALUE)
                 .addComponent(pnl_User, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );

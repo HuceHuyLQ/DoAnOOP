@@ -812,7 +812,7 @@
                       <Component id="lbl_GVHD" alignment="0" max="32767" attributes="0"/>
                       <Component id="lbl_ThucHien" alignment="0" min="-2" pref="351" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="615" max="32767" attributes="0"/>
+                  <EmptySpace pref="633" max="32767" attributes="0"/>
                   <Component id="pnl_User" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -924,7 +924,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="lbl_Username">
               <Properties>
-                <Property name="text" type="java.lang.String" value="huylq"/>
+                <Property name="text" type="java.lang.String" value="null"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lbl_IdTag">
@@ -934,7 +934,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="lbl_headerMaNV">
               <Properties>
-                <Property name="text" type="java.lang.String" value="NV001"/>
+                <Property name="text" type="java.lang.String" value="null"/>
               </Properties>
             </Component>
           </SubComponents>
