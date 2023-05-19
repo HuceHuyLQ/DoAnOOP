@@ -22,11 +22,11 @@ import model.*;
  * @author huylequang
  */
 public class KhachHangFormController {
-    MainForm mainForm;
-    KhachHangDao khachhangdao = new KhachHangDao();
-    DefaultTableModel model = (DefaultTableModel)mainForm.getTbl_KhachHang().getModel();
+    private static MainForm mainForm = LoginController.getFrm_main();
+    private KhachHangDao khachhangdao = new KhachHangDao();
+    private DefaultTableModel model = (DefaultTableModel)mainForm.getTbl_KhachHang().getModel();
     private void updateTable() {
-        model = (DefaultTableModel) this.mainForm.getTbl_KhachHang().getModel();
+        model = (DefaultTableModel) KhachHangFormController.mainForm.getTbl_KhachHang().getModel();
         
         try {
             model.setRowCount(0);
@@ -40,46 +40,38 @@ public class KhachHangFormController {
         }
     }
     
-    public KhachHangFormController(MainForm frm_khachhang, KhachHangDao khachhangdao) {
+    public KhachHangFormController(MainForm frm_khachhang) {
         this.updateTable();
-        this.mainForm = frm_khachhang;
-        this.khachhangdao = khachhangdao;
+        KhachHangFormController.mainForm = frm_khachhang;
         frm_khachhang.setVisible(true);
         frm_khachhang.getTbl_KhachHang().setModel(model);
         
-        frm_khachhang.getBtn_ThemKhachHang().addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
+        frm_khachhang.getBtn_ThemKhachHang().addActionListener((ActionEvent e) -> {
+            try {
+                String makh = frm_khachhang.getTxt_MaKH().getText();
+                String hoten = frm_khachhang.getTxt_TenKhachHang().getText();
+                String sdt = frm_khachhang.getTxt_SDTKhachHang().getText();
+                khachhangdao.themKhachHang(makh, hoten, sdt);
+            } catch (SQLException ex) {
+                Logger.getLogger(KhachHangFormController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            updateTable();
+        });
+        
+        frm_khachhang.getBtn_XoaKhachHang().addActionListener((ActionEvent e) -> {
+            int row = frm_khachhang.getTbl_KhachHang().getSelectedRow();
+                String cell = frm_khachhang.getTbl_KhachHang().getModel().getValueAt(row, 0).toString();
+            int choice = JOptionPane.showConfirmDialog((Component)null,"Xoá khách hàng " + cell + "?","XOÁ",JOptionPane.YES_NO_OPTION);
+            System.out.println(choice);
+            if(choice == 0){
                 try {
-                    String makh = frm_khachhang.getTxt_MaKH().getText();
-                    String hoten = frm_khachhang.getTxt_TenKhachHang().getText();
-                    String sdt = frm_khachhang.getTxt_SDTKhachHang().getText();
-                    khachhangdao.themKhachHang(makh, hoten, sdt);
+                    khachhangdao.xoaKhachHang(cell);
+                    JOptionPane.showMessageDialog(null, "Đã xoá khách hàng "+ cell);
+                    updateTable();
                 } catch (SQLException ex) {
                     Logger.getLogger(KhachHangFormController.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                updateTable();
             }
-        });
-        
-        frm_khachhang.getBtn_XoaKhachHang().addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                int choice = JOptionPane.showConfirmDialog((Component)null,"Xoá khách hàng?","XOÁ",JOptionPane.YES_NO_OPTION);
-                System.out.println(choice);
-                if(choice == 0){
-                    int row = frm_khachhang.getTbl_KhachHang().getSelectedRow();
-                    String cell = frm_khachhang.getTbl_KhachHang().getModel().getValueAt(row, 0).toString();
-                    try {
-                        khachhangdao.xoaKhachHang(cell);
-                        JOptionPane.showMessageDialog(null, "Đã xoá khách hàng "+ cell);
-                        updateTable();
-                    } catch (SQLException ex) {
-                        Logger.getLogger(KhachHangFormController.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-            }
-            
         });
         
         

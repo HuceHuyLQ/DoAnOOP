@@ -20,9 +20,6 @@ public class DoAnOOP {
         JFrame_Login FormLogin = new JFrame_Login();
         NhanVienDao NhanVien = new NhanVienDao();
         LoginController LoginControl = new LoginController(FormLogin,NhanVien);
-        MainForm main = LoginControl.getFrm_main();
-        KhachHangDao khdao = new KhachHangDao();
-        KhachHangFormController khctrl = new KhachHangFormController(main,khdao);
     }
     
 }
