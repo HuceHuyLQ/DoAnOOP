@@ -53,6 +53,7 @@ public class MainForm extends javax.swing.JFrame {
         btn_TimKhachHang = new javax.swing.JButton();
         jScrollPaneKhachHang = new javax.swing.JScrollPane();
         tbl_KhachHang = new javax.swing.JTable();
+        Btn_LayDuLieu = new javax.swing.JButton();
         jPanel_PhongHop = new javax.swing.JPanel();
         lbl_MaPhong = new javax.swing.JLabel();
         txt_MaPhong = new javax.swing.JTextField();
@@ -174,6 +175,9 @@ public class MainForm extends javax.swing.JFrame {
         jScrollPaneKhachHang.setViewportView(tbl_KhachHang);
 
         jPanel_KhachHang.add(jScrollPaneKhachHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(344, 6, 880, 530));
+
+        Btn_LayDuLieu.setText("Lấy Dữ Liệu");
+        jPanel_KhachHang.add(Btn_LayDuLieu, new org.netbeans.lib.awtextra.AbsoluteConstraints(124, 158, -1, -1));
 
         jTabbed_FrmMain.addTab("Khách Hàng", jPanel_KhachHang);
 
@@ -536,9 +540,26 @@ public class MainForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_ThemKhachHangActionPerformed
 
+    
+    public static String getMaNV() {
+        return maNV;
+    }
+
+    public static void setMaNV(String maNV) {
+        MainForm.maNV = maNV;
+    }
+
+    public JButton getBtn_LayDuLieu() {
+        return Btn_LayDuLieu;
+    }
+
     /**
      * @param args the command line arguments
      */
+    public void setBtn_LayDuLieu(JButton Btn_LayDuLieu) {    
+        this.Btn_LayDuLieu = Btn_LayDuLieu;
+    }
+
     public JButton getBtn_SuaCSVC() {
         return btn_SuaCSVC;
     }
@@ -1228,6 +1249,7 @@ public class MainForm extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Btn_LayDuLieu;
     private javax.swing.JButton btn_SuaCSVC;
     private javax.swing.JButton btn_SuaKhachHang;
     private javax.swing.JButton btn_SuaLuotThue;

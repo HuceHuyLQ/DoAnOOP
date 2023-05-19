@@ -60,9 +60,8 @@ public class KhachHangFormController {
         
         frm_khachhang.getBtn_XoaKhachHang().addActionListener((ActionEvent e) -> {
             int row = frm_khachhang.getTbl_KhachHang().getSelectedRow();
-                String cell = frm_khachhang.getTbl_KhachHang().getModel().getValueAt(row, 0).toString();
+            String cell = frm_khachhang.getTbl_KhachHang().getModel().getValueAt(row, 0).toString();
             int choice = JOptionPane.showConfirmDialog((Component)null,"Xoá khách hàng " + cell + "?","XOÁ",JOptionPane.YES_NO_OPTION);
-            System.out.println(choice);
             if(choice == 0){
                 try {
                     khachhangdao.xoaKhachHang(cell);
@@ -74,6 +73,31 @@ public class KhachHangFormController {
             }
         });
         
+        frm_khachhang.getBtn_TimKhachHang().addActionListener((ActionEvent e) -> {
+            String maKh = frm_khachhang.getTxt_MaKH().getText();
+            KhachHang khachHang = null;
+            if(maKh.equals("")){
+                JOptionPane.showMessageDialog(null, "Không được bỏ trống mã khách hàng");
+            }else{
+                try{
+                    khachHang = khachhangdao.timKhachHangBangMaKH(maKh);
+                    if(khachHang != null){
+                        model = (DefaultTableModel) KhachHangFormController.mainForm.getTbl_KhachHang().getModel();
+                        model.setRowCount(0); 
+                        Object[] rowData = {khachHang.getMaKH(),khachHang.getHoTenKH(),khachHang.getSDTKH()};
+                        model.addRow(rowData);
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Không tìm thấy khách hàng có mã "+maKh);
+                    }
+                }catch(SQLException ex){
+                    Logger.getLogger(KhachHangFormController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+        
+        frm_khachhang.getBtn_LayDuLieu().addActionListener((ActionEvent e) -> {
+            updateTable();
+        });
         
         
     }
