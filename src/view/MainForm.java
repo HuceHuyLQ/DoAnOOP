@@ -177,7 +177,7 @@ public class MainForm extends javax.swing.JFrame {
         jPanel_KhachHang.add(jScrollPaneKhachHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(344, 6, 880, 530));
 
         Btn_LayDuLieu.setText("Lấy Dữ Liệu");
-        jPanel_KhachHang.add(Btn_LayDuLieu, new org.netbeans.lib.awtextra.AbsoluteConstraints(124, 158, -1, -1));
+        jPanel_KhachHang.add(Btn_LayDuLieu, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, -1, -1));
 
         jTabbed_FrmMain.addTab("Khách Hàng", jPanel_KhachHang);
 

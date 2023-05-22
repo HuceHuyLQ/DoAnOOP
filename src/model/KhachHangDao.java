@@ -50,6 +50,35 @@ public class KhachHangDao {
         }
     }
     
+    public KhachHang timKhachHangBangSDT(String SDT) throws SQLException{
+        PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM KhachHang WHERE SdtKhachHang=?");
+        preparedStatement.setString(1,SDT);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        if(resultSet.next()){
+            String MaKH = resultSet.getString("MaKhachHang");
+            String hoTenKH = resultSet.getString("HoTenKhachHang");
+            KhachHang khachhang = new KhachHang(MaKH,hoTenKH,SDT);
+            return khachhang;
+        }else{
+            return null;
+        }
+    }
+    
+    public List<KhachHang> timKhachHangBangTenKH(String HoTenKH) throws SQLException{
+        List<KhachHang> dskh = new ArrayList<KhachHang>();
+        PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM KhachHang WHERE HoTenKhachHang=?");
+        preparedStatement.setString(1,HoTenKH);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while(resultSet.next()){
+            String maKH = resultSet.getString("MaKhachHang");
+            String hoTenKH = resultSet.getString("HoTenKhachHang");
+            String SDTKH = resultSet.getString("SdtKhachHang");
+            KhachHang khachhang = new KhachHang(maKH,hoTenKH,SDTKH);
+            dskh.add(khachhang);
+        }
+        return dskh;
+    }
+    
     public void xoaKhachHang(String makhachhang) throws SQLException{
         PreparedStatement preparedStatement = conn.prepareStatement("DELETE FROM KhachHang WHERE MaKhachHang=?");
         preparedStatement.setString(1, makhachhang);
