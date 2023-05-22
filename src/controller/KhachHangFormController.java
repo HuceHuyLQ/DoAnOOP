@@ -130,7 +130,18 @@ public class KhachHangFormController {
             updateTable();
         });
         
-        
+        frm_khachhang.getBtn_SuaKhachHang().addActionListener((ActionEvent e) -> {
+            int row = frm_khachhang.getTbl_KhachHang().getSelectedRow();
+            String maKh = frm_khachhang.getTbl_KhachHang().getModel().getValueAt(row, 0).toString();
+            String hoTen = frm_khachhang.getTxt_TenKhachHang().getText();
+            String sdt = frm_khachhang.getTxt_SDTKhachHang().getText();
+            try {
+                khachhangdao.suaKhachHang(maKh, hoTen, sdt);
+            } catch (SQLException ex) {
+                Logger.getLogger(KhachHangFormController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            updateTable();
+        });
     }
     
     

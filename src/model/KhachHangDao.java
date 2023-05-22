@@ -5,6 +5,7 @@
 package model;
 import java.util.*;
 import java.sql.*;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -83,5 +84,49 @@ public class KhachHangDao {
         PreparedStatement preparedStatement = conn.prepareStatement("DELETE FROM KhachHang WHERE MaKhachHang=?");
         preparedStatement.setString(1, makhachhang);
         preparedStatement.executeUpdate();
+    }
+    
+    public void suaKhachHang(String MaKhachHang, String HoTen, String SDT) throws SQLException{
+        //Hàm sửa khách hàng
+        PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM KhachHang WHERE MaKhachHang=?");
+        preparedStatement.setString(1, MaKhachHang);
+        ResultSet rs = preparedStatement.executeQuery();
+            
+        if(HoTen.equals("")){
+            //Chỉ sửa SDT
+            if(rs.next()){
+                preparedStatement = conn.prepareStatement("UPDATE KhachHang SET SdtKhachHang = ? WHERE MaKhachHang = ?");
+                preparedStatement.setString(1,SDT);
+                preparedStatement.setString(2,MaKhachHang);
+                preparedStatement.execute();
+                JOptionPane.showMessageDialog(null, "Sửa thành công số điện thoại khách hàng " + MaKhachHang, "Thành Công", 1);
+            }else{
+                JOptionPane.showMessageDialog(null, "Không sửa thành công", "Lỗi", 0);
+            }
+        }else if(SDT.equals("")){
+            //Chỉ sửa HoTen
+            if(rs.next()){
+                preparedStatement = conn.prepareStatement("UPDATE KhachHang SET HoTenKhachHang = ? WHERE MaKhachHang = ?");
+                preparedStatement.setString(1,HoTen);
+                preparedStatement.setString(2,MaKhachHang);
+                preparedStatement.execute();
+                JOptionPane.showMessageDialog(null, "Sửa thành công họ tên khách hàng " + MaKhachHang, "Thành Công", 1);
+            }else{
+                JOptionPane.showMessageDialog(null, "Không sửa thành công", "Lỗi", 0);
+            }
+        }else{
+            //Sửa HoTen và SDT
+            if(rs.next()){
+                preparedStatement = conn.prepareStatement("UPDATE KhachHang SET SdtKhachHang = ?, HoTenKhachHang = ? WHERE MaKhachHang = ?");
+                preparedStatement.setString(1,SDT);
+                preparedStatement.setString(2,HoTen);
+                preparedStatement.setString(3,MaKhachHang);
+                preparedStatement.execute();
+                JOptionPane.showMessageDialog(null, "Sửa thành công thông tin khách hàng " + MaKhachHang, "Thành Công", 1);
+            }else{
+                JOptionPane.showMessageDialog(null, "Không sửa thành công", "Lỗi", 0);
+            }
+        }
+            
     }
 }
