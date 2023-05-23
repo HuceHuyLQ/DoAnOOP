@@ -31,8 +31,6 @@ public class DatabaseConnect {
         this.password = password;
     }
     
-    
-    
     public void Init(Connection conn, String user, String password) {
         this.conn = conn;
         this.user = user;

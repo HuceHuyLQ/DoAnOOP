@@ -60,12 +60,9 @@ public class LoginController {
             }
             
         });
-        frm_login.getBtn_DangKy().addActionListener(new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JFrame_DangKy frm_dangky = new JFrame_DangKy();
-                frm_dangky.setVisible(true);
-            }
+        frm_login.getBtn_DangKy().addActionListener((ActionEvent e) -> {
+            JFrame_DangKy frm_dangky = new JFrame_DangKy();
+            frm_dangky.setVisible(true);
         });
     }
 
