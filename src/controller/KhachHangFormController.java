@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package controller;
+import DAO.KhachHangDao;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -25,7 +26,7 @@ public class KhachHangFormController {
     private static MainForm mainForm = LoginController.getFrm_main();
     private KhachHangDao khachhangdao = new KhachHangDao();
     private DefaultTableModel model = (DefaultTableModel)mainForm.getTbl_KhachHang().getModel();
-    private void updateTable() {
+    private void updateTableKH() {
         model = (DefaultTableModel) KhachHangFormController.mainForm.getTbl_KhachHang().getModel();
         
         try {
@@ -41,7 +42,7 @@ public class KhachHangFormController {
     }
     
     public KhachHangFormController(MainForm frm_khachhang) {
-        this.updateTable();
+        this.updateTableKH();
         KhachHangFormController.mainForm = frm_khachhang;
         frm_khachhang.setVisible(true);
         frm_khachhang.getTbl_KhachHang().setModel(model);
@@ -55,7 +56,7 @@ public class KhachHangFormController {
             } catch (SQLException ex) {
                 Logger.getLogger(KhachHangFormController.class.getName()).log(Level.SEVERE, null, ex);
             }
-            updateTable();
+            updateTableKH();
         });
         
         frm_khachhang.getBtn_XoaKhachHang().addActionListener((ActionEvent e) -> {
@@ -66,7 +67,7 @@ public class KhachHangFormController {
                 try {
                     khachhangdao.xoaKhachHang(cell);
                     JOptionPane.showMessageDialog(null, "Đã xoá khách hàng "+ cell);
-                    updateTable();
+                    updateTableKH();
                 } catch (SQLException ex) {
                     Logger.getLogger(KhachHangFormController.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -127,7 +128,7 @@ public class KhachHangFormController {
         });
         
         frm_khachhang.getBtn_LayDuLieu().addActionListener((ActionEvent e) -> {
-            updateTable();
+            updateTableKH();
         });
         
         frm_khachhang.getBtn_SuaKhachHang().addActionListener((ActionEvent e) -> {
@@ -140,7 +141,7 @@ public class KhachHangFormController {
             } catch (SQLException ex) {
                 Logger.getLogger(KhachHangFormController.class.getName()).log(Level.SEVERE, null, ex);
             }
-            updateTable();
+            updateTableKH();
         });
     }
     

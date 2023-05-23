@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
 package doanoop;
+import DAO.NhanVienDao;
 import view.*;
 import model.*;
 import controller.*;

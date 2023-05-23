@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package controller;
+import DAO.NhanVienDao;
 import static com.sun.java.accessibility.util.AWTEventMonitor.addActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -48,6 +49,7 @@ public class LoginController {
                             getFrm_main().getLbl_Username().setText(nhanvien.getNhanVien().getTenTK());
                             getFrm_main().getLbl_headerMaNV().setText(nhanvien.getNhanVien().getMaNhanVien());
                             KhachHangFormController khctrl = new KhachHangFormController(frm_main);
+                            PhongFormController pctrl = new PhongFormController(frm_main);
                             getFrm_main().setVisible(true);
                         }else{
                             frm_login.showMessage("Thông tin đăng nhập không đúng");

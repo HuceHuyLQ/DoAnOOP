@@ -67,6 +67,7 @@ public class MainForm extends javax.swing.JFrame {
         btn_TimPhong = new javax.swing.JButton();
         jScrollPane_Phong = new javax.swing.JScrollPane();
         tbl_PhongHop = new javax.swing.JTable();
+        Btn_LayDuLieuPhong = new javax.swing.JButton();
         jPanel_CoSoVatChat = new javax.swing.JPanel();
         lbl_MaCSVC = new javax.swing.JLabel();
         txt_MaCSVC = new javax.swing.JTextField();
@@ -80,6 +81,7 @@ public class MainForm extends javax.swing.JFrame {
         btn_TimCSVC = new javax.swing.JButton();
         jScrollPane_CSVC = new javax.swing.JScrollPane();
         tbl_CSVC = new javax.swing.JTable();
+        Btn_LayDuLieuCSVC = new javax.swing.JButton();
         jPanel_LuotThue = new javax.swing.JPanel();
         lbl_MaLuotThue = new javax.swing.JLabel();
         txt_MaLuotThue = new javax.swing.JTextField();
@@ -99,6 +101,7 @@ public class MainForm extends javax.swing.JFrame {
         txt_GhiChu = new javax.swing.JTextField();
         lbl_TongTien = new javax.swing.JLabel();
         txt_TongTien = new javax.swing.JTextField();
+        Btn_LayDuLieuLuotThue = new javax.swing.JButton();
         jPanel_NhanVien = new javax.swing.JPanel();
         lbl_MaNV = new javax.swing.JLabel();
         txt_MaNV = new javax.swing.JTextField();
@@ -112,6 +115,7 @@ public class MainForm extends javax.swing.JFrame {
         btn_TimNhanVien = new javax.swing.JButton();
         jScrollPane_NhanVien = new javax.swing.JScrollPane();
         tbl_NhanVien = new javax.swing.JTable();
+        Btn_LayDuLieuNhanVien = new javax.swing.JButton();
         jPanel_Header = new javax.swing.JPanel();
         lbl_Logo = new javax.swing.JLabel();
         lbl_TieuDe = new javax.swing.JLabel();
@@ -176,8 +180,8 @@ public class MainForm extends javax.swing.JFrame {
 
         jPanel_KhachHang.add(jScrollPaneKhachHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(344, 6, 880, 530));
 
-        Btn_LayDuLieu.setText("Lấy Dữ Liệu");
-        jPanel_KhachHang.add(Btn_LayDuLieu, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, -1, -1));
+        Btn_LayDuLieu.setText("Reset");
+        jPanel_KhachHang.add(Btn_LayDuLieu, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 158, 74, -1));
 
         jTabbed_FrmMain.addTab("Khách Hàng", jPanel_KhachHang);
 
@@ -209,18 +213,29 @@ public class MainForm extends javax.swing.JFrame {
 
         tbl_PhongHop.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Mã Phòng", "Loại Phòng", "Giá Thuê"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane_Phong.setViewportView(tbl_PhongHop);
 
         jPanel_PhongHop.add(jScrollPane_Phong, new org.netbeans.lib.awtextra.AbsoluteConstraints(344, 6, 880, 530));
+
+        Btn_LayDuLieuPhong.setText("Reset");
+        jPanel_PhongHop.add(Btn_LayDuLieuPhong, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, -1, -1));
 
         jTabbed_FrmMain.addTab("Phòng Họp", jPanel_PhongHop);
 
@@ -265,13 +280,24 @@ public class MainForm extends javax.swing.JFrame {
 
         jPanel_CoSoVatChat.add(jScrollPane_CSVC, new org.netbeans.lib.awtextra.AbsoluteConstraints(344, 6, 880, 530));
 
+        Btn_LayDuLieuCSVC.setText("Reset");
+        jPanel_CoSoVatChat.add(Btn_LayDuLieuCSVC, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, -1, -1));
+
         jTabbed_FrmMain.addTab("Cơ Sở Vật Chất", jPanel_CoSoVatChat);
 
+        jPanel_LuotThue.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         lbl_MaLuotThue.setText("Mã Lượt Thuê");
+        jPanel_LuotThue.add(lbl_MaLuotThue, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 9, 92, -1));
+        jPanel_LuotThue.add(txt_MaLuotThue, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 6, 228, -1));
 
         lbl_NgayGio.setText("Ngày Giờ");
+        jPanel_LuotThue.add(lbl_NgayGio, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 43, 92, -1));
+        jPanel_LuotThue.add(txt_NgayGio, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 40, 228, -1));
 
         lbl_Coc.setText("Cọc");
+        jPanel_LuotThue.add(lbl_Coc, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 77, 114, -1));
+        jPanel_LuotThue.add(txt_Coc, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 74, 228, -1));
 
         btn_ThemLuotThue.setText("Thêm");
         btn_ThemLuotThue.addActionListener(new java.awt.event.ActionListener() {
@@ -279,12 +305,16 @@ public class MainForm extends javax.swing.JFrame {
                 btn_ThemLuotThueActionPerformed(evt);
             }
         });
+        jPanel_LuotThue.add(btn_ThemLuotThue, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 261, -1, -1));
 
         btn_SuaLuotThue.setText("Sửa");
+        jPanel_LuotThue.add(btn_SuaLuotThue, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 261, -1, -1));
 
         btn_XoaLuotThue.setText("Xoá");
+        jPanel_LuotThue.add(btn_XoaLuotThue, new org.netbeans.lib.awtextra.AbsoluteConstraints(174, 261, -1, -1));
 
         btn_TimluotThue.setText("Tìm");
+        jPanel_LuotThue.add(btn_TimluotThue, new org.netbeans.lib.awtextra.AbsoluteConstraints(264, 261, -1, -1));
 
         tbl_LuotThue.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -299,92 +329,22 @@ public class MainForm extends javax.swing.JFrame {
         ));
         jScrollPane_LuotThue.setViewportView(tbl_LuotThue);
 
+        jPanel_LuotThue.add(jScrollPane_LuotThue, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 6, 880, 530));
+
         lbl_MaKHLuotThue.setText("Mã Khách Hàng");
+        jPanel_LuotThue.add(lbl_MaKHLuotThue, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 111, -1, -1));
+        jPanel_LuotThue.add(txt_MaKHLuotThue, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 108, 228, -1));
 
         lbl_GhiChu.setText("Ghi Chú");
+        jPanel_LuotThue.add(lbl_GhiChu, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 145, -1, -1));
+        jPanel_LuotThue.add(txt_GhiChu, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 142, 228, -1));
 
         lbl_TongTien.setText("Tổng Tiền");
+        jPanel_LuotThue.add(lbl_TongTien, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 179, 96, -1));
+        jPanel_LuotThue.add(txt_TongTien, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 176, 228, -1));
 
-        javax.swing.GroupLayout jPanel_LuotThueLayout = new javax.swing.GroupLayout(jPanel_LuotThue);
-        jPanel_LuotThue.setLayout(jPanel_LuotThueLayout);
-        jPanel_LuotThueLayout.setHorizontalGroup(
-            jPanel_LuotThueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_LuotThueLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel_LuotThueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel_LuotThueLayout.createSequentialGroup()
-                        .addGroup(jPanel_LuotThueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbl_MaLuotThue, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_NgayGio, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(28, 28, 28)
-                        .addGroup(jPanel_LuotThueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_NgayGio)
-                            .addComponent(txt_MaLuotThue)))
-                    .addGroup(jPanel_LuotThueLayout.createSequentialGroup()
-                        .addComponent(btn_ThemLuotThue)
-                        .addGap(12, 12, 12)
-                        .addComponent(btn_SuaLuotThue)
-                        .addGap(12, 12, 12)
-                        .addComponent(btn_XoaLuotThue)
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_TimluotThue)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_LuotThueLayout.createSequentialGroup()
-                        .addGroup(jPanel_LuotThueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel_LuotThueLayout.createSequentialGroup()
-                                .addComponent(lbl_Coc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                            .addGroup(jPanel_LuotThueLayout.createSequentialGroup()
-                                .addGroup(jPanel_LuotThueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lbl_MaKHLuotThue)
-                                    .addComponent(lbl_GhiChu)
-                                    .addComponent(lbl_TongTien, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(24, 24, 24)))
-                        .addGroup(jPanel_LuotThueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txt_TongTien)
-                            .addComponent(txt_GhiChu)
-                            .addComponent(txt_MaKHLuotThue)
-                            .addComponent(txt_Coc, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane_LuotThue, javax.swing.GroupLayout.PREFERRED_SIZE, 880, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        jPanel_LuotThueLayout.setVerticalGroup(
-            jPanel_LuotThueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_LuotThueLayout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addGroup(jPanel_LuotThueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel_LuotThueLayout.createSequentialGroup()
-                        .addGroup(jPanel_LuotThueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txt_MaLuotThue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_MaLuotThue))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel_LuotThueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbl_NgayGio)
-                            .addComponent(txt_NgayGio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel_LuotThueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbl_Coc)
-                            .addComponent(txt_Coc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel_LuotThueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbl_MaKHLuotThue)
-                            .addComponent(txt_MaKHLuotThue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel_LuotThueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbl_GhiChu)
-                            .addComponent(txt_GhiChu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel_LuotThueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbl_TongTien)
-                            .addComponent(txt_TongTien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(63, 63, 63)
-                        .addGroup(jPanel_LuotThueLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btn_ThemLuotThue)
-                            .addComponent(btn_SuaLuotThue)
-                            .addComponent(btn_XoaLuotThue)
-                            .addComponent(btn_TimluotThue)))
-                    .addComponent(jScrollPane_LuotThue, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE)))
-        );
+        Btn_LayDuLieuLuotThue.setText("Reset");
+        jPanel_LuotThue.add(Btn_LayDuLieuLuotThue, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 300, -1, -1));
 
         jTabbed_FrmMain.addTab("Lượt Thuê", jPanel_LuotThue);
 
@@ -428,6 +388,9 @@ public class MainForm extends javax.swing.JFrame {
         jScrollPane_NhanVien.setViewportView(tbl_NhanVien);
 
         jPanel_NhanVien.add(jScrollPane_NhanVien, new org.netbeans.lib.awtextra.AbsoluteConstraints(344, 6, 880, 530));
+
+        Btn_LayDuLieuNhanVien.setText("Reset");
+        jPanel_NhanVien.add(Btn_LayDuLieuNhanVien, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, -1, -1));
 
         jTabbed_FrmMain.addTab("Nhân Viên", jPanel_NhanVien);
 
@@ -1250,6 +1213,10 @@ public class MainForm extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Btn_LayDuLieu;
+    private javax.swing.JButton Btn_LayDuLieuCSVC;
+    private javax.swing.JButton Btn_LayDuLieuLuotThue;
+    private javax.swing.JButton Btn_LayDuLieuNhanVien;
+    private javax.swing.JButton Btn_LayDuLieuPhong;
     private javax.swing.JButton btn_SuaCSVC;
     private javax.swing.JButton btn_SuaKhachHang;
     private javax.swing.JButton btn_SuaLuotThue;
