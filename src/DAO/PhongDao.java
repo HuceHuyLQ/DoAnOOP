@@ -29,4 +29,62 @@ public class PhongDao {
         }
         return danhSachPhong;
     }
+    
+    public void themPhong(String MaPhong, String LoaiPhong, float GiaThue) throws SQLException{
+        PreparedStatement preparedStatement = conn.prepareStatement("INSERT INTO Phong(MaPhong, LoaiPhong, GiaThue) VALUES(?,?,?)");
+        preparedStatement.setString(1,MaPhong);
+        preparedStatement.setString(2,LoaiPhong);
+        preparedStatement.setFloat(3, GiaThue);
+        preparedStatement.executeUpdate();
+    }
+    
+    public Phong timPhongTheoMa(String MaPhong) throws SQLException{
+        String loaiPhong;
+        Float giaThue;
+        PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM Phong WHERE MaPhong=?");
+        preparedStatement.setString(1,MaPhong);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        if(resultSet.next()){
+            loaiPhong = resultSet.getString("LoaiPhong");
+            giaThue = Float.valueOf(resultSet.getString("GiaThue"));
+            Phong phong = new Phong(MaPhong,loaiPhong,giaThue);
+            return phong;
+        }else{
+            return null;
+        }
+    }
+    
+    public List<Phong> timPhongTheoLoaiPhong(String LoaiPhong) throws SQLException{
+        List<Phong> dsp = new ArrayList<Phong>();
+        PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM Phong WHERE LoaiPhong=?");
+        preparedStatement.setString(1,LoaiPhong);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while(resultSet.next()){
+            String maPhong = resultSet.getString("MaPhong");
+            float giaThue = Float.parseFloat(resultSet.getString("GiaThue"));
+            Phong phong = new Phong(maPhong,LoaiPhong,giaThue);
+            dsp.add(phong);
+        }
+        return dsp;
+    }
+    
+    public List<Phong> timPhongTheoGiaTien(Float GiaTien) throws SQLException{
+        List<Phong> dsp = new ArrayList<Phong>();
+        PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM Phong WHERE GiaThue = ?");
+        preparedStatement.setFloat(1, GiaTien);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while(resultSet.next()){
+            String maPhong = resultSet.getString("MaPhong");
+            String loaiPhong = resultSet.getString("LoaiPhong");
+            Phong phong = new Phong(maPhong, loaiPhong, GiaTien);
+            dsp.add(phong);
+        }
+        return dsp;
+    }
+    
+    public void xoaPhong(String maphong) throws SQLException{
+        PreparedStatement preparedStatement = conn.prepareStatement("DELETE FROM Phong WHERE MaPhong=?");
+        preparedStatement.setString(1, maphong);
+        preparedStatement.executeUpdate();
+    }
 }

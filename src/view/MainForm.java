@@ -82,6 +82,8 @@ public class MainForm extends javax.swing.JFrame {
         jScrollPane_CSVC = new javax.swing.JScrollPane();
         tbl_CSVC = new javax.swing.JTable();
         Btn_LayDuLieuCSVC = new javax.swing.JButton();
+        lbl_TenVatTu = new javax.swing.JLabel();
+        txt_TenVatTu = new javax.swing.JTextField();
         jPanel_LuotThue = new javax.swing.JPanel();
         lbl_MaLuotThue = new javax.swing.JLabel();
         txt_MaLuotThue = new javax.swing.JTextField();
@@ -243,27 +245,27 @@ public class MainForm extends javax.swing.JFrame {
 
         lbl_MaCSVC.setText("Mã CSVC");
         jPanel_CoSoVatChat.add(lbl_MaCSVC, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 9, -1, -1));
-        jPanel_CoSoVatChat.add(txt_MaCSVC, new org.netbeans.lib.awtextra.AbsoluteConstraints(114, 6, 224, -1));
+        jPanel_CoSoVatChat.add(txt_MaCSVC, new org.netbeans.lib.awtextra.AbsoluteConstraints(108, 6, 220, -1));
 
         lbl_LoaiCSVC.setText("Loại CSVC ");
-        jPanel_CoSoVatChat.add(lbl_LoaiCSVC, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 50, -1, -1));
-        jPanel_CoSoVatChat.add(txt_LoaiCSVC, new org.netbeans.lib.awtextra.AbsoluteConstraints(114, 47, 224, -1));
+        jPanel_CoSoVatChat.add(lbl_LoaiCSVC, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, -1));
+        jPanel_CoSoVatChat.add(txt_LoaiCSVC, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, 220, -1));
 
         lbl_GiaCSVC.setText("Giá CSVC");
-        jPanel_CoSoVatChat.add(lbl_GiaCSVC, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 91, 96, -1));
-        jPanel_CoSoVatChat.add(txt_GiaCSVC, new org.netbeans.lib.awtextra.AbsoluteConstraints(114, 88, 224, -1));
+        jPanel_CoSoVatChat.add(lbl_GiaCSVC, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 96, -1));
+        jPanel_CoSoVatChat.add(txt_GiaCSVC, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, 220, -1));
 
         btn_ThemCSVC.setText("Thêm");
-        jPanel_CoSoVatChat.add(btn_ThemCSVC, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 129, -1, -1));
+        jPanel_CoSoVatChat.add(btn_ThemCSVC, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, -1, -1));
 
         btn_SuaCSVC.setText("Sửa");
-        jPanel_CoSoVatChat.add(btn_SuaCSVC, new org.netbeans.lib.awtextra.AbsoluteConstraints(92, 129, -1, -1));
+        jPanel_CoSoVatChat.add(btn_SuaCSVC, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, -1, -1));
 
         btn_XoaCSVC.setText("Xoá");
-        jPanel_CoSoVatChat.add(btn_XoaCSVC, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 129, -1, -1));
+        jPanel_CoSoVatChat.add(btn_XoaCSVC, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, -1, -1));
 
         btn_TimCSVC.setText("Tìm");
-        jPanel_CoSoVatChat.add(btn_TimCSVC, new org.netbeans.lib.awtextra.AbsoluteConstraints(266, 129, -1, -1));
+        jPanel_CoSoVatChat.add(btn_TimCSVC, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 170, -1, -1));
 
         tbl_CSVC.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -281,7 +283,11 @@ public class MainForm extends javax.swing.JFrame {
         jPanel_CoSoVatChat.add(jScrollPane_CSVC, new org.netbeans.lib.awtextra.AbsoluteConstraints(344, 6, 880, 530));
 
         Btn_LayDuLieuCSVC.setText("Reset");
-        jPanel_CoSoVatChat.add(Btn_LayDuLieuCSVC, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, -1, -1));
+        jPanel_CoSoVatChat.add(Btn_LayDuLieuCSVC, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, -1, -1));
+
+        lbl_TenVatTu.setText("Tên Vật Tư");
+        jPanel_CoSoVatChat.add(lbl_TenVatTu, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 50, -1, -1));
+        jPanel_CoSoVatChat.add(txt_TenVatTu, new org.netbeans.lib.awtextra.AbsoluteConstraints(108, 47, 220, -1));
 
         jTabbed_FrmMain.addTab("Cơ Sở Vật Chất", jPanel_CoSoVatChat);
 
@@ -503,6 +509,39 @@ public class MainForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_ThemKhachHangActionPerformed
 
+    public JButton getBtn_LayDuLieuCSVC() {
+        return Btn_LayDuLieuCSVC;
+    }
+
+    public void setBtn_LayDuLieuCSVC(JButton Btn_LayDuLieuCSVC) {
+        this.Btn_LayDuLieuCSVC = Btn_LayDuLieuCSVC;
+    }
+
+    public JButton getBtn_LayDuLieuLuotThue() {
+        return Btn_LayDuLieuLuotThue;
+    }
+
+    public void setBtn_LayDuLieuLuotThue(JButton Btn_LayDuLieuLuotThue) {
+        this.Btn_LayDuLieuLuotThue = Btn_LayDuLieuLuotThue;
+    }
+
+    public JButton getBtn_LayDuLieuNhanVien() {
+        return Btn_LayDuLieuNhanVien;
+    }
+
+    public void setBtn_LayDuLieuNhanVien(JButton Btn_LayDuLieuNhanVien) {
+        this.Btn_LayDuLieuNhanVien = Btn_LayDuLieuNhanVien;
+    }
+
+    public JButton getBtn_LayDuLieuPhong() {
+        return Btn_LayDuLieuPhong;
+    }
+
+    public void setBtn_LayDuLieuPhong(JButton Btn_LayDuLieuPhong) {
+        this.Btn_LayDuLieuPhong = Btn_LayDuLieuPhong;
+    }
+
+    
     
     public static String getMaNV() {
         return maNV;
@@ -1273,6 +1312,7 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_SDTKhachHang;
     private javax.swing.JLabel lbl_TaiKhoanNV;
     private javax.swing.JLabel lbl_TenKhachHang;
+    private javax.swing.JLabel lbl_TenVatTu;
     private javax.swing.JLabel lbl_ThucHien;
     private javax.swing.JLabel lbl_TieuDe;
     private javax.swing.JLabel lbl_TongTien;
@@ -1302,6 +1342,7 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JTextField txt_SDTKhachHang;
     private javax.swing.JTextField txt_TaiKhoanNV;
     private javax.swing.JTextField txt_TenKhachHang;
+    private javax.swing.JTextField txt_TenVatTu;
     private javax.swing.JTextField txt_TongTien;
     // End of variables declaration//GEN-END:variables
 }

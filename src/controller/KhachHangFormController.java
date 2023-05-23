@@ -43,7 +43,6 @@ public class KhachHangFormController {
     
     public KhachHangFormController(MainForm frm_khachhang) {
         this.updateTableKH();
-        KhachHangFormController.mainForm = frm_khachhang;
         frm_khachhang.setVisible(true);
         frm_khachhang.getTbl_KhachHang().setModel(model);
         
