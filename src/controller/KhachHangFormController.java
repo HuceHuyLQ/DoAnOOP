@@ -41,6 +41,12 @@ public class KhachHangFormController {
         }
     }
     
+    private void clearForm(){
+        KhachHangFormController.mainForm.getTxt_MaKH().setText("");
+        KhachHangFormController.mainForm.getTxt_TenKhachHang().setText("");
+        KhachHangFormController.mainForm.getTxt_SDTKhachHang().setText("");
+    }
+    
     public KhachHangFormController(MainForm frm_khachhang) {
         this.updateTableKH();
         frm_khachhang.setVisible(true);
@@ -56,6 +62,7 @@ public class KhachHangFormController {
                 Logger.getLogger(KhachHangFormController.class.getName()).log(Level.SEVERE, null, ex);
             }
             updateTableKH();
+            clearForm();
         });
         
         frm_khachhang.getBtn_XoaKhachHang().addActionListener((ActionEvent e) -> {
@@ -71,6 +78,7 @@ public class KhachHangFormController {
                     Logger.getLogger(KhachHangFormController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
+            clearForm();
         });
         
         frm_khachhang.getBtn_TimKhachHang().addActionListener((var e) -> {
@@ -124,10 +132,12 @@ public class KhachHangFormController {
                     Logger.getLogger(KhachHangFormController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
+            clearForm();
         });
         
         frm_khachhang.getBtn_LayDuLieu().addActionListener((ActionEvent e) -> {
             updateTableKH();
+            clearForm();
         });
         
         frm_khachhang.getBtn_SuaKhachHang().addActionListener((ActionEvent e) -> {
@@ -141,6 +151,7 @@ public class KhachHangFormController {
                 Logger.getLogger(KhachHangFormController.class.getName()).log(Level.SEVERE, null, ex);
             }
             updateTableKH();
+            clearForm();
         });
     }
     
