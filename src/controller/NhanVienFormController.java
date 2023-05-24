@@ -41,8 +41,46 @@ public class NhanVienFormController {
         }
     }
     
+    public void clearForm(){
+        mainForm.getTxt_MaNV().setText("");
+        mainForm.getTxt_HoTenNV().setText("");
+        mainForm.getTxt_SDTNV().setText("");
+        mainForm.getTxt_EmailNV().setText("");
+        mainForm.getTxt_TaiKhoanNV().setText("");
+        mainForm.getTxt_MatKhauNV().setText("");
+        mainForm.getTxt_VaiTroNV().setText("");
+    }
+    
     NhanVienFormController(MainForm mainForm){
         this.mainForm = mainForm;
         updateTable();
+        
+        mainForm.getBtn_LayDuLieuNhanVien().addActionListener((ActionEvent e)->{
+            updateTable();
+            clearForm();
+        });
+        
+        mainForm.getBtn_TimNhanVien().addActionListener((ActionEvent e) -> {
+            
+        });
+        
+        mainForm.getBtn_ThemNhanVien().addActionListener((ActionEvent e) -> {
+            String MaNhanVien = mainForm.getTxt_MaNV().getText();
+            String HoTen = mainForm.getTxt_HoTenNV().getText();
+            String SDT = mainForm.getTxt_SDTNV().getText();
+            String Email = mainForm.getTxt_EmailNV().getText();
+            String TaiKhoan = mainForm.getTxt_TaiKhoanNV().getText();
+            String MatKhau = mainForm.getTxt_MatKhauNV().getText();
+            String VaiTro = mainForm.getTxt_VaiTroNV().getText();
+            try {
+                nvdao.themNhanVien(MaNhanVien, HoTen, SDT,Email,TaiKhoan,MatKhau,VaiTro);
+                JOptionPane.showMessageDialog(null, "Thêm thành công nhân viên" + MaNhanVien);
+                this.updateTable();
+            } catch (SQLException ex) {
+                Logger.getLogger(PhongFormController.class.getName()).log(Level.SEVERE, null, ex);
+                JOptionPane.showMessageDialog(null, "Thêm thất bại nhân viên " + MaNhanVien);
+            }
+            clearForm();
+        });
     }
 }

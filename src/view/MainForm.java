@@ -369,19 +369,31 @@ public class MainForm extends javax.swing.JFrame {
 
         jTabbed_FrmMain.addTab("Lượt Thuê", jPanel_LuotThue);
 
+        jPanel_NhanVien.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         lbl_MaNV.setText("Mã Nhân Viên");
+        jPanel_NhanVien.add(lbl_MaNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 9, -1, -1));
+        jPanel_NhanVien.add(txt_MaNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(145, 6, 203, -1));
 
         lbl_HoTenNV.setText("Họ Tên");
+        jPanel_NhanVien.add(lbl_HoTenNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 50, 75, -1));
+        jPanel_NhanVien.add(txt_HoTenNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(145, 47, 203, -1));
 
         lbl_TaiKhoanNV.setText("Tài Khoản");
+        jPanel_NhanVien.add(lbl_TaiKhoanNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 164, 75, -1));
+        jPanel_NhanVien.add(txt_TaiKhoanNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(145, 161, 203, -1));
 
         btn_ThemNhanVien.setText("Thêm");
+        jPanel_NhanVien.add(btn_ThemNhanVien, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 303, -1, -1));
 
         btn_SuaNhanVien.setText("Sửa");
+        jPanel_NhanVien.add(btn_SuaNhanVien, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 303, -1, -1));
 
         btn_XoaNhanVien.setText("Xoá");
+        jPanel_NhanVien.add(btn_XoaNhanVien, new org.netbeans.lib.awtextra.AbsoluteConstraints(174, 303, -1, -1));
 
         btn_TimNhanVien.setText("Tìm");
+        jPanel_NhanVien.add(btn_TimNhanVien, new org.netbeans.lib.awtextra.AbsoluteConstraints(264, 303, -1, -1));
 
         tbl_NhanVien.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -396,120 +408,26 @@ public class MainForm extends javax.swing.JFrame {
         ));
         jScrollPane_NhanVien.setViewportView(tbl_NhanVien);
 
+        jPanel_NhanVien.add(jScrollPane_NhanVien, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 6, 880, 530));
+
         Btn_LayDuLieuNhanVien.setText("Reset");
+        jPanel_NhanVien.add(Btn_LayDuLieuNhanVien, new org.netbeans.lib.awtextra.AbsoluteConstraints(128, 334, -1, -1));
 
         lbl_MatKhauNV.setText("Mật Khẩu");
+        jPanel_NhanVien.add(lbl_MatKhauNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 210, 75, -1));
+        jPanel_NhanVien.add(txt_MatKhauNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(145, 207, 203, -1));
 
         lbl_SDTNV.setText("SDT");
+        jPanel_NhanVien.add(lbl_SDTNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 90, 75, -1));
+        jPanel_NhanVien.add(txt_SDTNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(145, 87, 203, -1));
 
         lbl_EmailNV.setText("Email");
+        jPanel_NhanVien.add(lbl_EmailNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 130, 75, -1));
+        jPanel_NhanVien.add(txt_EmailNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(145, 127, 203, -1));
 
         lbl_VaiTroNV.setText("Vai Trò");
-
-        javax.swing.GroupLayout jPanel_NhanVienLayout = new javax.swing.GroupLayout(jPanel_NhanVien);
-        jPanel_NhanVien.setLayout(jPanel_NhanVienLayout);
-        jPanel_NhanVienLayout.setHorizontalGroup(
-            jPanel_NhanVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_NhanVienLayout.createSequentialGroup()
-                .addGroup(jPanel_NhanVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel_NhanVienLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel_NhanVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel_NhanVienLayout.createSequentialGroup()
-                                .addComponent(btn_ThemNhanVien)
-                                .addGap(12, 12, 12)
-                                .addComponent(btn_SuaNhanVien)
-                                .addGap(12, 12, 12)
-                                .addComponent(btn_XoaNhanVien)
-                                .addGap(18, 18, 18)
-                                .addComponent(btn_TimNhanVien))
-                            .addGroup(jPanel_NhanVienLayout.createSequentialGroup()
-                                .addGap(122, 122, 122)
-                                .addComponent(Btn_LayDuLieuNhanVien))
-                            .addGroup(jPanel_NhanVienLayout.createSequentialGroup()
-                                .addGroup(jPanel_NhanVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(lbl_VaiTroNV, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(lbl_TaiKhoanNV, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
-                                    .addComponent(lbl_MatKhauNV, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(33, 33, 33)
-                                .addGroup(jPanel_NhanVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txt_TaiKhoanNV, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
-                                    .addComponent(txt_MatKhauNV)
-                                    .addComponent(txt_VaiTroNV)))))
-                    .addGroup(jPanel_NhanVienLayout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addGroup(jPanel_NhanVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lbl_HoTenNV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lbl_MaNV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(33, 33, 33)
-                        .addGroup(jPanel_NhanVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_MaNV)
-                            .addComponent(txt_HoTenNV)))
-                    .addGroup(jPanel_NhanVienLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel_NhanVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lbl_EmailNV, javax.swing.GroupLayout.DEFAULT_SIZE, 75, Short.MAX_VALUE)
-                            .addComponent(lbl_SDTNV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(33, 33, 33)
-                        .addGroup(jPanel_NhanVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_SDTNV)
-                            .addComponent(txt_EmailNV))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane_NhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 880, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        jPanel_NhanVienLayout.setVerticalGroup(
-            jPanel_NhanVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel_NhanVienLayout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addGroup(jPanel_NhanVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel_NhanVienLayout.createSequentialGroup()
-                        .addGroup(jPanel_NhanVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel_NhanVienLayout.createSequentialGroup()
-                                .addGap(3, 3, 3)
-                                .addComponent(lbl_MaNV))
-                            .addComponent(txt_MaNV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(19, 19, 19)
-                        .addGroup(jPanel_NhanVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel_NhanVienLayout.createSequentialGroup()
-                                .addGap(3, 3, 3)
-                                .addComponent(lbl_HoTenNV))
-                            .addComponent(txt_HoTenNV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel_NhanVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel_NhanVienLayout.createSequentialGroup()
-                                .addGap(3, 3, 3)
-                                .addComponent(lbl_SDTNV))
-                            .addComponent(txt_SDTNV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel_NhanVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel_NhanVienLayout.createSequentialGroup()
-                                .addGap(3, 3, 3)
-                                .addComponent(lbl_EmailNV))
-                            .addComponent(txt_EmailNV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel_NhanVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txt_TaiKhoanNV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbl_TaiKhoanNV))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel_NhanVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel_NhanVienLayout.createSequentialGroup()
-                                .addGap(3, 3, 3)
-                                .addComponent(lbl_MatKhauNV))
-                            .addComponent(txt_MatKhauNV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel_NhanVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbl_VaiTroNV)
-                            .addComponent(txt_VaiTroNV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(15, 15, 15)
-                        .addGroup(jPanel_NhanVienLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btn_ThemNhanVien)
-                            .addComponent(btn_SuaNhanVien)
-                            .addComponent(btn_XoaNhanVien)
-                            .addComponent(btn_TimNhanVien))
-                        .addGap(8, 8, 8)
-                        .addComponent(Btn_LayDuLieuNhanVien))
-                    .addComponent(jScrollPane_NhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE)))
-        );
+        jPanel_NhanVien.add(lbl_VaiTroNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 250, 75, -1));
+        jPanel_NhanVien.add(txt_VaiTroNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(145, 247, 203, -1));
 
         jTabbed_FrmMain.addTab("Nhân Viên", jPanel_NhanVien);
 
@@ -671,6 +589,143 @@ public class MainForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_ThemKhachHangActionPerformed
 
+    public JTable getTbl_ThongKeKH() {
+        return Tbl_ThongKeKH;
+    }
+
+    public void setTbl_ThongKeKH(JTable Tbl_ThongKeKH) {
+        this.Tbl_ThongKeKH = Tbl_ThongKeKH;
+    }
+
+    public JScrollPane getTbl_ThongKeLuotThue() {
+        return Tbl_ThongKeLuotThue;
+    }
+
+    public void setTbl_ThongKeLuotThue(JScrollPane Tbl_ThongKeLuotThue) {
+        this.Tbl_ThongKeLuotThue = Tbl_ThongKeLuotThue;
+    }
+
+    public JScrollPane getTbl_ThongKePhong() {
+        return Tbl_ThongKePhong;
+    }
+
+    public void setTbl_ThongKePhong(JScrollPane Tbl_ThongKePhong) {
+        this.Tbl_ThongKePhong = Tbl_ThongKePhong;
+    }
+
+    public JPanel getjPanel1() {
+        return jPanel1;
+    }
+
+    public void setjPanel1(JPanel jPanel1) {
+        this.jPanel1 = jPanel1;
+    }
+
+    public JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    public void setjScrollPane1(JScrollPane jScrollPane1) {
+        this.jScrollPane1 = jScrollPane1;
+    }
+
+    public JTable getjTable2() {
+        return jTable2;
+    }
+
+    public void setjTable2(JTable jTable2) {
+        this.jTable2 = jTable2;
+    }
+
+    public JTable getjTable3() {
+        return jTable3;
+    }
+
+    public void setjTable3(JTable jTable3) {
+        this.jTable3 = jTable3;
+    }
+
+    public JLabel getLbl_EmailNV() {
+        return lbl_EmailNV;
+    }
+
+    public void setLbl_EmailNV(JLabel lbl_EmailNV) {
+        this.lbl_EmailNV = lbl_EmailNV;
+    }
+
+    public JLabel getLbl_MatKhauNV() {
+        return lbl_MatKhauNV;
+    }
+
+    public void setLbl_MatKhauNV(JLabel lbl_MatKhauNV) {
+        this.lbl_MatKhauNV = lbl_MatKhauNV;
+    }
+
+    public JLabel getLbl_SDTNV() {
+        return lbl_SDTNV;
+    }
+
+    public void setLbl_SDTNV(JLabel lbl_SDTNV) {
+        this.lbl_SDTNV = lbl_SDTNV;
+    }
+
+    public JLabel getLbl_TenVatTu() {
+        return lbl_TenVatTu;
+    }
+
+    public void setLbl_TenVatTu(JLabel lbl_TenVatTu) {
+        this.lbl_TenVatTu = lbl_TenVatTu;
+    }
+
+    public JLabel getLbl_VaiTroNV() {
+        return lbl_VaiTroNV;
+    }
+
+    public void setLbl_VaiTroNV(JLabel lbl_VaiTroNV) {
+        this.lbl_VaiTroNV = lbl_VaiTroNV;
+    }
+
+    public JTextField getTxt_EmailNV() {
+        return txt_EmailNV;
+    }
+
+    public void setTxt_EmailNV(JTextField txt_EmailNV) {
+        this.txt_EmailNV = txt_EmailNV;
+    }
+
+    public JTextField getTxt_MatKhauNV() {
+        return txt_MatKhauNV;
+    }
+
+    public void setTxt_MatKhauNV(JTextField txt_MatKhauNV) {
+        this.txt_MatKhauNV = txt_MatKhauNV;
+    }
+
+    public JTextField getTxt_SDTNV() {
+        return txt_SDTNV;
+    }
+
+    public void setTxt_SDTNV(JTextField txt_SDTNV) {
+        this.txt_SDTNV = txt_SDTNV;
+    }
+
+    public JTextField getTxt_TenVatTu() {
+        return txt_TenVatTu;
+    }
+
+    public void setTxt_TenVatTu(JTextField txt_TenVatTu) {
+        this.txt_TenVatTu = txt_TenVatTu;
+    }
+
+    public JTextField getTxt_VaiTroNV() {
+        return txt_VaiTroNV;
+    }
+
+    public void setTxt_VaiTroNV(JTextField txt_VaiTroNV) {
+        this.txt_VaiTroNV = txt_VaiTroNV;
+    }
+
+    
     public JButton getBtn_LayDuLieuCSVC() {
         return Btn_LayDuLieuCSVC;
     }

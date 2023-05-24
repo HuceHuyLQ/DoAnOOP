@@ -43,6 +43,37 @@ public class NhanVienDao {
         return dsnv;
     }
     
+    public void themNhanVien(String maNhanVien, String tenNhanVien, String sdtNhanVien, String emailNhanVien, String tenTK, String matKhau, String vaiTro) throws SQLException{
+        PreparedStatement preparedStatement = conn.prepareStatement("INSERT INTO NhanVien(MaNhanVien, TenNhanVien, SdtNV, Email, TenTk, MatKhau, VaiTro) VALUES(?,?,?,?,?,?,?)");
+        preparedStatement.setString(1,maNhanVien);
+        preparedStatement.setString(2,tenNhanVien);
+        preparedStatement.setString(3,sdtNhanVien);
+        preparedStatement.setString(4,emailNhanVien);
+        preparedStatement.setString(5,tenTK);
+        preparedStatement.setString(6,matKhau);
+        preparedStatement.setString(7,vaiTro);
+        preparedStatement.executeUpdate();
+    }
+    
+    public static List<NhanVien> timNVTheoTen(String HoTen) throws SQLException{
+        List<NhanVien> dsnv = new ArrayList<NhanVien>();
+        PreparedStatement ps = conn.prepareStatement("SELECT * FROM NhanVien WHERE TenNV = ?");
+        ps.setString(1,HoTen);
+        ResultSet resultSet = ps.executeQuery();
+        while(resultSet.next()){
+            String maNhanVien = resultSet.getString("MaNhanVien");
+            String tenNhanVien = resultSet.getString("TenNhanVien");
+            String sdtNhanVien = resultSet.getString("SdtNV");
+            String emailNhanVien = resultSet.getString("Email");
+            String tenTK = resultSet.getString("TenTK");
+            String matKhau = resultSet.getString("MatKhau");
+            String vaiTro = resultSet.getString("VaiTro");
+            NhanVien nv = new NhanVien(maNhanVien,tenNhanVien,sdtNhanVien,emailNhanVien,tenTK,matKhau,vaiTro);
+            dsnv.add(nv);
+        }
+        return dsnv;
+    }
+    
     public static NhanVien layThongTinNhanVienTheoMaNV(int maNV) throws SQLException {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
