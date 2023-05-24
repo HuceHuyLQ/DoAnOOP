@@ -15,23 +15,33 @@ public class NhanVien {
     private String Email;
     private String TenTK;
     private String MatKhau;
+    private String VaiTro;
 
     public NhanVien() {
     }
 
     
     
-    public NhanVien(String MaNhanVien, String TenNhanVien, String SdtNV, String Email, String TenTK, String MatKhau) {
+    public NhanVien(String MaNhanVien, String TenNhanVien, String SdtNV, String Email, String TenTK, String MatKhau, String VaiTro) {
         this.MaNhanVien = MaNhanVien;
         this.TenNhanVien = TenNhanVien;
         this.SdtNV = SdtNV;
         this.Email = Email;
         this.TenTK = TenTK;
         this.MatKhau = MatKhau;
+        this.VaiTro = VaiTro;
+    }
+
+    public String getVaiTro() {
+        return VaiTro;
+    }
+
+    public void setVaiTro(String VaiTro) {
+        this.VaiTro = VaiTro;
     }
 
     
-
+    
     public String getMaNhanVien() {
         return MaNhanVien;
     }
