@@ -39,7 +39,13 @@ public class PhongFormController {
             Logger.getLogger(PhongFormController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
+    private void clearForm(){
+        PhongFormController.mainForm.getTxt_GiaTien().setText("");
+        PhongFormController.mainForm.getTxt_LoaiPhong().setText("");
+        PhongFormController.mainForm.getTxt_MaPhong().setText("");
+    }
+    
     public PhongFormController(MainForm frm_Phong) {
         this.updateTable();
         frm_Phong.setVisible(true);
@@ -48,6 +54,7 @@ public class PhongFormController {
         //Load Data Button
         frm_Phong.getBtn_LayDuLieuPhong().addActionListener((ActionEvent e) -> {
             this.updateTable();
+            clearForm();
         });
         
         //Add Button
@@ -63,7 +70,28 @@ public class PhongFormController {
                 Logger.getLogger(PhongFormController.class.getName()).log(Level.SEVERE, null, ex);
                 JOptionPane.showMessageDialog(null, "Thêm thất bại phòng " + MaPhong);
             }
+            clearForm();
         });
+        
+        frm_Phong.getBtn_SuaPhong().addActionListener((ActionEvent e) -> {
+            int row = frm_Phong.getTbl_PhongHop().getSelectedRow();
+            String maPhong = frm_Phong.getTbl_PhongHop().getModel().getValueAt(row, 0).toString();
+            String loaiPhong = frm_Phong.getTxt_LoaiPhong().getText();
+            float giaThue;
+            if(frm_Phong.getTxt_GiaTien().getText().equals("")){
+                giaThue = 0;
+            }else{
+                giaThue = Float.valueOf(frm_Phong.getTxt_GiaTien().getText());
+            }
+            try {
+                phongdao.suaPhong(maPhong, loaiPhong, giaThue);
+            } catch (SQLException ex) {
+                Logger.getLogger(PhongFormController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            updateTable();
+            clearForm();
+        });
+        
         //Delete Button 
         frm_Phong.getBtn_XoaPhong().addActionListener((ActionEvent e) -> {
             int row = frm_Phong.getTbl_PhongHop().getSelectedRow();
@@ -77,6 +105,7 @@ public class PhongFormController {
                     Logger.getLogger(PhongFormController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
+            clearForm();
         });
         //Search Button
         frm_Phong.getBtn_TimPhong().addActionListener((ActionEvent e) -> {
@@ -136,6 +165,7 @@ public class PhongFormController {
                     Logger.getLogger(PhongFormController.class.getName()).log(Level.SEVERE, null, ex);
                 }     
             }
+            clearForm();
         });
     } 
 }

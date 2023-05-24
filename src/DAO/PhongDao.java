@@ -87,4 +87,48 @@ public class PhongDao {
         preparedStatement.setString(1, maphong);
         preparedStatement.executeUpdate();
     }
+    
+    public void suaPhong(String MaPhong, String LoaiPhong, float GiaThue) throws SQLException{
+        //Hàm sửa khách hàng
+        PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM Phong WHERE MaPhong=?");
+        preparedStatement.setString(1, MaPhong);
+        ResultSet rs = preparedStatement.executeQuery();
+            
+        if(LoaiPhong.equals("")){
+            //Chỉ sửa GiaThue
+            if(rs.next()){
+                preparedStatement = conn.prepareStatement("UPDATE Phong SET GiaThue = ? WHERE MaPhong = ?");
+                preparedStatement.setFloat(1,GiaThue);
+                preparedStatement.setString(2,MaPhong);
+                preparedStatement.execute();
+                JOptionPane.showMessageDialog(null, "Sửa thành công giá tiền phòng " + MaPhong, "Thành Công", 1);
+            }else{
+                JOptionPane.showMessageDialog(null, "Không sửa thành công", "Lỗi", 0);
+            }
+        }else if(GiaThue==0){
+            //Chỉ sửa LoaiPhong
+            if(rs.next()){
+                preparedStatement = conn.prepareStatement("UPDATE Phong SET LoaiPhong = ? WHERE MaPhong = ?");
+                preparedStatement.setString(1,LoaiPhong);
+                preparedStatement.setString(2,MaPhong);
+                preparedStatement.execute();
+                JOptionPane.showMessageDialog(null, "Sửa thành công loại phòng của phòng " + MaPhong, "Thành Công", 1);
+            }else{
+                JOptionPane.showMessageDialog(null, "Không sửa thành công", "Lỗi", 0);
+            }
+        }else{
+            //Sửa LoaiPhong và GiaTien
+            if(rs.next()){
+                preparedStatement = conn.prepareStatement("UPDATE Phong SET LoaiPhong = ?, GiaThue = ? WHERE MaPhong = ?");
+                preparedStatement.setString(1,LoaiPhong);
+                preparedStatement.setFloat(2,GiaThue);
+                preparedStatement.setString(3,MaPhong);
+                preparedStatement.execute();
+                JOptionPane.showMessageDialog(null, "Sửa thành công thông tin phòng " + MaPhong, "Thành Công", 1);
+            }else{
+                JOptionPane.showMessageDialog(null, "Không sửa thành công", "Lỗi", 0);
+            }
+        }
+            
+    }
 }
