@@ -98,7 +98,66 @@ public class NhanVienFormController {
                 }catch(SQLException ex){
                     Logger.getLogger(NhanVienFormController.class.getName()).log(Level.SEVERE, null, ex);
                 }
+            }else if(maNV.equals("")&&hotenNV.equals("")&&taikhoanNV.equals("")&&vaiTroNV.equals("")){
+                try{
+                    NhanVien nv = nvdao.layThongTinNhanVienTheoEmail(emailNV);
+                    if(nv != null){
+                        model = (DefaultTableModel) NhanVienFormController.mainForm.getTbl_NhanVien().getModel();
+                        model.setRowCount(0); 
+                        Object[] rowData = {nv.getMaNhanVien(),nv.getTenNhanVien(),nv.getSdtNV(),nv.getEmail(),nv.getTenTK(),nv.getMatKhau(),nv.getVaiTro()};
+                        model.addRow(rowData);
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Không tìm thấy nhân viên có Email "+emailNV);
+                    }
+                }catch(SQLException ex){
+                    Logger.getLogger(NhanVienFormController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }else if(maNV.equals("")&&hotenNV.equals("")&&emailNV.equals("")&&vaiTroNV.equals("")){
+                try{
+                    NhanVien nv = nvdao.layThongTinNhanVienTheoUsername(taikhoanNV);
+                    if(nv != null){
+                        model = (DefaultTableModel) NhanVienFormController.mainForm.getTbl_NhanVien().getModel();
+                        model.setRowCount(0); 
+                        Object[] rowData = {nv.getMaNhanVien(),nv.getTenNhanVien(),nv.getSdtNV(),nv.getEmail(),nv.getTenTK(),nv.getMatKhau(),nv.getVaiTro()};
+                        model.addRow(rowData);
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Không tìm thấy nhân viên có tai khoan "+taikhoanNV);
+                    }
+                }catch(SQLException ex){
+                    Logger.getLogger(NhanVienFormController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }else if(maNV.equals("")&&hotenNV.equals("")&&emailNV.equals("")&&taikhoanNV.equals("")){
+                try{
+                    List<NhanVien> dsnv = nvdao.timNVVaiTro(vaiTroNV);
+                    if(dsnv != null){
+                        model.setRowCount(0);
+                        for (NhanVien nv : dsnv) {
+                            Object[] rowData = {nv.getMaNhanVien(),nv.getTenNhanVien(),nv.getSdtNV(),nv.getEmail(),nv.getTenTK(),nv.getMatKhau(),nv.getVaiTro()};
+                            model.addRow(rowData);
+                        }
+                    }else{
+                        JOptionPane.showMessageDialog(null,"Không tìm thấy nhân viên có vai trò "+vaiTroNV);
+                    }
+                }catch(SQLException ex){
+                    Logger.getLogger(NhanVienFormController.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
+        });
+        
+        mainForm.getBtn_XoaNhanVien().addActionListener((ActionEvent e) -> {
+            int row = mainForm.getTbl_NhanVien().getSelectedRow();
+            String cell = mainForm.getTbl_NhanVien().getModel().getValueAt(row, 0).toString();
+            int choice = JOptionPane.showConfirmDialog((Component)null,"Xoá nhân viên " + cell + "?","XOÁ",JOptionPane.YES_NO_OPTION);
+            if(choice == 0){
+                try{
+                    nvdao.xoaNhanVien(cell);
+                    JOptionPane.showMessageDialog(null, "Xóa thành công nhân viên "+cell);
+                    updateTable();
+                }catch(SQLException ex){
+                    Logger.getLogger(PhongFormController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            clearForm();
         });
         
         mainForm.getBtn_ThemNhanVien().addActionListener((ActionEvent e) -> {

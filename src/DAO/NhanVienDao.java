@@ -197,6 +197,12 @@ public class NhanVienDao {
 
         return ketQua;
     }
+    
+    public void xoaNhanVien(String manhanvien) throws SQLException{
+        PreparedStatement preparedStatement = conn.prepareStatement("DELETE FROM NhanVien WHERE MaNhanVien=?");
+        preparedStatement.setString(1, manhanvien);
+        preparedStatement.executeUpdate();
+    }
 
     public NhanVien getNhanVien() {
         return nhanVien;
