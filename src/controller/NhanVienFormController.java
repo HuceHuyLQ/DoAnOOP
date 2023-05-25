@@ -61,7 +61,44 @@ public class NhanVienFormController {
         });
         
         mainForm.getBtn_TimNhanVien().addActionListener((ActionEvent e) -> {
+            String maNV = mainForm.getTxt_MaNV().getText();
+            String hotenNV = mainForm.getTxt_HoTenNV().getText();
+            String emailNV = mainForm.getTxt_EmailNV().getText();
+            String taikhoanNV = mainForm.getTxt_TaiKhoanNV().getText();
+            String vaiTroNV = mainForm.getTxt_VaiTroNV().getText();
             
+            if(maNV.equals("")&&hotenNV.equals("")&&emailNV.equals("")&&taikhoanNV.equals("")&&vaiTroNV.equals("")){
+                JOptionPane.showMessageDialog(null, "Vui lòng nhập thông tin tìm kiếm");
+            }else if(hotenNV.equals("")&&emailNV.equals("")&&taikhoanNV.equals("")&&vaiTroNV.equals("")){
+                try {
+                    NhanVien nv = nvdao.layThongTinNhanVienTheoMaNV(maNV);
+                    if(nv != null){
+                        model = (DefaultTableModel) NhanVienFormController.mainForm.getTbl_NhanVien().getModel();
+                        model.setRowCount(0); 
+                        Object[] rowData = {nv.getMaNhanVien(),nv.getTenNhanVien(),nv.getSdtNV(),nv.getEmail(),nv.getTenTK(),nv.getMatKhau(),nv.getVaiTro()};
+                        model.addRow(rowData);
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Không tìm thấy nhân viên có mã "+maNV);
+                    }
+                }catch (SQLException ex) {
+                    Logger.getLogger(NhanVienFormController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }else if(maNV.equals("")&&emailNV.equals("")&&taikhoanNV.equals("")&&vaiTroNV.equals("")){
+                try{
+                    List<NhanVien> dsnv = nvdao.timNVTheoTen(hotenNV);
+                    if(dsnv != null){
+                        model.setRowCount(0);
+                        for (NhanVien nv : dsnv) {
+                            Object[] rowData = {nv.getMaNhanVien(),nv.getTenNhanVien(),nv.getSdtNV(),nv.getEmail(),nv.getTenTK(),nv.getMatKhau(),nv.getVaiTro()};
+                            model.addRow(rowData);
+                        }
+                    }else{
+                        JOptionPane.showMessageDialog(null,"Không tìm thấy nhân viên tên "+hotenNV);
+                    }
+                }catch(SQLException ex){
+                    Logger.getLogger(NhanVienFormController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
         });
         
         mainForm.getBtn_ThemNhanVien().addActionListener((ActionEvent e) -> {

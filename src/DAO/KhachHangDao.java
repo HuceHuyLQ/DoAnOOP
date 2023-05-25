@@ -40,7 +40,7 @@ public class KhachHangDao {
     }
     
     public KhachHang timKhachHangBangMaKH(String MaKH) throws SQLException{
-        PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM KhachHang WHERE MaKhachHang=?");
+        PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM KhachHang WHERE MaKhachHang LIKE CONCAT('%', ?, '%')");
         preparedStatement.setString(1,MaKH);
         ResultSet resultSet = preparedStatement.executeQuery();
         if(resultSet.next()){
@@ -54,7 +54,7 @@ public class KhachHangDao {
     }
     
     public KhachHang timKhachHangBangSDT(String SDT) throws SQLException{
-        PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM KhachHang WHERE SdtKhachHang=?");
+        PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM KhachHang WHERE SdtKhachHang LIKE CONCAT('%', ?, '%')");
         preparedStatement.setString(1,SDT);
         ResultSet resultSet = preparedStatement.executeQuery();
         if(resultSet.next()){
@@ -69,7 +69,7 @@ public class KhachHangDao {
     
     public List<KhachHang> timKhachHangBangTenKH(String HoTenKH) throws SQLException{
         List<KhachHang> dskh = new ArrayList<KhachHang>();
-        PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM KhachHang WHERE HoTenKhachHang=?");
+        PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM KhachHang WHERE HoTenKhachHang LIKE CONCAT('%', ?, '%')");
         preparedStatement.setString(1,HoTenKH);
         ResultSet resultSet = preparedStatement.executeQuery();
         while(resultSet.next()){

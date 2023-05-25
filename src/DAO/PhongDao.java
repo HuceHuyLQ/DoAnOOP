@@ -41,7 +41,7 @@ public class PhongDao {
     public Phong timPhongTheoMa(String MaPhong) throws SQLException{
         String loaiPhong;
         Float giaThue;
-        PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM Phong WHERE MaPhong=?");
+        PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM Phong WHERE MaPhong LIKE CONCAT('%', ?, '%')");
         preparedStatement.setString(1,MaPhong);
         ResultSet resultSet = preparedStatement.executeQuery();
         if(resultSet.next()){
@@ -56,7 +56,7 @@ public class PhongDao {
     
     public List<Phong> timPhongTheoLoaiPhong(String LoaiPhong) throws SQLException{
         List<Phong> dsp = new ArrayList<Phong>();
-        PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM Phong WHERE LoaiPhong=?");
+        PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM Phong WHERE LoaiPhong LIKE CONCAT('%', ?, '%')");
         preparedStatement.setString(1,LoaiPhong);
         ResultSet resultSet = preparedStatement.executeQuery();
         while(resultSet.next()){
