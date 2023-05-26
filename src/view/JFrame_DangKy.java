@@ -45,7 +45,7 @@ public class JFrame_DangKy extends javax.swing.JFrame {
         lbl_DaCoTK = new javax.swing.JLabel();
         Btn_DangKy = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Sign Up");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));

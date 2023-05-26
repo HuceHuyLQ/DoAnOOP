@@ -61,6 +61,7 @@ public class LoginController {
         });
         frm_login.getBtn_DangKy().addActionListener((ActionEvent e) -> {
             JFrame_DangKy frm_dangky = new JFrame_DangKy();
+            DangKyController dkctrl = new DangKyController(frm_dangky);
             frm_dangky.setVisible(true);
         });
     }
