@@ -178,5 +178,23 @@ public class NhanVienFormController {
             }
             clearForm();
         });
+        
+        mainForm.getBtn_SuaNhanVien().addActionListener((ActionEvent e) -> {
+            int row = mainForm.getTbl_NhanVien().getSelectedRow();
+            String MaNhanVien = mainForm.getTbl_NhanVien().getModel().getValueAt(row, 0).toString();
+            String HoTen = mainForm.getTxt_HoTenNV().getText();
+            String SDT = mainForm.getTxt_SDTNV().getText();
+            String Email = mainForm.getTxt_EmailNV().getText();
+            String TaiKhoan = mainForm.getTxt_TaiKhoanNV().getText();
+            String MatKhau = mainForm.getTxt_MatKhauNV().getText();
+            String VaiTro = mainForm.getTxt_VaiTroNV().getText();
+            try {
+                nvdao.suaNhanVien(MaNhanVien, HoTen, SDT,Email,TaiKhoan,MatKhau,VaiTro);
+                this.updateTable();
+            } catch (SQLException ex) {
+                Logger.getLogger(PhongFormController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            clearForm();
+        });
     }
 }
