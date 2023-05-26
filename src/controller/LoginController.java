@@ -29,41 +29,35 @@ public class LoginController {
         this.nhanvien = nhanvien;
         
         frm_login.setVisible(true);
-        frm_login.getBtn_DangNhap().addActionListener(new ActionListener(){
-            @Override
-       
-            
-            public void actionPerformed(ActionEvent e) {
-                String user = frm_login.getTxt_TaiKhoan().getText();
-                String password = new String(frm_login.getPasswordField().getPassword());
-                if(user.equals("")&&password.equals("")){
-                    frm_login.showMessage("Không được để trống thông tin đăng nhập");
-                }else if(user.equals("")){
-                    frm_login.showMessage("Không được để trống TÀI KHOẢN!!!");
-                }else if(password.equals("")){
-                    frm_login.showMessage("Không được để trống MẬT KHẨU!!!");
-                }else{
-                    try {
-                        if(nhanvien.kiemTraDangNhap(user,password)){
-                            frm_login.setVisible(false);
-                            getFrm_main().getLbl_Username().setText(nhanvien.getNhanVien().getTenTK());
-                            getFrm_main().getLbl_headerMaNV().setText(nhanvien.getNhanVien().getMaNhanVien());
-                            KhachHangFormController khctrl = new KhachHangFormController(frm_main);
-                            PhongFormController pctrl = new PhongFormController(frm_main);
-                            if(nhanvien.getNhanVien().getVaiTro().equals("admin")){
-                                NhanVienFormController nvctrl = new NhanVienFormController(frm_main);
-                            }
-                            getFrm_main().setVisible(true);
-                        }else{
-                            frm_login.showMessage("Thông tin đăng nhập không đúng");
+        frm_login.getBtn_DangNhap().addActionListener((ActionEvent e) -> {
+            String user = frm_login.getTxt_TaiKhoan().getText();
+            String password = new String(frm_login.getPasswordField().getPassword());
+            if(user.equals("")&&password.equals("")){
+                frm_login.showMessage("Không được để trống thông tin đăng nhập");
+            }else if(user.equals("")){
+                frm_login.showMessage("Không được để trống TÀI KHOẢN!!!");
+            }else if(password.equals("")){
+                frm_login.showMessage("Không được để trống MẬT KHẨU!!!");
+            }else{
+                try {
+                    if(nhanvien.kiemTraDangNhap(user,password)){
+                        frm_login.setVisible(false);
+                        getFrm_main().getLbl_Username().setText(nhanvien.getNhanVien().getTenTK());
+                        getFrm_main().getLbl_headerMaNV().setText(nhanvien.getNhanVien().getMaNhanVien());
+                        KhachHangFormController khctrl = new KhachHangFormController(frm_main);
+                        PhongFormController pctrl = new PhongFormController(frm_main);
+                        if(nhanvien.getNhanVien().getVaiTro().equals("admin")){
+                            NhanVienFormController nvctrl = new NhanVienFormController(frm_main);
                         }
-                    } catch (SQLException ex) {
-                        Logger.getLogger(JFrame_Login.class.getName()).log(Level.SEVERE, null, ex);
+                        getFrm_main().setVisible(true);
+                    }else{
+                        frm_login.showMessage("Thông tin đăng nhập không đúng");
                     }
+                } catch (SQLException ex) {
+                    Logger.getLogger(JFrame_Login.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                frm_login.clearForm();
             }
-            
+            frm_login.clearForm();            
         });
         frm_login.getBtn_DangKy().addActionListener((ActionEvent e) -> {
             JFrame_DangKy frm_dangky = new JFrame_DangKy();
