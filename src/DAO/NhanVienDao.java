@@ -54,125 +54,6 @@ public class NhanVienDao {
         preparedStatement.setString(7,vaiTro);
         preparedStatement.executeUpdate();
     }
-    
-    
-    
-    public static List<NhanVien> timNVTheoTen(String HoTen) throws SQLException{
-        List<NhanVien> dsnv = new ArrayList<NhanVien>();
-        PreparedStatement ps = conn.prepareStatement("SELECT * FROM NhanVien WHERE TenNhanVien LIKE CONCAT('%', ?, '%')");
-        ps.setString(1,HoTen);
-        ResultSet resultSet = ps.executeQuery();
-        while(resultSet.next()){
-            String maNhanVien = resultSet.getString("MaNhanVien");
-            String tenNhanVien = resultSet.getString("TenNhanVien");
-            String sdtNhanVien = resultSet.getString("SdtNV");
-            String emailNhanVien = resultSet.getString("Email");
-            String tenTK = resultSet.getString("TenTK");
-            String matKhau = resultSet.getString("MatKhau");
-            String vaiTro = resultSet.getString("VaiTro");
-            NhanVien nv = new NhanVien(maNhanVien,tenNhanVien,sdtNhanVien,emailNhanVien,tenTK,matKhau,vaiTro);
-            dsnv.add(nv);
-        }
-        return dsnv;
-    }
-    
-    public static List<NhanVien> timNVVaiTro(String VaiTro) throws SQLException{
-        List<NhanVien> dsnv = new ArrayList<NhanVien>();
-        PreparedStatement ps = conn.prepareStatement("SELECT * FROM NhanVien WHERE VaiTro LIKE CONCAT('%', ?, '%')");
-        ps.setString(1,VaiTro);
-        ResultSet resultSet = ps.executeQuery();
-        while(resultSet.next()){
-            String maNhanVien = resultSet.getString("MaNhanVien");
-            String tenNhanVien = resultSet.getString("TenNhanVien");
-            String sdtNhanVien = resultSet.getString("SdtNV");
-            String emailNhanVien = resultSet.getString("Email");
-            String tenTK = resultSet.getString("TenTK");
-            String matKhau = resultSet.getString("MatKhau");
-            String vaiTro = resultSet.getString("VaiTro");
-            NhanVien nv = new NhanVien(maNhanVien,tenNhanVien,sdtNhanVien,emailNhanVien,tenTK,matKhau,vaiTro);
-            dsnv.add(nv);
-        }
-        return dsnv;
-    }
-    
-    public NhanVien layThongTinNhanVienTheoMaNV(String maNV) throws SQLException {
-        PreparedStatement statement = null;
-        ResultSet resultSet = null;
-
-        try{
-            String sql = "SELECT * FROM NhanVien WHERE MaNhanVien LIKE CONCAT('%', ?, '%')";
-            statement = conn.prepareStatement(sql);
-            statement.setString(1, maNV);
-            resultSet = statement.executeQuery();
-
-            if (resultSet.next()) {
-                String maNVResult = resultSet.getString("MaNhanVien");
-                String hoTenNV = resultSet.getString("TenNhanVien");
-                String sdtNV = resultSet.getString("SdtNV");
-                String email = resultSet.getString("Email");
-                String taiKhoanNV = resultSet.getString("TenTK");
-                String matKhauNV = resultSet.getString("MatKhau");
-                String vaiTroNV = resultSet.getString("VaiTro");
-                nhanVien = new NhanVien(maNVResult, hoTenNV, sdtNV, email, taiKhoanNV, matKhauNV,vaiTroNV);
-            }
-        } catch(SQLException ex){
-            ex.getStackTrace();
-        }
-        return nhanVien;
-    }
-    
-    public static NhanVien layThongTinNhanVienTheoUsername(String username) throws SQLException {
-        PreparedStatement statement = null;
-        ResultSet resultSet = null;
-
-        try{
-            String sql = "SELECT * FROM NhanVien WHERE TenTK LIKE CONCAT('%', ?, '%')";
-            statement = conn.prepareStatement(sql);
-            statement.setString(1, username);
-            resultSet = statement.executeQuery();
-
-            if (resultSet.next()) {
-                String maNVResult = resultSet.getString("MaNhanVien");
-                String hoTenNV = resultSet.getString("TenNhanVien");
-                String sdtNV = resultSet.getString("SdtNV");
-                String email = resultSet.getString("Email");
-                String taiKhoanNV = resultSet.getString("TenTK");
-                String matKhauNV = resultSet.getString("MatKhau"); 
-                String vaiTroNV = resultSet.getString("VaiTro");
-                nhanVien = new NhanVien(maNVResult, hoTenNV, sdtNV, email, taiKhoanNV, matKhauNV,vaiTroNV);
-            }
-        } catch(SQLException ex){
-            ex.getStackTrace();
-        }
-        return nhanVien;
-    }
-    
-    public static NhanVien layThongTinNhanVienTheoEmail(String Email) throws SQLException {
-        PreparedStatement statement = null;
-        ResultSet resultSet = null;
-
-        try{
-            String sql = "SELECT * FROM NhanVien WHERE Email LIKE CONCAT('%', ?, '%')";
-            statement = conn.prepareStatement(sql);
-            statement.setString(1, Email);
-            resultSet = statement.executeQuery();
-
-            if (resultSet.next()) {
-                String maNVResult = resultSet.getString("MaNhanVien");
-                String hoTenNV = resultSet.getString("TenNhanVien");
-                String sdtNV = resultSet.getString("SdtNV");
-                String email = resultSet.getString("Email");
-                String taiKhoanNV = resultSet.getString("TenTK");
-                String matKhauNV = resultSet.getString("MatKhau"); 
-                String vaiTroNV = resultSet.getString("VaiTro");
-                nhanVien = new NhanVien(maNVResult, hoTenNV, sdtNV, email, taiKhoanNV, matKhauNV,vaiTroNV);
-            }
-        } catch(SQLException ex){
-            ex.getStackTrace();
-        }
-        return nhanVien;
-    }
-
     // Kiểm tra thông tin đăng nhập của nhân viên
     public static boolean kiemTraDangNhap(String taiKhoan, String matKhau) throws SQLException {
        
@@ -197,6 +78,50 @@ public class NhanVienDao {
 
         return ketQua;
     }
+    public static List<NhanVien> timNVTheoTen(String HoTen) throws SQLException {
+        return executeQuery("SELECT * FROM NhanVien WHERE TenNhanVien LIKE CONCAT('%', ?, '%')", HoTen);
+    }
+
+    public static List<NhanVien> timNVVaiTro(String VaiTro) throws SQLException {
+        return executeQuery("SELECT * FROM NhanVien WHERE VaiTro LIKE CONCAT('%', ?, '%')", VaiTro);
+    }
+
+    public static NhanVien layThongTinNhanVienTheoMaNV(String maNV) throws SQLException {
+        List<NhanVien> results = executeQuery("SELECT * FROM NhanVien WHERE MaNhanVien LIKE CONCAT('%', ?, '%')", maNV);
+        return results.isEmpty() ? null : results.get(0);
+    }
+
+    public static NhanVien layThongTinNhanVienTheoUsername(String username) throws SQLException {
+        List<NhanVien> results = executeQuery("SELECT * FROM NhanVien WHERE TenTK LIKE CONCAT('%', ?, '%')", username);
+        return results.isEmpty() ? null : results.get(0);
+    }
+
+    public static NhanVien layThongTinNhanVienTheoEmail(String Email) throws SQLException {
+        List<NhanVien> results = executeQuery("SELECT * FROM NhanVien WHERE Email LIKE CONCAT('%', ?, '%')", Email);
+        return results.isEmpty() ? null : results.get(0);
+    }
+
+    private static List<NhanVien> executeQuery(String query, String parameter) throws SQLException {
+        List<NhanVien> dsnv = new ArrayList<>();
+        try (PreparedStatement ps = conn.prepareStatement(query)) {
+            ps.setString(1, parameter);
+            try (ResultSet resultSet = ps.executeQuery()) {
+                while (resultSet.next()) {
+                    String maNhanVien = resultSet.getString("MaNhanVien");
+                    String tenNhanVien = resultSet.getString("TenNhanVien");
+                    String sdtNhanVien = resultSet.getString("SdtNV");
+                    String emailNhanVien = resultSet.getString("Email");
+                    String tenTK = resultSet.getString("TenTK");
+                    String matKhau = resultSet.getString("MatKhau");
+                    String vaiTro = resultSet.getString("VaiTro");
+                    NhanVien nv = new NhanVien(maNhanVien, tenNhanVien, sdtNhanVien, emailNhanVien, tenTK, matKhau, vaiTro);
+                    dsnv.add(nv);
+                }
+            }
+        }
+        return dsnv;
+    }
+
     
     public static String getValueForQuery(String query, String TenNV, String SdtNV, String EmailNV, String MatKhauNV, String VaiTro) {
         if (query.contains("TenNhanVien")) {
