@@ -71,10 +71,10 @@ public class MainForm extends javax.swing.JFrame {
         jPanel_CoSoVatChat = new javax.swing.JPanel();
         lbl_MaCSVC = new javax.swing.JLabel();
         txt_MaCSVC = new javax.swing.JTextField();
-        lbl_LoaiCSVC = new javax.swing.JLabel();
-        txt_LoaiCSVC = new javax.swing.JTextField();
-        lbl_GiaCSVC = new javax.swing.JLabel();
+        lbl_GhiChuCSVC = new javax.swing.JLabel();
         txt_GiaCSVC = new javax.swing.JTextField();
+        lbl_GiaCSVC = new javax.swing.JLabel();
+        txt_GhiChuCSVC = new javax.swing.JTextField();
         btn_ThemCSVC = new javax.swing.JButton();
         btn_SuaCSVC = new javax.swing.JButton();
         btn_XoaCSVC = new javax.swing.JButton();
@@ -262,13 +262,13 @@ public class MainForm extends javax.swing.JFrame {
         jPanel_CoSoVatChat.add(lbl_MaCSVC, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 9, -1, -1));
         jPanel_CoSoVatChat.add(txt_MaCSVC, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 220, -1));
 
-        lbl_LoaiCSVC.setText("Loại CSVC ");
-        jPanel_CoSoVatChat.add(lbl_LoaiCSVC, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, -1));
-        jPanel_CoSoVatChat.add(txt_LoaiCSVC, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, 220, -1));
+        lbl_GhiChuCSVC.setText(" Ghi Chú ");
+        jPanel_CoSoVatChat.add(lbl_GhiChuCSVC, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 132, -1, -1));
+        jPanel_CoSoVatChat.add(txt_GiaCSVC, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 90, 220, -1));
 
         lbl_GiaCSVC.setText("Giá CSVC");
-        jPanel_CoSoVatChat.add(lbl_GiaCSVC, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 96, -1));
-        jPanel_CoSoVatChat.add(txt_GiaCSVC, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, 220, -1));
+        jPanel_CoSoVatChat.add(lbl_GiaCSVC, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 91, 96, -1));
+        jPanel_CoSoVatChat.add(txt_GhiChuCSVC, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, 220, -1));
 
         btn_ThemCSVC.setText("Thêm");
         jPanel_CoSoVatChat.add(btn_ThemCSVC, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, -1, -1));
@@ -290,7 +290,7 @@ public class MainForm extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Mã CSVC", "Tên Vật Tư", "Giá CSVC", "Ghi Chú"
             }
         ));
         jScrollPane_CSVC.setViewportView(tbl_CSVC);
@@ -1123,12 +1123,21 @@ public class MainForm extends javax.swing.JFrame {
         this.lbl_IdTag = lbl_IdTag;
     }
 
-    public JLabel getLbl_LoaiCSVC() {
-        return lbl_LoaiCSVC;
+    public JTextField getTxt_GhiChuCSVC() {
+        return txt_GhiChuCSVC;
     }
 
-    public void setLbl_LoaiCSVC(JLabel lbl_LoaiCSVC) {
-        this.lbl_LoaiCSVC = lbl_LoaiCSVC;
+    public void setTxt_GhiChuCSVC(JTextField txt_GhiChuCSVC) {
+        this.txt_GhiChuCSVC = txt_GhiChuCSVC;
+    }
+
+    
+    public JLabel getLbl_GhiChuCSVC() {
+        return lbl_GhiChuCSVC;
+    }
+
+    public void setLbl_GhiChuCSVC(JLabel lbl_GhiChuCSVC) {
+        this.lbl_GhiChuCSVC = lbl_GhiChuCSVC;
     }
 
     public JLabel getLbl_LoaiPhong() {
@@ -1364,11 +1373,11 @@ public class MainForm extends javax.swing.JFrame {
     }
 
     public JTextField getTxt_LoaiCSVC() {
-        return txt_LoaiCSVC;
+        return txt_GiaCSVC;
     }
 
     public void setTxt_LoaiCSVC(JTextField txt_LoaiCSVC) {
-        this.txt_LoaiCSVC = txt_LoaiCSVC;
+        this.txt_GiaCSVC = txt_LoaiCSVC;
     }
 
     public JTextField getTxt_LoaiPhong() {
@@ -1520,11 +1529,11 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_EmailNV;
     private javax.swing.JLabel lbl_GVHD;
     private javax.swing.JLabel lbl_GhiChu;
+    private javax.swing.JLabel lbl_GhiChuCSVC;
     private javax.swing.JLabel lbl_GiaCSVC;
     private javax.swing.JLabel lbl_GiaTien;
     private javax.swing.JLabel lbl_HoTenNV;
     private javax.swing.JLabel lbl_IdTag;
-    private javax.swing.JLabel lbl_LoaiCSVC;
     private javax.swing.JLabel lbl_LoaiPhong;
     private javax.swing.JLabel lbl_Logo;
     private javax.swing.JLabel lbl_MaCSVC;
@@ -1556,10 +1565,10 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JTextField txt_Coc;
     private javax.swing.JTextField txt_EmailNV;
     private javax.swing.JTextField txt_GhiChu;
+    private javax.swing.JTextField txt_GhiChuCSVC;
     private javax.swing.JTextField txt_GiaCSVC;
     private javax.swing.JTextField txt_GiaTien;
     private javax.swing.JTextField txt_HoTenNV;
-    private javax.swing.JTextField txt_LoaiCSVC;
     private javax.swing.JTextField txt_LoaiPhong;
     private javax.swing.JTextField txt_MaCSVC;
     private javax.swing.JTextField txt_MaKH;
