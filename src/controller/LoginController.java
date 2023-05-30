@@ -47,6 +47,7 @@ public class LoginController {
                         KhachHangFormController khctrl = new KhachHangFormController(frm_main);
                         PhongFormController pctrl = new PhongFormController(frm_main);
                         LuotThueFormController luothuectrl = new LuotThueFormController(frm_main);
+                        CSVCFormController cctrl = new CSVCFormController(frm_main);
                         if(nhanvien.getNhanVien().getVaiTro().equals("admin")){
                             NhanVienFormController nvctrl = new NhanVienFormController(frm_main);
                         }

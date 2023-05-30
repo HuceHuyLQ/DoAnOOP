@@ -20,7 +20,7 @@ public class DatabaseConnect {
     public Connection conn;
     String url = "jdbc:mysql://localhost:3306/QuanLyPhong";
     String user = "root";
-    String password = "Dod@ihoc2021";
+    String password = "@Quanghuydeple03";
 
     public DatabaseConnect(){
         
