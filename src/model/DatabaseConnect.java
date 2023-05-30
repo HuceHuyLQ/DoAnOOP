@@ -18,9 +18,9 @@ import com.mysql.cj.jdbc.Driver;
  */
 public class DatabaseConnect {
     public Connection conn;
-    String url = "jdbc:mysql://localhost:3306/QuanLyPhong";
+    String url = "jdbc:mysql://localhost:3306/";
     String user = "root";
-    String password = "@Quanghuydeple03";
+    String password = "Dod@ihoc2021";
 
     public DatabaseConnect(){
         

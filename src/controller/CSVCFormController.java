@@ -66,7 +66,7 @@ public class CSVCFormController {
             String GhiChuCSVC = frm_CSVC.getTxt_GhiChuCSVC().getText();
             try {
                 csvcdao.themCSVC(MaCSVC, TenVatTu, GiaCSVC, GhiChuCSVC);
-                JOptionPane.showMessageDialog(null, "Thêm thành công phòng " + MaCSVC);
+                JOptionPane.showMessageDialog(null, "Thêm thành công CSVC " + MaCSVC);
                 this.updateTable();
             } catch (SQLException ex) {
                 Logger.getLogger(CSVCFormController.class.getName()).log(Level.SEVERE, null, ex);
