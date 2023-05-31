@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package controller;
+import view.*;
 import DAO.NhanVienDao;
 import static com.sun.java.accessibility.util.AWTEventMonitor.addActionListener;
 import java.awt.event.ActionEvent;
@@ -46,6 +47,7 @@ public class LoginController {
                         getFrm_main().getLbl_headerMaNV().setText(nhanvien.getNhanVien().getMaNhanVien());
                         KhachHangFormController khctrl = new KhachHangFormController(frm_main);
                         PhongFormController pctrl = new PhongFormController(frm_main);
+                        LuotThueFormController ltctrl = new LuotThueFormController(frm_main);
                         if(nhanvien.getNhanVien().getVaiTro().equals("admin")){
                             NhanVienFormController nvctrl = new NhanVienFormController(frm_main);
                         }
