@@ -108,10 +108,13 @@ public class LuotThueFormController {
                 GhiChu = frm_LuotThue.getTxt_GhiChuLT().getText();
             }
             try {
-//                boolean maTonTai = luotThueDao.kiemTraTonTai(MaLuotThue);
-//                if(maTonTai){
-//                    JOptionPane.showMessageDialog(frm_LuotThue, "Không thể sửa Mã Lượt Thuê!!!");
-//                }
+                if (!luotThueDao.kiemTraTonTai(MaLuotThue)) {
+                    JOptionPane.showMessageDialog(null, "Mã Lượt Thuê không tồn tại!");
+                }
+                LuotThue luotThueCu = luotThueDao.timLuotThueTheoMa(MaLuotThue); // Lấy thông tin lượt thuê cũ
+                if (!luotThueCu.getMaLuotThue().equals(MaLuotThue)) {
+                    JOptionPane.showMessageDialog(null, "Không được sửa Mã Lượt Thuê!");
+                }
                 luotThueDao.suaLuotThue(MaLuotThue, MaKhachHang, MaPhong, MaNhanVien, NgayGioThue, Coc, TongTien, GhiChu);
                 updateTable();
                 clearForm();
