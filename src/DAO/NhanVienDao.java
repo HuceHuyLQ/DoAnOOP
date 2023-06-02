@@ -87,7 +87,7 @@ public class NhanVienDao {
     }
 
     public static NhanVien layThongTinNhanVienTheoMaNV(String maNV) throws SQLException {
-        List<NhanVien> results = executeQuery("SELECT * FROM NhanVien WHERE MaNhanVien LIKE CONCAT('%', ?, '%')", maNV);
+        List<NhanVien> results = executeQuery("SELECT * FROM NhanVien WHERE MaNhanVien =?", maNV);
         return results.isEmpty() ? null : results.get(0);
     }
 
@@ -154,27 +154,28 @@ public class NhanVienDao {
         StringBuilder updateMessage = new StringBuilder();
 
         if (rs.next()) {
-            if (!TenNV.equals("")) {
+//            if (!TenNV.equals("")) {
+//                updateQueries.add("UPDATE NhanVien SET TenNhanVien = ? WHERE MaNhanVien = ?");
+//                updateMessage.append("Cập nhật thành công họ tên nhân viên ").append(MaNV).append("\n");
+//            }
+//            if (!SdtNV.equals("")) {
+//                updateQueries.add("UPDATE NhanVien SET SdtNV = ? WHERE MaNhanVien = ?");
+//                updateMessage.append("Cập nhật thành công số điện thoại nhân viên ").append(MaNV).append("\n");
+//            }
+//            if (!EmailNV.equals("")) {
+//                updateQueries.add("UPDATE NhanVien SET Email = ? WHERE MaNhanVien = ?");
+//                updateMessage.append("Cập nhật thành công email nhân viên ").append(MaNV).append("\n");
+//            }
+//            if (!MatKhauNV.equals("")) {
+//                updateQueries.add("UPDATE NhanVien SET MatKhau = ? WHERE MaNhanVien = ?");
+//                updateMessage.append("Cập nhật thành công mật khẩu nhân viên ").append(MaNV).append("\n");
+//            }
+//            if (!VaiTro.equals("")) {
+//                updateQueries.add("UPDATE NhanVien SET VaiTro = ? WHERE MaNhanVien = ?");
+//                updateMessage.append("Cập nhật thành công vai trò nhân viên ").append(MaNV).append("\n");
+//            }
                 updateQueries.add("UPDATE NhanVien SET TenNhanVien = ? WHERE MaNhanVien = ?");
-                updateMessage.append("Cập nhật thành công họ tên nhân viên ").append(MaNV).append("\n");
-            }
-            if (!SdtNV.equals("")) {
-                updateQueries.add("UPDATE NhanVien SET SdtNV = ? WHERE MaNhanVien = ?");
-                updateMessage.append("Cập nhật thành công số điện thoại nhân viên ").append(MaNV).append("\n");
-            }
-            if (!EmailNV.equals("")) {
-                updateQueries.add("UPDATE NhanVien SET Email = ? WHERE MaNhanVien = ?");
-                updateMessage.append("Cập nhật thành công email nhân viên ").append(MaNV).append("\n");
-            }
-            if (!MatKhauNV.equals("")) {
-                updateQueries.add("UPDATE NhanVien SET MatKhau = ? WHERE MaNhanVien = ?");
-                updateMessage.append("Cập nhật thành công mật khẩu nhân viên ").append(MaNV).append("\n");
-            }
-            if (!VaiTro.equals("")) {
-                updateQueries.add("UPDATE NhanVien SET VaiTro = ? WHERE MaNhanVien = ?");
-                updateMessage.append("Cập nhật thành công vai trò nhân viên ").append(MaNV).append("\n");
-            }
-
+                updateMessage.append("Cập nhật thành công nhân viên ").append(MaNV).append("\n");
             ps.close();
 
             if (!updateQueries.isEmpty()) {

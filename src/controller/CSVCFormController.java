@@ -104,6 +104,7 @@ public class CSVCFormController {
                 try{
                     csvcdao.xoaCSVC(cell);
                     JOptionPane.showMessageDialog(null, "Xóa thành công CSVC "+cell);
+                    updateTable();
                 }catch(SQLException ex){
                     Logger.getLogger(CSVCFormController.class.getName()).log(Level.SEVERE, null, ex);
                 }

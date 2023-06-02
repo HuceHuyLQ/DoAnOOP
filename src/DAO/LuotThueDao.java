@@ -73,7 +73,7 @@ public class LuotThueDao {
     }
     
     public LuotThue timLuotThueTheoMa(String MaLuotThue) throws SQLException{
-        PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM LuotThue WHERE MaLuotThue LIKE CONCAT('%', ?, '%')");
+        PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM LuotThue WHERE MaLuotThue =?");
         preparedStatement.setString(1,MaLuotThue);
         ResultSet resultSet = preparedStatement.executeQuery();
         if(resultSet.next()){

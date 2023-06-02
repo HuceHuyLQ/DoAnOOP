@@ -40,7 +40,7 @@ public class KhachHangDao {
     }
     
     public KhachHang timKhachHangBangMaKH(String MaKH) throws SQLException{
-        PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM KhachHang WHERE MaKhachHang LIKE CONCAT('%', ?, '%')");
+        PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM KhachHang WHERE MaKhachHang =?");
         preparedStatement.setString(1,MaKH);
         ResultSet resultSet = preparedStatement.executeQuery();
         if(resultSet.next()){

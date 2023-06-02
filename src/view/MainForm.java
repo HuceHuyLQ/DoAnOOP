@@ -197,6 +197,11 @@ public class MainForm extends javax.swing.JFrame {
                 "Mã Khách Hàng", "Họ Tên", "Số Điện Thoại"
             }
         ));
+        tbl_KhachHang.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbl_KhachHangMouseClicked(evt);
+            }
+        });
         jScrollPaneKhachHang.setViewportView(tbl_KhachHang);
 
         jPanel_KhachHang.add(jScrollPaneKhachHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(344, 6, 880, 530));
@@ -251,6 +256,11 @@ public class MainForm extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tbl_PhongHop.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbl_PhongHopMouseClicked(evt);
+            }
+        });
         jScrollPane_Phong.setViewportView(tbl_PhongHop);
 
         jPanel_PhongHop.add(jScrollPane_Phong, new org.netbeans.lib.awtextra.AbsoluteConstraints(344, 6, 880, 530));
@@ -297,6 +307,11 @@ public class MainForm extends javax.swing.JFrame {
                 "Mã CSVC", "Tên Vật Tư", "Giá CSVC", "Ghi Chú"
             }
         ));
+        tbl_CSVC.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbl_CSVCMouseClicked(evt);
+            }
+        });
         jScrollPane_CSVC.setViewportView(tbl_CSVC);
 
         jPanel_CoSoVatChat.add(jScrollPane_CSVC, new org.netbeans.lib.awtextra.AbsoluteConstraints(344, 6, 880, 530));
@@ -423,6 +438,11 @@ public class MainForm extends javax.swing.JFrame {
                 "Mã Nhân Viên", "Họ Tên", "SDT", "Email", "Tài Khoản", "Mật Khẩu", "Vai Trò"
             }
         ));
+        tbl_NhanVien.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbl_NhanVienMouseClicked(evt);
+            }
+        });
         jScrollPane_NhanVien.setViewportView(tbl_NhanVien);
 
         jPanel_NhanVien.add(jScrollPane_NhanVien, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 6, 880, 530));
@@ -626,6 +646,56 @@ public class MainForm extends javax.swing.JFrame {
         txt_GhiChuLT.setText(GhiChu);
 
     }//GEN-LAST:event_tbl_LuotThueMouseClicked
+
+    private void tbl_KhachHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_KhachHangMouseClicked
+        int row = tbl_KhachHang.getSelectedRow();
+        String MaKhachHang = tbl_KhachHang.getValueAt(row, 0).toString();
+        String HoTen = tbl_KhachHang.getValueAt(row, 1).toString();
+        String SDT = tbl_KhachHang.getValueAt(row, 2).toString();
+        txt_MaKH.setText(MaKhachHang);
+        txt_TenKhachHang.setText(HoTen);
+        txt_SDTKhachHang.setText(SDT);
+    }//GEN-LAST:event_tbl_KhachHangMouseClicked
+
+    private void tbl_PhongHopMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_PhongHopMouseClicked
+        int row = tbl_PhongHop.getSelectedRow();
+        String MaPhong = tbl_PhongHop.getValueAt(row, 0).toString();
+        String LoaiPhong = tbl_PhongHop.getValueAt(row, 1).toString();
+        double GiaThue = Double.parseDouble(tbl_PhongHop.getValueAt(row, 2).toString());
+        txt_MaPhong.setText(MaPhong);
+        txt_LoaiPhong.setText(LoaiPhong);
+        txt_GiaTien.setText(String.valueOf(GiaThue));
+    }//GEN-LAST:event_tbl_PhongHopMouseClicked
+
+    private void tbl_CSVCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_CSVCMouseClicked
+        int row = tbl_CSVC.getSelectedRow();
+        String MaCSVC = tbl_CSVC.getValueAt(row,0).toString();
+        String TenVatTu = tbl_CSVC.getValueAt(row,1).toString();
+        double GiaCSVC = Double.parseDouble(tbl_CSVC.getValueAt(row,2).toString());
+        String GhiChu = tbl_CSVC.getValueAt(row,3).toString();
+        txt_MaCSVC.setText(MaCSVC);
+        txt_TenVatTu.setText(TenVatTu);
+        txt_GiaCSVC.setText(String.valueOf(GiaCSVC));
+        txt_GhiChuCSVC.setText(GhiChu);  
+    }//GEN-LAST:event_tbl_CSVCMouseClicked
+
+    private void tbl_NhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_NhanVienMouseClicked
+        int row = tbl_NhanVien.getSelectedRow();
+        String MaNV = tbl_NhanVien.getValueAt(row, 0).toString();
+        String TenNV = tbl_NhanVien.getValueAt(row, 1).toString();
+        String SDTNV = tbl_NhanVien.getValueAt(row, 2).toString();
+        String Email = tbl_NhanVien.getValueAt(row, 3).toString();
+        String VaiTro = tbl_NhanVien.getValueAt(row, 4).toString();
+        String TenTK = tbl_NhanVien.getValueAt(row, 5).toString();
+        String MK = tbl_NhanVien.getValueAt(row, 5).toString();
+        txt_MaNV.setText(MaNV);
+        txt_HoTenNV.setText(TenNV);
+        txt_SDTNV.setText(SDTNV);
+        txt_EmailNV.setText(Email);
+        txt_VaiTroNV.setText(VaiTro);
+        txt_TaiKhoanNV.setText(TenTK);
+        txt_MatKhauNV.setText(MK);
+    }//GEN-LAST:event_tbl_NhanVienMouseClicked
 
     public JLabel getLbl_CocLT() {
         return lbl_CocLT;
@@ -1664,9 +1734,8 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_DeTai;
     private javax.swing.JLabel lbl_EmailNV;
     private javax.swing.JLabel lbl_GVHD;
-    private javax.swing.JLabel lbl_GhiChuLT;
-    private javax.swing.JLabel lbl_GhiChu;
     private javax.swing.JLabel lbl_GhiChuCSVC;
+    private javax.swing.JLabel lbl_GhiChuLT;
     private javax.swing.JLabel lbl_GiaCSVC;
     private javax.swing.JLabel lbl_GiaTien;
     private javax.swing.JLabel lbl_HoTenNV;
@@ -1703,9 +1772,8 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JTable tbl_PhongHop;
     private javax.swing.JTextField txt_CocLT;
     private javax.swing.JTextField txt_EmailNV;
-    private javax.swing.JTextField txt_GhiChuLT;
-    private javax.swing.JTextField txt_GhiChu;
     private javax.swing.JTextField txt_GhiChuCSVC;
+    private javax.swing.JTextField txt_GhiChuLT;
     private javax.swing.JTextField txt_GiaCSVC;
     private javax.swing.JTextField txt_GiaTien;
     private javax.swing.JTextField txt_HoTenNV;

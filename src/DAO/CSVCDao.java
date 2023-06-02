@@ -45,7 +45,7 @@ public CSVC timCSVCTheoMa(String MaCSVC) throws SQLException{
         String tenVatTu;
         Double giaCSVC;
         String ghiChuCSVC;
-        PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM CSVC WHERE MaCSVC LIKE CONCAT('%', ?, '%')");
+        PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM CSVC WHERE MaCSVC =?");
         preparedStatement.setString(1,MaCSVC);
         ResultSet resultSet = preparedStatement.executeQuery();
         if(resultSet.next()){
@@ -77,7 +77,7 @@ public CSVC timCSVCTheoMa(String MaCSVC) throws SQLException{
                 preparedStatement = conn.prepareStatement("UPDATE CSVC SET Gia = ? WHERE MaCSVC = ?");
                 preparedStatement.setDouble(1,GiaCSVC);
                 preparedStatement.setString(2,MaCSVC);
-                preparedStatement.setString(3, GhiChuCSVC);
+//                preparedStatement.setString(3, GhiChuCSVC);
                 preparedStatement.execute();
                 JOptionPane.showMessageDialog(null, "Sửa thành công giá CSVC " + MaCSVC, "Thành Công", 1);
             }else{
@@ -89,7 +89,7 @@ public CSVC timCSVCTheoMa(String MaCSVC) throws SQLException{
                 preparedStatement = conn.prepareStatement("UPDATE CSVC SET TenVatTu = ? WHERE MaCSVC = ?");
                 preparedStatement.setString(1, TenVatTu);
                 preparedStatement.setString(2,MaCSVC);
-                preparedStatement.setString(3, GhiChuCSVC);
+//                preparedStatement.setString(3, GhiChuCSVC);
                 preparedStatement.execute();
                 JOptionPane.showMessageDialog(null, "Sửa thành công tên vật tư " + MaCSVC, "Thành Công", 1);
             }else{
@@ -102,7 +102,7 @@ public CSVC timCSVCTheoMa(String MaCSVC) throws SQLException{
                 preparedStatement.setString(1,TenVatTu);
                 preparedStatement.setDouble(2,GiaCSVC);
                 preparedStatement.setString(3,MaCSVC);
-                preparedStatement.setString(4, GhiChuCSVC);
+//                preparedStatement.setString(4, GhiChuCSVC);
                 preparedStatement.execute();
                 JOptionPane.showMessageDialog(null, "Sửa thành công thông tin CSVC " + MaCSVC, "Thành Công", 1);
             }else{

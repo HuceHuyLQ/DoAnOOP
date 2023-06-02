@@ -102,6 +102,7 @@ public class PhongFormController {
                 try{
                     phongdao.xoaPhong(cell);
                     JOptionPane.showMessageDialog(null, "Xóa thành công phòng "+cell);
+                    updateTable();
                 }catch(SQLException ex){
                     Logger.getLogger(PhongFormController.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -130,7 +131,7 @@ public class PhongFormController {
                         Object[] rowData = {phong.getMaPhong(),phong.getLoaiPhong(),phong.getGiaThue()};
                         model.addRow(rowData);
                     }else{
-                        JOptionPane.showMessageDialog(null, "Không tìm thấy khách hàng có mã "+maPhong);
+                        JOptionPane.showMessageDialog(null, "Không tìm thấy phòng có mã "+maPhong);
                     }
                 }catch(SQLException ex){
                     Logger.getLogger(KhachHangFormController.class.getName()).log(Level.SEVERE, null, ex);
