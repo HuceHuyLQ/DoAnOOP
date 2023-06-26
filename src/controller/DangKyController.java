@@ -46,7 +46,7 @@ public class DangKyController {
                         
                         PreparedStatement ps = conn.prepareStatement("INSERT INTO NhanVien(MaNhanVien,TenNhanVien,SdtNV,Email,VaiTro,TenTK,MatKhau) VALUES(?,?,?,?,?,?,?)");
                         ps.setString(1, MaNV);
-                        ps.setString(2, HoTen);
+                        ps.setString(2, CapitalizeWords.capitalizeWords(HoTen));
                         ps.setString(3, SDT);
                         ps.setString(4, Email);
                         ps.setString(5, null);
@@ -57,6 +57,7 @@ public class DangKyController {
                             int kq = ps.executeUpdate();
                             if(kq>0){
                                 JOptionPane.showMessageDialog(frm_DangKy, "Đăng ký thành công!");
+                                frm_DangKy.setVisible(false);
                             }
                         } else{
                             JOptionPane.showMessageDialog(frm_DangKy, "Xác nhận mật khẩu không đúng!");

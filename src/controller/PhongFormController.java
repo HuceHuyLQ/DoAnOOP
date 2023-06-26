@@ -64,7 +64,7 @@ public class PhongFormController {
             String LoaiPhong = frm_Phong.getTxt_LoaiPhong().getText();
             Float GiaThue = Float.parseFloat(frm_Phong.getTxt_GiaTien().getText());
             try {
-                phongdao.themPhong(MaPhong, LoaiPhong, GiaThue);
+                phongdao.themPhong(MaPhong, CapitalizeWords.capitalizeWords(LoaiPhong), GiaThue);
                 JOptionPane.showMessageDialog(null, "Thêm thành công phòng " + MaPhong);
                 this.updateTable();
             } catch (SQLException ex) {
@@ -74,6 +74,8 @@ public class PhongFormController {
             clearForm();
         });
         
+        
+        // update
         frm_Phong.getBtn_SuaPhong().addActionListener((ActionEvent e) -> {
             int row = frm_Phong.getTbl_PhongHop().getSelectedRow();
             String maPhong = frm_Phong.getTbl_PhongHop().getModel().getValueAt(row, 0).toString();
@@ -85,7 +87,7 @@ public class PhongFormController {
                 giaThue = Float.valueOf(frm_Phong.getTxt_GiaTien().getText());
             }
             try {
-                phongdao.suaPhong(maPhong, loaiPhong, giaThue);
+                phongdao.suaPhong(maPhong, CapitalizeWords.capitalizeWords(loaiPhong), giaThue);
             } catch (SQLException ex) {
                 Logger.getLogger(PhongFormController.class.getName()).log(Level.SEVERE, null, ex);
             }

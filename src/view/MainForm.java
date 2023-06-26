@@ -29,6 +29,7 @@ public class MainForm extends javax.swing.JFrame {
         initComponents();
         setTitle("66IT2 - Nhóm 1 - Hệ Thống Quản Lý Phòng Họp");
         this.getLbl_Username().setText(maNV);
+        this.setLocationRelativeTo(null);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -101,13 +102,15 @@ public class MainForm extends javax.swing.JFrame {
         tbl_LuotThue = new javax.swing.JTable();
         lbl_GhiChuLT = new javax.swing.JLabel();
         txt_GhiChuLT = new javax.swing.JTextField();
-        lbl_TongTienLT = new javax.swing.JLabel();
-        txt_TongTienLT = new javax.swing.JTextField();
         Btn_LayDuLieuLuotThue = new javax.swing.JButton();
         lbl_MaPhongLT = new javax.swing.JLabel();
         txt_MaPhongLT = new javax.swing.JTextField();
         lbl_MaNVLT = new javax.swing.JLabel();
         txt_MaNVLT = new javax.swing.JTextField();
+        lbl_GioBD = new javax.swing.JLabel();
+        lbl_GioKT = new javax.swing.JLabel();
+        txt_GioBD = new javax.swing.JTextField();
+        txt_GioKT = new javax.swing.JTextField();
         jPanel_NhanVien = new javax.swing.JPanel();
         lbl_MaNV = new javax.swing.JLabel();
         txt_MaNV = new javax.swing.JTextField();
@@ -170,11 +173,6 @@ public class MainForm extends javax.swing.JFrame {
         jPanel_KhachHang.add(txt_SDTKhachHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(114, 88, 224, -1));
 
         btn_ThemKhachHang.setText("Thêm");
-        btn_ThemKhachHang.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_ThemKhachHangActionPerformed(evt);
-            }
-        });
         jPanel_KhachHang.add(btn_ThemKhachHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(8, 129, -1, -1));
 
         btn_SuaKhachHang.setText("Sửa");
@@ -329,46 +327,46 @@ public class MainForm extends javax.swing.JFrame {
 
         lbl_MaLuotThue.setText("Mã Lượt Thuê");
         jPanel_LuotThue.add(lbl_MaLuotThue, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 9, 92, -1));
-        jPanel_LuotThue.add(txt_MaLuotThue, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 6, 228, -1));
+        jPanel_LuotThue.add(txt_MaLuotThue, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 6, 160, -1));
 
         lbl_MaKHLuotThue.setText("Mã Khách Hàng");
         jPanel_LuotThue.add(lbl_MaKHLuotThue, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 40, -1, -1));
-        jPanel_LuotThue.add(txt_MaKHLuotThue, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 40, 228, -1));
+        jPanel_LuotThue.add(txt_MaKHLuotThue, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 40, 160, -1));
 
-        lbl_NgayGioLT.setText("Ngày Giờ");
+        lbl_NgayGioLT.setText("Ngày Thuê");
         jPanel_LuotThue.add(lbl_NgayGioLT, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 146, 92, -1));
-        jPanel_LuotThue.add(txt_NgayGioLT, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 145, 228, -1));
+        jPanel_LuotThue.add(txt_NgayGioLT, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 145, 160, -1));
 
         lbl_CocLT.setText("Cọc");
-        jPanel_LuotThue.add(lbl_CocLT, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 180, 90, -1));
-        jPanel_LuotThue.add(txt_CocLT, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 180, 228, -1));
+        jPanel_LuotThue.add(lbl_CocLT, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 90, -1));
+        jPanel_LuotThue.add(txt_CocLT, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 270, 160, -1));
 
         btn_ThemLuotThue.setText("Thêm");
-        btn_ThemLuotThue.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_ThemLuotThueActionPerformed(evt);
-            }
-        });
-        jPanel_LuotThue.add(btn_ThemLuotThue, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, -1, -1));
+        jPanel_LuotThue.add(btn_ThemLuotThue, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, -1, -1));
 
         btn_SuaLuotThue.setText("Sửa");
-        jPanel_LuotThue.add(btn_SuaLuotThue, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 300, -1, -1));
+        jPanel_LuotThue.add(btn_SuaLuotThue, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 430, -1, -1));
 
         btn_XoaLuotThue.setText("Xoá");
-        jPanel_LuotThue.add(btn_XoaLuotThue, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 300, -1, -1));
+        jPanel_LuotThue.add(btn_XoaLuotThue, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 430, -1, -1));
 
         btn_TimluotThue.setText("Tìm");
-        jPanel_LuotThue.add(btn_TimluotThue, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 300, -1, -1));
+        btn_TimluotThue.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_TimluotThueActionPerformed(evt);
+            }
+        });
+        jPanel_LuotThue.add(btn_TimluotThue, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 440, -1, -1));
 
         tbl_LuotThue.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Mã Lượt Thuê", "Mã Khách Hàng", "Mã Phòng", "Mã Nhân Viên", "Ngày Giờ", "Cọc", "Tổng Tiền", "Ghi Chú"
+                "Mã Lượt Thuê", "Mã Khách Hàng", "Mã Phòng", "Mã Nhân Viên", "Ngày Giờ", "Giờ Bắt Đầu", "Giờ Kết Thúc", "Cọc", "Tổng Tiền", "Ghi Chú"
             }
         ));
         tbl_LuotThue.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -378,26 +376,30 @@ public class MainForm extends javax.swing.JFrame {
         });
         jScrollPane_LuotThue.setViewportView(tbl_LuotThue);
 
-        jPanel_LuotThue.add(jScrollPane_LuotThue, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 6, 880, 530));
+        jPanel_LuotThue.add(jScrollPane_LuotThue, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 6, 940, 530));
 
         lbl_GhiChuLT.setText("Ghi Chú");
-        jPanel_LuotThue.add(lbl_GhiChuLT, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 250, -1, -1));
-        jPanel_LuotThue.add(txt_GhiChuLT, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 250, 228, -1));
-
-        lbl_TongTienLT.setText("Tổng Tiền");
-        jPanel_LuotThue.add(lbl_TongTienLT, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 217, 96, -1));
-        jPanel_LuotThue.add(txt_TongTienLT, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 215, 228, -1));
+        jPanel_LuotThue.add(lbl_GhiChuLT, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, -1, -1));
+        jPanel_LuotThue.add(txt_GhiChuLT, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 320, 160, -1));
 
         Btn_LayDuLieuLuotThue.setText("Reset");
-        jPanel_LuotThue.add(Btn_LayDuLieuLuotThue, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, -1, -1));
+        jPanel_LuotThue.add(Btn_LayDuLieuLuotThue, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 460, -1, -1));
 
         lbl_MaPhongLT.setText("Mã Phòng");
         jPanel_LuotThue.add(lbl_MaPhongLT, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 75, -1, -1));
-        jPanel_LuotThue.add(txt_MaPhongLT, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 75, 228, -1));
+        jPanel_LuotThue.add(txt_MaPhongLT, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 75, 160, -1));
 
         lbl_MaNVLT.setText("Mã Nhân Viên");
         jPanel_LuotThue.add(lbl_MaNVLT, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 110, -1, -1));
-        jPanel_LuotThue.add(txt_MaNVLT, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 110, 230, -1));
+        jPanel_LuotThue.add(txt_MaNVLT, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 110, 160, -1));
+
+        lbl_GioBD.setText("Giờ Bắt Đầu");
+        jPanel_LuotThue.add(lbl_GioBD, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, -1, -1));
+
+        lbl_GioKT.setText("Giờ Kết Thúc");
+        jPanel_LuotThue.add(lbl_GioKT, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, -1, -1));
+        jPanel_LuotThue.add(txt_GioBD, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 150, -1));
+        jPanel_LuotThue.add(txt_GioKT, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 150, -1));
 
         jTabbed_FrmMain.addTab("Lượt Thuê", jPanel_LuotThue);
 
@@ -412,8 +414,8 @@ public class MainForm extends javax.swing.JFrame {
         jPanel_NhanVien.add(txt_HoTenNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(145, 47, 203, -1));
 
         lbl_TaiKhoanNV.setText("Tài Khoản");
-        jPanel_NhanVien.add(lbl_TaiKhoanNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 164, 75, -1));
-        jPanel_NhanVien.add(txt_TaiKhoanNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(145, 161, 203, -1));
+        jPanel_NhanVien.add(lbl_TaiKhoanNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 166, 75, -1));
+        jPanel_NhanVien.add(txt_TaiKhoanNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(145, 166, 203, -1));
 
         btn_ThemNhanVien.setText("Thêm");
         jPanel_NhanVien.add(btn_ThemNhanVien, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 303, -1, -1));
@@ -618,32 +620,33 @@ public class MainForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_ThemLuotThueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ThemLuotThueActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_ThemLuotThueActionPerformed
-
-    private void btn_ThemKhachHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ThemKhachHangActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_ThemKhachHangActionPerformed
-
     private void tbl_LuotThueMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_LuotThueMouseClicked
         int row = tbl_LuotThue.getSelectedRow();
         String MaLuotThue = tbl_LuotThue.getValueAt(row,0).toString();
         String MaKhacHang = tbl_LuotThue.getValueAt(row,1).toString();
         String MaPhong = tbl_LuotThue.getValueAt(row,2).toString();
         String MaNhanVien = tbl_LuotThue.getValueAt(row,3).toString();
-        String NgayGioThue = tbl_LuotThue.getValueAt(row,4).toString();
-        double Coc = Double.parseDouble(tbl_LuotThue.getValueAt(row,5).toString());
-        double TongTien = Double.parseDouble(tbl_LuotThue.getValueAt(row,6).toString());
-        String GhiChu = tbl_LuotThue.getValueAt(row,7).toString();
+        String NgayThue = tbl_LuotThue.getValueAt(row,4).toString();
+        String GioBatDau = tbl_LuotThue.getValueAt(row, 5).toString();
+        String GioKetThuc = tbl_LuotThue.getValueAt(row, 6).toString();
+        double Coc = Double.parseDouble(tbl_LuotThue.getValueAt(row,7).toString());
+        double TongTien = Double.parseDouble(tbl_LuotThue.getValueAt(row,8).toString());
+        Object GhiChu = tbl_LuotThue.getValueAt(row,9);
+        if(GhiChu == null){
+             GhiChu = "";
+        } else{
+            GhiChu =  tbl_LuotThue.getValueAt(row,9).toString();
+        }
         txt_MaLuotThue.setText(MaLuotThue);
         txt_MaKHLuotThue.setText(MaKhacHang);
         txt_MaPhongLT.setText(MaPhong);
         txt_MaNVLT.setText(MaNhanVien);
-        txt_NgayGioLT.setText(NgayGioThue);
+        txt_NgayGioLT.setText(NgayThue);
+        txt_GioBD.setText(GioBatDau);
+        txt_GioKT.setText(GioKetThuc);
         txt_CocLT.setText(String.valueOf(Coc));
-        txt_TongTienLT.setText(String.valueOf(TongTien));
-        txt_GhiChuLT.setText(GhiChu);
+//        txt_TongTienLT.setText(String.valueOf(TongTien));
+        txt_GhiChuLT.setText((String) GhiChu);
 
     }//GEN-LAST:event_tbl_LuotThueMouseClicked
 
@@ -685,8 +688,8 @@ public class MainForm extends javax.swing.JFrame {
         String TenNV = tbl_NhanVien.getValueAt(row, 1).toString();
         String SDTNV = tbl_NhanVien.getValueAt(row, 2).toString();
         String Email = tbl_NhanVien.getValueAt(row, 3).toString();
-        String VaiTro = tbl_NhanVien.getValueAt(row, 4).toString();
-        String TenTK = tbl_NhanVien.getValueAt(row, 5).toString();
+        String VaiTro = tbl_NhanVien.getValueAt(row, 6).toString();
+        String TenTK = tbl_NhanVien.getValueAt(row, 4).toString();
         String MK = tbl_NhanVien.getValueAt(row, 5).toString();
         txt_MaNV.setText(MaNV);
         txt_HoTenNV.setText(TenNV);
@@ -697,6 +700,44 @@ public class MainForm extends javax.swing.JFrame {
         txt_MatKhauNV.setText(MK);
     }//GEN-LAST:event_tbl_NhanVienMouseClicked
 
+    private void btn_TimluotThueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_TimluotThueActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_TimluotThueActionPerformed
+
+    public JLabel getLbl_GioBD() {
+        return lbl_GioBD;
+    }
+
+    public void setLbl_GioBD(JLabel lbl_GioBD) {
+        this.lbl_GioBD = lbl_GioBD;
+    }
+
+    public JLabel getLbl_GioKT() {
+        return lbl_GioKT;
+    }
+
+    public void setLbl_GioKT(JLabel lbl_GioKT) {
+        this.lbl_GioKT = lbl_GioKT;
+    }
+
+    public JTextField getTxt_GioBD() {
+        return txt_GioBD;
+    }
+
+    public void setTxt_GioBD(JTextField txt_GioBD) {
+        this.txt_GioBD = txt_GioBD;
+    }
+
+    public JTextField getTxt_GioKT() {
+        return txt_GioKT;
+    }
+
+    public void setTxt_GioKT(JTextField txt_GioKT) {
+        this.txt_GioKT = txt_GioKT;
+    }
+
+    
+    
     public JLabel getLbl_CocLT() {
         return lbl_CocLT;
     }
@@ -737,13 +778,13 @@ public class MainForm extends javax.swing.JFrame {
         this.lbl_NgayGioLT = lbl_NgayGioLT;
     }
 
-    public JLabel getLbl_TongTienLT() {
-        return lbl_TongTienLT;
-    }
-
-    public void setLbl_TongTienLT(JLabel lbl_TongTienLT) {
-        this.lbl_TongTienLT = lbl_TongTienLT;
-    }
+//    public JLabel getLbl_TongTienLT() {
+//        return lbl_TongTienLT;
+//    }
+//
+//    public void setLbl_TongTienLT(JLabel lbl_TongTienLT) {
+//        this.lbl_TongTienLT = lbl_TongTienLT;
+//    }
 
     public JTextField getTxt_CocLT() {
         return txt_CocLT;
@@ -783,14 +824,6 @@ public class MainForm extends javax.swing.JFrame {
 
     public void setTxt_NgayGioLT(JTextField txt_NgayGioLT) {
         this.txt_NgayGioLT = txt_NgayGioLT;
-    }
-
-    public JTextField getTxt_TongTienLT() {
-        return txt_TongTienLT;
-    }
-
-    public void setTxt_TongTienLT(JTextField txt_TongTienLT) {
-        this.txt_TongTienLT = txt_TongTienLT;
     }
 
     
@@ -1458,13 +1491,13 @@ public class MainForm extends javax.swing.JFrame {
         this.lbl_TieuDe = lbl_TieuDe;
     }
 
-    public JLabel getLbl_TongTien() {
-        return lbl_TongTienLT;
-    }
-
-    public void setLbl_TongTien(JLabel lbl_TongTien) {
-        this.lbl_TongTienLT = lbl_TongTien;
-    }
+//    public JLabel getLbl_TongTien() {
+//        return lbl_TongTienLT;
+//    }
+//
+//    public void setLbl_TongTien(JLabel lbl_TongTien) {
+//        this.lbl_TongTienLT = lbl_TongTien;
+//    }
 
     public JLabel getLbl_UserIcon() {
         return lbl_UserIcon;
@@ -1674,14 +1707,14 @@ public class MainForm extends javax.swing.JFrame {
         this.txt_TenKhachHang = txt_TenKhachHang;
     }
 
-    public JTextField getTxt_TongTien() {
-        return txt_TongTienLT;
-    }
-
-    public void setTxt_TongTien(JTextField txt_TongTien) {
-        this.txt_TongTienLT = txt_TongTien;
-    }
-    
+//    public JTextField getTxt_TongTien() {
+//        return txt_TongTienLT;
+//    }
+//
+//    public void setTxt_TongTien(JTextField txt_TongTien) {
+//        this.txt_TongTienLT = txt_TongTien;
+//    }
+//    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Btn_LayDuLieu;
     private javax.swing.JButton Btn_LayDuLieuCSVC;
@@ -1738,6 +1771,8 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_GhiChuLT;
     private javax.swing.JLabel lbl_GiaCSVC;
     private javax.swing.JLabel lbl_GiaTien;
+    private javax.swing.JLabel lbl_GioBD;
+    private javax.swing.JLabel lbl_GioKT;
     private javax.swing.JLabel lbl_HoTenNV;
     private javax.swing.JLabel lbl_IdTag;
     private javax.swing.JLabel lbl_LoaiPhong;
@@ -1759,7 +1794,6 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_TenVatTu;
     private javax.swing.JLabel lbl_ThucHien;
     private javax.swing.JLabel lbl_TieuDe;
-    private javax.swing.JLabel lbl_TongTienLT;
     private javax.swing.JLabel lbl_UserIcon;
     private javax.swing.JLabel lbl_Username;
     private javax.swing.JLabel lbl_VaiTroNV;
@@ -1776,6 +1810,8 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JTextField txt_GhiChuLT;
     private javax.swing.JTextField txt_GiaCSVC;
     private javax.swing.JTextField txt_GiaTien;
+    private javax.swing.JTextField txt_GioBD;
+    private javax.swing.JTextField txt_GioKT;
     private javax.swing.JTextField txt_HoTenNV;
     private javax.swing.JTextField txt_LoaiPhong;
     private javax.swing.JTextField txt_MaCSVC;
@@ -1793,7 +1829,6 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JTextField txt_TaiKhoanNV;
     private javax.swing.JTextField txt_TenKhachHang;
     private javax.swing.JTextField txt_TenVatTu;
-    private javax.swing.JTextField txt_TongTienLT;
     private javax.swing.JTextField txt_VaiTroNV;
     // End of variables declaration//GEN-END:variables
 }

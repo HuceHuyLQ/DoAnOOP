@@ -31,7 +31,7 @@ public class PhongDao {
     }
     
     public void themPhong(String MaPhong, String LoaiPhong, float GiaThue) throws SQLException{
-        PreparedStatement preparedStatement = conn.prepareStatement("INSERT INTO Phong(MaPhong, LoaiPhong, GiaThue) VALUES(?,?,?)");
+        PreparedStatement preparedStatement = conn.prepareStatement("INSERT INTO Phong(MaPhong, LoaiPhong, GiaThue) VALUES(UPPER(?),?,?)");
         preparedStatement.setString(1,MaPhong);
         preparedStatement.setString(2,LoaiPhong);
         preparedStatement.setFloat(3, GiaThue);

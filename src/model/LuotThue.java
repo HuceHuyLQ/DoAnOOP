@@ -13,7 +13,9 @@ public class LuotThue {
     private String MaKhachHang;
     private String MaPhong;
     private String MaNhanVien;
-    private String NgayGioThue;
+    private String NgayThue;
+    private String GioBatDau;
+    private String GioKetThuc;
     private double Coc;
     private double TongTien;
     private String GhiChu;
@@ -21,12 +23,14 @@ public class LuotThue {
     public LuotThue() {
     }
 
-    public LuotThue(String MaLuotThue, String MaKhachHang, String MaPhong, String MaNhanVien, String NgayGioThue, double Coc, double TongTien, String GhiChu) {
+    public LuotThue(String MaLuotThue, String MaKhachHang, String MaPhong, String MaNhanVien, String NgayThue, String GioBatDau, String GioKetThuc, double Coc, double TongTien, String GhiChu) {
         this.MaLuotThue = MaLuotThue;
         this.MaKhachHang = MaKhachHang;
         this.MaPhong = MaPhong;
         this.MaNhanVien = MaNhanVien;
-        this.NgayGioThue = NgayGioThue;
+        this.NgayThue = NgayThue;
+        this.GioBatDau = GioBatDau;
+        this.GioKetThuc = GioKetThuc;
         this.Coc = Coc;
         this.TongTien = TongTien;
         this.GhiChu = GhiChu;
@@ -64,12 +68,28 @@ public class LuotThue {
         this.MaNhanVien = MaNhanVien;
     }
 
-    public String getNgayGioThue() {
-        return NgayGioThue;
+    public String getNgayThue() {
+        return NgayThue;
     }
 
-    public void setNgayGioThue(String NgayGioThue) {
-        this.NgayGioThue = NgayGioThue;
+    public void setNgayThue(String NgayThue) {
+        this.NgayThue = NgayThue;
+    }
+
+    public String getGioBatDau() {
+        return GioBatDau;
+    }
+
+    public void setGioBatDau(String GioBatDau) {
+        this.GioBatDau = GioBatDau;
+    }
+
+    public String getGioKetThuc() {
+        return GioKetThuc;
+    }
+
+    public void setGioKetThuc(String GioKetThuc) {
+        this.GioKetThuc = GioKetThuc;
     }
 
     public double getCoc() {
@@ -95,7 +115,6 @@ public class LuotThue {
     public void setGhiChu(String GhiChu) {
         this.GhiChu = GhiChu;
     }
-    
-    
 
+    
 }

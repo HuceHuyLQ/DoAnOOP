@@ -13,7 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import model.CSVC;
+import model.*;
 import view.MainForm;
 
 /**
@@ -65,7 +65,7 @@ public class CSVCFormController {
             Double GiaCSVC = Double.parseDouble(frm_CSVC.getTxt_GiaCSVC().getText());
             String GhiChuCSVC = frm_CSVC.getTxt_GhiChuCSVC().getText();
             try {
-                csvcdao.themCSVC(MaCSVC, TenVatTu, GiaCSVC, GhiChuCSVC);
+                csvcdao.themCSVC(MaCSVC, CapitalizeWords.capitalizeWords(TenVatTu), GiaCSVC, GhiChuCSVC);
                 JOptionPane.showMessageDialog(null, "Thêm thành công CSVC " + MaCSVC);
                 this.updateTable();
             } catch (SQLException ex) {
@@ -75,6 +75,7 @@ public class CSVCFormController {
             clearForm();
         });
         
+        // update
         frm_CSVC.getBtn_SuaCSVC().addActionListener((ActionEvent e) -> {
             int row = frm_CSVC.getTbl_CSVC().getSelectedRow();
             String maCSVC = frm_CSVC.getTbl_CSVC().getModel().getValueAt(row, 0).toString();
@@ -87,7 +88,7 @@ public class CSVCFormController {
                 giaCSVC = Double.valueOf(frm_CSVC.getTxt_GiaCSVC().getText());
             }
             try {
-                csvcdao.suaCSVC(maCSVC, tenVatTu, giaCSVC, ghiChuCSVC);
+                csvcdao.suaCSVC(maCSVC, CapitalizeWords.capitalizeWords(tenVatTu), giaCSVC, ghiChuCSVC);
             } catch (SQLException ex) {
                 Logger.getLogger(CSVCFormController.class.getName()).log(Level.SEVERE, null, ex);
             }

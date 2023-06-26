@@ -22,7 +22,7 @@ public class NhanVien {
 
     
     
-    public NhanVien(String MaNhanVien, String TenNhanVien, String SdtNV, String Email, String TenTK, String MatKhau, String VaiTro) {
+    public NhanVien(String MaNhanVien, String TenNhanVien, String SdtNV, String Email, String TenTK, String MatKhau,String VaiTro) {
         this.MaNhanVien = MaNhanVien;
         this.TenNhanVien = TenNhanVien;
         this.SdtNV = SdtNV;
@@ -39,8 +39,6 @@ public class NhanVien {
     public void setVaiTro(String VaiTro) {
         this.VaiTro = VaiTro;
     }
-
-    
     
     public String getMaNhanVien() {
         return MaNhanVien;

@@ -12,6 +12,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import model.*;
 
@@ -26,7 +28,9 @@ public class LuotThueDao {
     String MaKhachHang;
     String MaPhong;
     String MaNhanVien;
-    String NgayGioThue;
+    String NgayThue;
+    String GioBatDau;
+    String GioKetThuc;
     double Coc ;
     double TongTien;
     String GhiChu;
@@ -49,27 +53,43 @@ public class LuotThueDao {
             String MaKhachHang = resultSet.getString("MaKhachHang");
             String MaPhong = resultSet.getString("MaPhong");
             String MaNhanVien = resultSet.getString("MaNhanVien");
-            String NgayGioThue = resultSet.getString("NgayGioThue");
+            String NgayThue = resultSet.getString("NgayThue");
+            String GioBatDau = resultSet.getString("GioBatDau");
+            String GioKetThuc = resultSet.getString("GioKetThuc");
             double Coc = resultSet.getDouble("Coc");
             double TongTien = resultSet.getDouble("TongTien");
             String GhiChu = resultSet.getString("GhiChu");
-            LuotThue lt = new LuotThue(MaLuotThue, MaKhachHang, MaPhong, MaNhanVien, NgayGioThue, Coc, TongTien, GhiChu);
+            LuotThue lt = new LuotThue(MaLuotThue, MaKhachHang, MaPhong, MaNhanVien, NgayThue, GioBatDau, GioKetThuc, Coc, TongTien, GhiChu);
             danhSachLuotThue.add(lt);
         }
         return danhSachLuotThue;
     }
     
-    public void themLuotThue(String MaLuotThue, String MaKhachHang, String MaPhongLT, String MaNhanVien, String NgayGioThue, double Coc, double TongTien, String GhiChu) throws SQLException{
-        PreparedStatement preparedStatement = conn.prepareStatement("INSERT INTO LuotThue(MaLuotThue, MaKhachHang, MaPhong, MaNhanVien, NgayGioThue, Coc, TongTien, GhiChu) VALUES(?,?,?,?,?,?,?,?)");
+    public void TinhTongTien(){
+        Statement statement;
+        try {
+            
+            statement = conn.createStatement();
+            int resultSet = statement.executeUpdate("UPDATE luotthue INNER JOIN phong ON luotthue.MaPhong = phong.MaPhong SET luotthue.TongTien = phong.GiaThue - luotthue.Coc");  
+        } catch (SQLException ex) {
+            Logger.getLogger(LuotThueDao.class.getName()).log(Level.SEVERE, null, ex);
+        }   
+    }
+    
+    public void themLuotThue(String MaLuotThue, String MaKhachHang, String MaPhongLT, String MaNhanVien, String NgayThue, String GioBatDau, String GioKetThuc, double Coc, double TongTien, String GhiChu) throws SQLException{
+        PreparedStatement preparedStatement = conn.prepareStatement("INSERT INTO LuotThue(MaLuotThue, MaKhachHang, MaPhong, MaNhanVien, NgayThue, GioBatDau, GioKetThuc, Coc, TongTien, GhiChu) VALUES(?,?,?,?,?,?,?,?,?,?)");
         preparedStatement.setString(1,MaLuotThue);
         preparedStatement.setString(2,MaKhachHang);
         preparedStatement.setString(3, MaPhongLT);
         preparedStatement.setString(4, MaNhanVien);
-        preparedStatement.setString(5, NgayGioThue);
-        preparedStatement.setDouble(6, Coc);
-        preparedStatement.setDouble(7, TongTien);
-        preparedStatement.setString(8, GhiChu);
+        preparedStatement.setString(5, NgayThue);
+        preparedStatement.setString(6, GioBatDau);
+        preparedStatement.setString(7, GioKetThuc);
+        preparedStatement.setDouble(8, Coc);
+        preparedStatement.setDouble(9, TongTien);
+        preparedStatement.setString(10, null);
         preparedStatement.executeUpdate();
+        TinhTongTien();
     }
     
     public LuotThue timLuotThueTheoMa(String MaLuotThue) throws SQLException{
@@ -80,11 +100,13 @@ public class LuotThueDao {
             MaKhachHang = resultSet.getString("MaKhachHang");
             MaPhong = resultSet.getString("MaPhong");
             MaNhanVien = resultSet.getString("MaNhanVien");
-            NgayGioThue = resultSet.getString("NgayGioThue");
+            NgayThue = resultSet.getString("NgayThue");
+            GioBatDau = resultSet.getString("GioBatDau");
+            GioKetThuc = resultSet.getString("GioKetThuc");
             Coc = resultSet.getDouble("Coc");
             TongTien = resultSet.getDouble("TongTien");
             GhiChu = resultSet.getString("GhiChu");
-            LuotThue lt = new LuotThue(MaLuotThue, MaKhachHang, MaPhong, MaNhanVien, NgayGioThue, Coc, TongTien, GhiChu);
+            LuotThue lt = new LuotThue(MaLuotThue, MaKhachHang, MaPhong, MaNhanVien, NgayThue,GioBatDau,GioKetThuc, Coc, TongTien, GhiChu);
             return lt;
         }else{
             return null;
@@ -97,17 +119,19 @@ public class LuotThueDao {
         preparedStatement.executeUpdate();
     }
     
-    public void suaLuotThue(String MaLuotThue, String MaKhachHang, String MaPhongLT, String MaNhanVien, String NgayGioThue, double Coc, double TongTien, String GhiChu) throws SQLException{
+    public void suaLuotThue(String MaLuotThue, String MaKhachHang, String MaPhongLT, String MaNhanVien, String NgayThue, String GioBatDau, String GioKetThuc, double Coc, double TongTien, String GhiChu) throws SQLException{
         //Hàm sửa Luot thue
-        PreparedStatement preparedStatement = conn.prepareStatement("UPDATE LuotThue SET MaKhachHang=?,MaPhong=?,MaNhanVien=?,NgayGioThue=?,Coc=?,TongTien=?,GhiChu=? WHERE MaLuotThue=?");
+        PreparedStatement preparedStatement = conn.prepareStatement("UPDATE LuotThue SET MaKhachHang=?,MaPhong=UPPER(?),MaNhanVien=?,NgayThue=?,GioBatDay=?,GioKetThuc=?,Coc=?,TongTien=?,GhiChu=? WHERE MaLuotThue=?");
         preparedStatement.setString(1, MaKhachHang);
         preparedStatement.setString(2, MaPhongLT);
         preparedStatement.setString(3, MaNhanVien);
-        preparedStatement.setString(4, NgayGioThue);
-        preparedStatement.setDouble(5, Coc);
-        preparedStatement.setDouble(6, TongTien);
-        preparedStatement.setString(7, GhiChu);
-        preparedStatement.setString(8, MaLuotThue);
+        preparedStatement.setString(4, NgayThue);
+        preparedStatement.setString(5, GioBatDau);
+        preparedStatement.setString(6, GioKetThuc);
+        preparedStatement.setDouble(7, Coc);
+        preparedStatement.setDouble(8, TongTien);
+        preparedStatement.setString(9, GhiChu);
+        preparedStatement.setString(10, MaLuotThue);
         int rs = preparedStatement.executeUpdate();
         if(rs>0){
             JOptionPane.showMessageDialog(null, "Cập nhật thành công");

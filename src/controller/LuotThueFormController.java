@@ -7,7 +7,9 @@ package controller;
 import DAO.*;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -25,6 +27,7 @@ public class LuotThueFormController {
     private static MainForm mainForm = LoginController.getFrm_main();
     private LuotThueDao luotThueDao = new LuotThueDao();
     private DefaultTableModel model = (DefaultTableModel)mainForm.getTbl_LuotThue().getModel();
+    Phong p = new Phong();
     
     private void updateTable() {
         model = (DefaultTableModel) LuotThueFormController.mainForm.getTbl_LuotThue().getModel();
@@ -33,7 +36,7 @@ public class LuotThueFormController {
             model.setRowCount(0);
             List<LuotThue> dsLuotThue = luotThueDao.layDanhSachLuotThue();
             for (LuotThue lt : dsLuotThue) {
-                Object[] rowData = {lt.getMaLuotThue(), lt.getMaKhachHang(), lt.getMaPhong(), lt.getMaNhanVien(), lt.getNgayGioThue(), lt.getCoc(), lt.getTongTien(), lt.getGhiChu()};
+                Object[] rowData = {lt.getMaLuotThue(), lt.getMaKhachHang(), lt.getMaPhong(), lt.getMaNhanVien(), lt.getNgayThue(),lt.getGioBatDau(),lt.getGioKetThuc(), lt.getCoc(), lt.getTongTien(), lt.getGhiChu()};
                 model.addRow(rowData); // Add a new row to the table model
             }
         } catch (SQLException ex) {
@@ -47,8 +50,10 @@ public class LuotThueFormController {
         LuotThueFormController.mainForm.getTxt_MaPhongLT().setText("");
         LuotThueFormController.mainForm.getTxt_MaNVLT().setText("");
         LuotThueFormController.mainForm.getTxt_NgayGioLT().setText("");
+        LuotThueFormController.mainForm.getTxt_GioBD().setText("");
+        LuotThueFormController.mainForm.getTxt_GioKT().setText("");
         LuotThueFormController.mainForm.getTxt_CocLT().setText("");
-        LuotThueFormController.mainForm.getTxt_TongTienLT().setText("");
+//        LuotThueFormController.mainForm.getTxt_TongTienLT().setText("");
         LuotThueFormController.mainForm.getTxt_GhiChuLT().setText("");
     }
     
@@ -68,9 +73,12 @@ public class LuotThueFormController {
             String MaKhachHang = frm_LuotThue.getTxt_MaKHLuotThue().getText();
             String MaPhong = frm_LuotThue.getTxt_MaPhongLT().getText();
             String MaNhanVien = frm_LuotThue.getTxt_MaNVLT().getText();
-            String NgayGioThue = frm_LuotThue.getTxt_NgayGioLT().getText();
+            String NgayThue = frm_LuotThue.getTxt_NgayGioLT().getText();
+            String GioBatDau = frm_LuotThue.getTxt_GioBD().getText();
+            String GioKetThuc = frm_LuotThue.getTxt_GioKT().getText();
             double Coc = Double.parseDouble(frm_LuotThue.getTxt_CocLT().getText());
-            double TongTien = Double.parseDouble(frm_LuotThue.getTxt_TongTienLT().getText());
+//            double TongTien = Double.parseDouble(frm_LuotThue.getTxt_TongTienLT().getText());
+            double TongTien=0f;
             String GhiChu;
             if (frm_LuotThue.getTxt_GhiChuLT().getText().isEmpty()) {
                 GhiChu = "";
@@ -82,7 +90,7 @@ public class LuotThueFormController {
                 if(maTonTai){
                     JOptionPane.showMessageDialog(frm_LuotThue, "Mã Lượt Thuê Đã Tồn Taị!!!");
                 }
-                luotThueDao.themLuotThue(MaLuotThue, MaKhachHang, MaPhong, MaNhanVien, NgayGioThue, Coc, TongTien, GhiChu);
+                luotThueDao.themLuotThue(MaLuotThue, MaKhachHang, MaPhong, MaNhanVien, NgayThue, GioBatDau, GioKetThuc, Coc, TongTien, GhiChu);
                 JOptionPane.showMessageDialog(null, "Thêm Lượt Thuê Thành Công ");
                 updateTable();
                 clearForm();
@@ -98,9 +106,12 @@ public class LuotThueFormController {
             String MaKhachHang = frm_LuotThue.getTxt_MaKHLuotThue().getText();
             String MaPhong = frm_LuotThue.getTxt_MaPhongLT().getText();
             String MaNhanVien = frm_LuotThue.getTxt_MaNVLT().getText();
-            String NgayGioThue = frm_LuotThue.getTxt_NgayGioLT().getText();
+            String NgayThue = frm_LuotThue.getTxt_NgayGioLT().getText();
+            String GioBatDau = frm_LuotThue.getTxt_GioBD().getText();
+            String GioKetThuc = frm_LuotThue.getTxt_GioKT().getText();
             double Coc = Double.parseDouble(frm_LuotThue.getTxt_CocLT().getText());
-            double TongTien = Double.parseDouble(frm_LuotThue.getTxt_TongTienLT().getText());
+//            double TongTien = Double.parseDouble(frm_LuotThue.getTxt_TongTienLT().getText());
+            double TongTien = 0;
             String GhiChu;
             if (frm_LuotThue.getTxt_GhiChuLT().getText().isEmpty()) {
                 GhiChu = "";
@@ -115,12 +126,12 @@ public class LuotThueFormController {
                 if (!luotThueCu.getMaLuotThue().equals(MaLuotThue)) {
                     JOptionPane.showMessageDialog(null, "Không được sửa Mã Lượt Thuê!");
                 }
-                luotThueDao.suaLuotThue(MaLuotThue, MaKhachHang, MaPhong, MaNhanVien, NgayGioThue, Coc, TongTien, GhiChu);
+                luotThueDao.suaLuotThue(MaLuotThue, MaKhachHang, MaPhong, MaNhanVien, NgayThue, GioBatDau, GioKetThuc, Coc, TongTien, GhiChu);
                 updateTable();
                 clearForm();
             } catch (SQLException ex) {
                 Logger.getLogger(LuotThueFormController.class.getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(frm_LuotThue, "That bai");
+                JOptionPane.showMessageDialog(frm_LuotThue, "Thất bại. Không tìm thấy dữ liệu!!!");
             }
             updateTable();
             clearForm();
@@ -155,7 +166,7 @@ public class LuotThueFormController {
                     if(lt != null){
                         model = (DefaultTableModel) LuotThueFormController.mainForm.getTbl_LuotThue().getModel();
                         model.setRowCount(0); 
-                        Object[] rowData = {lt.getMaLuotThue(),lt.getMaKhachHang(),lt.getMaPhong(),lt.getMaNhanVien(),lt.getNgayGioThue(),lt.getCoc(),lt.getTongTien(),lt.getGhiChu()};
+                        Object[] rowData = {lt.getMaLuotThue(),lt.getMaKhachHang(),lt.getMaPhong(),lt.getMaNhanVien(),lt.getNgayThue(),lt.getCoc(),lt.getTongTien(),lt.getGhiChu()};
                         model.addRow(rowData);
                     }else{
                         JOptionPane.showMessageDialog(null, "Không tìm thấy Lượt Thuê có mã "+MaLuotThue);

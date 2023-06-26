@@ -61,6 +61,7 @@ public class NhanVienFormController {
             clearForm();
         });
         
+        // find
         mainForm.getBtn_TimNhanVien().addActionListener((ActionEvent e) -> {
             String maNV = mainForm.getTxt_MaNV().getText();
             String hotenNV = mainForm.getTxt_HoTenNV().getText();
@@ -145,6 +146,8 @@ public class NhanVienFormController {
             }
         });
         
+        
+        // delete
         mainForm.getBtn_XoaNhanVien().addActionListener((ActionEvent e) -> {
             int row = mainForm.getTbl_NhanVien().getSelectedRow();
             String cell = mainForm.getTbl_NhanVien().getModel().getValueAt(row, 0).toString();
@@ -161,6 +164,8 @@ public class NhanVienFormController {
             clearForm();
         });
         
+        
+        // insert
         mainForm.getBtn_ThemNhanVien().addActionListener((ActionEvent e) -> {
             String MaNhanVien = mainForm.getTxt_MaNV().getText();
             String HoTen = mainForm.getTxt_HoTenNV().getText();
@@ -170,7 +175,7 @@ public class NhanVienFormController {
             String MatKhau = mainForm.getTxt_MatKhauNV().getText();
             String VaiTro = mainForm.getTxt_VaiTroNV().getText();
             try {
-                nvdao.themNhanVien(MaNhanVien, HoTen, SDT,Email,TaiKhoan,MatKhau,VaiTro);
+                nvdao.themNhanVien(MaNhanVien, CapitalizeWords.capitalizeWords(HoTen), SDT,Email,TaiKhoan,MatKhau,CapitalizeWords.capitalizeWords(VaiTro));
                 JOptionPane.showMessageDialog(null, "Thêm thành công nhân viên" + MaNhanVien);
                 this.updateTable();
             } catch (SQLException ex) {
@@ -180,6 +185,7 @@ public class NhanVienFormController {
             clearForm();
         });
         
+        // update
         mainForm.getBtn_SuaNhanVien().addActionListener((ActionEvent e) -> {
             int row = mainForm.getTbl_NhanVien().getSelectedRow();
             String MaNhanVien = mainForm.getTbl_NhanVien().getModel().getValueAt(row, 0).toString();
@@ -190,7 +196,7 @@ public class NhanVienFormController {
             String MatKhau = mainForm.getTxt_MatKhauNV().getText();
             String VaiTro = mainForm.getTxt_VaiTroNV().getText();
             try {
-                nvdao.suaNhanVien(MaNhanVien, HoTen, SDT,Email,TaiKhoan,MatKhau,VaiTro);
+                nvdao.suaNhanVien(MaNhanVien, CapitalizeWords.capitalizeWords(HoTen), SDT,Email,TaiKhoan,MatKhau,CapitalizeWords.capitalizeWords(VaiTro));
                 this.updateTable();
             } catch (SQLException ex) {
                 Logger.getLogger(PhongFormController.class.getName()).log(Level.SEVERE, null, ex);

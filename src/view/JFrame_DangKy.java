@@ -14,6 +14,7 @@ public class JFrame_DangKy extends javax.swing.JFrame {
     public JFrame_DangKy() {
         initComponents();
         this.setTitle("Đăng ký");
+        this.setLocationRelativeTo(null);
     }
 
   
@@ -103,21 +104,21 @@ public class JFrame_DangKy extends javax.swing.JFrame {
         lbl_Title.setText("Đăng Ký");
 
         lbl_MaNhanVien.setBackground(new java.awt.Color(102, 102, 102));
-        lbl_MaNhanVien.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_MaNhanVien.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         lbl_MaNhanVien.setText("Mã Nhân Viên:");
 
         txt_MaNhanVien.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_MaNhanVien.setForeground(new java.awt.Color(102, 102, 102));
 
         lbl_HoTen.setBackground(new java.awt.Color(102, 102, 102));
-        lbl_HoTen.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_HoTen.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         lbl_HoTen.setText("Họ Tên:");
 
         txt_HoTen.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txt_HoTen.setForeground(new java.awt.Color(102, 102, 102));
 
         lbl_SDT.setBackground(new java.awt.Color(102, 102, 102));
-        lbl_SDT.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lbl_SDT.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         lbl_SDT.setText("Số Điện Thoại:");
 
         txt_SDT.addActionListener(new java.awt.event.ActionListener() {
@@ -126,15 +127,19 @@ public class JFrame_DangKy extends javax.swing.JFrame {
             }
         });
 
+        lbl_Email.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         lbl_Email.setText("Email:");
 
+        lbl_TaiKhoan.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         lbl_TaiKhoan.setText("Tài Khoản:");
 
+        lbl_MatKhau.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         lbl_MatKhau.setText("Mật Khẩu:");
 
         pw_MatKhau.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         pw_MatKhau.setForeground(new java.awt.Color(102, 102, 102));
 
+        lbl_XacNhan.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
         lbl_XacNhan.setText("Xác Nhận Mật Khẩu:");
 
         lbl_DaCoTK.setText("Đã có tài khoản");
@@ -209,7 +214,7 @@ public class JFrame_DangKy extends javax.swing.JFrame {
                 .addComponent(lbl_XacNhan)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pw_XacNhanMK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Btn_DangKy, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbl_DaCoTK))

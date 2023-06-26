@@ -53,12 +53,13 @@ public class KhachHangFormController {
         frm_khachhang.setVisible(true);
         frm_khachhang.getTbl_KhachHang().setModel(model);
         
+        // insert
         frm_khachhang.getBtn_ThemKhachHang().addActionListener((ActionEvent e) -> {
             try {
                 String makh = frm_khachhang.getTxt_MaKH().getText();
                 String hoten = frm_khachhang.getTxt_TenKhachHang().getText();
                 String sdt = frm_khachhang.getTxt_SDTKhachHang().getText();
-                khachhangdao.themKhachHang(makh, hoten, sdt);
+                khachhangdao.themKhachHang(makh, CapitalizeWords.capitalizeWords(hoten), sdt);
             } catch (SQLException ex) {
                 Logger.getLogger(KhachHangFormController.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -66,6 +67,8 @@ public class KhachHangFormController {
             clearForm();
         });
         
+        
+        // delete
         frm_khachhang.getBtn_XoaKhachHang().addActionListener((ActionEvent e) -> {
             int row = frm_khachhang.getTbl_KhachHang().getSelectedRow();
             String cell = frm_khachhang.getTbl_KhachHang().getModel().getValueAt(row, 0).toString();
@@ -82,6 +85,8 @@ public class KhachHangFormController {
             clearForm();
         });
         
+        
+        // find
         frm_khachhang.getBtn_TimKhachHang().addActionListener((var e) -> {
             String maKh = frm_khachhang.getTxt_MaKH().getText();
             String hoTen = frm_khachhang.getTxt_TenKhachHang().getText();
@@ -141,13 +146,15 @@ public class KhachHangFormController {
             clearForm();
         });
         
+        
+        // update
         frm_khachhang.getBtn_SuaKhachHang().addActionListener((ActionEvent e) -> {
             int row = frm_khachhang.getTbl_KhachHang().getSelectedRow();
             String maKh = frm_khachhang.getTbl_KhachHang().getModel().getValueAt(row, 0).toString();
             String hoTen = frm_khachhang.getTxt_TenKhachHang().getText();
             String sdt = frm_khachhang.getTxt_SDTKhachHang().getText();
             try {
-                khachhangdao.suaKhachHang(maKh, hoTen, sdt);
+                khachhangdao.suaKhachHang(maKh, CapitalizeWords.capitalizeWords(hoTen), sdt);
             } catch (SQLException ex) {
                 Logger.getLogger(KhachHangFormController.class.getName()).log(Level.SEVERE, null, ex);
             }
