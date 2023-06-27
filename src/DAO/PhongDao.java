@@ -30,6 +30,15 @@ public class PhongDao {
         return danhSachPhong;
     }
     
+    public boolean kiemTraTonTai(String MaPhong) throws SQLException{
+        PreparedStatement ps = conn.prepareStatement("SELECT COUNT(*) FROM Phong WHERE MaPhong=?");
+        ps.setString(1, MaPhong);
+        ResultSet rs = ps.executeQuery();
+        rs.next();
+        int rowCount = rs.getInt(1);
+        return rowCount>0;
+    }
+    
     public void themPhong(String MaPhong, String LoaiPhong, float GiaThue) throws SQLException{
         PreparedStatement preparedStatement = conn.prepareStatement("INSERT INTO Phong(MaPhong, LoaiPhong, GiaThue) VALUES(UPPER(?),?,?)");
         preparedStatement.setString(1,MaPhong);

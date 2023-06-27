@@ -50,6 +50,8 @@ public class NhanVienFormController {
         mainForm.getTxt_TaiKhoanNV().setText("");
         mainForm.getTxt_MatKhauNV().setText("");
         mainForm.getTxt_VaiTroNV().setText("");
+        mainForm.getTxt_MaNV().setEnabled(true);
+        mainForm.getTxt_TaiKhoanNV().setEnabled(true);
     }
     
     NhanVienFormController(MainForm mainForm){
@@ -175,14 +177,18 @@ public class NhanVienFormController {
             String MatKhau = mainForm.getTxt_MatKhauNV().getText();
             String VaiTro = mainForm.getTxt_VaiTroNV().getText();
             try {
-                nvdao.themNhanVien(MaNhanVien, CapitalizeWords.capitalizeWords(HoTen), SDT,Email,TaiKhoan,MatKhau,CapitalizeWords.capitalizeWords(VaiTro));
-                JOptionPane.showMessageDialog(null, "Thêm thành công nhân viên" + MaNhanVien);
-                this.updateTable();
+                if(MaNhanVien.equals("") || HoTen.equals("") || SDT.equals("") || Email.equals("") || TaiKhoan.equals("") || MatKhau.equals("") || VaiTro.equals("")){
+                    JOptionPane.showMessageDialog(mainForm, "Hãy nhập đầy đủ thông tin!");
+                }else{
+                    nvdao.themNhanVien(MaNhanVien, CapitalizeWords.capitalizeWords(HoTen), SDT,Email,TaiKhoan,MatKhau,CapitalizeWords.capitalizeWords(VaiTro));
+                    JOptionPane.showMessageDialog(null, "Thêm thành công nhân viên" + MaNhanVien);
+                    this.updateTable();
+                    clearForm();
+                }
             } catch (SQLException ex) {
                 Logger.getLogger(PhongFormController.class.getName()).log(Level.SEVERE, null, ex);
                 JOptionPane.showMessageDialog(null, "Thêm thất bại nhân viên " + MaNhanVien);
             }
-            clearForm();
         });
         
         // update
@@ -198,10 +204,11 @@ public class NhanVienFormController {
             try {
                 nvdao.suaNhanVien(MaNhanVien, CapitalizeWords.capitalizeWords(HoTen), SDT,Email,TaiKhoan,MatKhau,CapitalizeWords.capitalizeWords(VaiTro));
                 this.updateTable();
+                clearForm();
             } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(mainForm, "Không thể sửa");
                 Logger.getLogger(PhongFormController.class.getName()).log(Level.SEVERE, null, ex);
             }
-            clearForm();
         });
     }
 }

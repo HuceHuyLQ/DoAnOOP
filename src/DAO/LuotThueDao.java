@@ -44,6 +44,25 @@ public class LuotThueDao {
         return rowCount>0;
     }
     
+    
+    public boolean kiemTraPhongTonTaiTrongKhoangTG(String MaPhong, String NgayThue, String GioBatDau, String GioKetThuc) throws SQLException{
+        String query = "SELECT COUNT(*) FROM LuotThue WHERE MaPhong = ? AND NgayThue = ? AND GioBatDau <= ? AND GioKetThuc >= ?";
+        try (PreparedStatement statement = conn.prepareStatement(query)) {
+            statement.setString(1, MaPhong);
+            statement.setString(2, NgayThue);
+            statement.setString(3, GioKetThuc);
+            statement.setString(4, GioBatDau);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    int count = resultSet.getInt(1);
+                    return count > 0;
+                }
+            }
+        }    
+        return false;
+    }
+    
+    
     public List<LuotThue> layDanhSachLuotThue() throws SQLException{
         List<LuotThue> danhSachLuotThue = new ArrayList<LuotThue>();
         Statement statement = conn.createStatement();
@@ -67,8 +86,7 @@ public class LuotThueDao {
     
     public void TinhTongTien(){
         Statement statement;
-        try {
-            
+        try {     
             statement = conn.createStatement();
             int resultSet = statement.executeUpdate("UPDATE luotthue INNER JOIN phong ON luotthue.MaPhong = phong.MaPhong SET luotthue.TongTien = phong.GiaThue - luotthue.Coc");  
         } catch (SQLException ex) {
@@ -121,7 +139,7 @@ public class LuotThueDao {
     
     public void suaLuotThue(String MaLuotThue, String MaKhachHang, String MaPhongLT, String MaNhanVien, String NgayThue, String GioBatDau, String GioKetThuc, double Coc, double TongTien, String GhiChu) throws SQLException{
         //Hàm sửa Luot thue
-        PreparedStatement preparedStatement = conn.prepareStatement("UPDATE LuotThue SET MaKhachHang=?,MaPhong=UPPER(?),MaNhanVien=?,NgayThue=?,GioBatDay=?,GioKetThuc=?,Coc=?,TongTien=?,GhiChu=? WHERE MaLuotThue=?");
+        PreparedStatement preparedStatement = conn.prepareStatement("UPDATE LuotThue SET MaKhachHang=?,MaPhong=?,MaNhanVien=?,NgayThue=?,GioBatDau=?,GioKetThuc=?,Coc=?,TongTien=?,GhiChu=? WHERE MaLuotThue=?");
         preparedStatement.setString(1, MaKhachHang);
         preparedStatement.setString(2, MaPhongLT);
         preparedStatement.setString(3, MaNhanVien);
@@ -134,6 +152,7 @@ public class LuotThueDao {
         preparedStatement.setString(10, MaLuotThue);
         int rs = preparedStatement.executeUpdate();
         if(rs>0){
+            TinhTongTien();
             JOptionPane.showMessageDialog(null, "Cập nhật thành công");
         }        
     }

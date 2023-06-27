@@ -338,25 +338,20 @@ public class MainForm extends javax.swing.JFrame {
         jPanel_LuotThue.add(txt_NgayGioLT, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 145, 160, -1));
 
         lbl_CocLT.setText("Cọc");
-        jPanel_LuotThue.add(lbl_CocLT, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 90, -1));
-        jPanel_LuotThue.add(txt_CocLT, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 270, 160, -1));
+        jPanel_LuotThue.add(lbl_CocLT, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 260, 90, -1));
+        jPanel_LuotThue.add(txt_CocLT, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 260, 160, -1));
 
         btn_ThemLuotThue.setText("Thêm");
-        jPanel_LuotThue.add(btn_ThemLuotThue, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, -1, -1));
+        jPanel_LuotThue.add(btn_ThemLuotThue, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 350, -1, -1));
 
         btn_SuaLuotThue.setText("Sửa");
-        jPanel_LuotThue.add(btn_SuaLuotThue, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 430, -1, -1));
+        jPanel_LuotThue.add(btn_SuaLuotThue, new org.netbeans.lib.awtextra.AbsoluteConstraints(75, 350, -1, -1));
 
         btn_XoaLuotThue.setText("Xoá");
-        jPanel_LuotThue.add(btn_XoaLuotThue, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 430, -1, -1));
+        jPanel_LuotThue.add(btn_XoaLuotThue, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 350, -1, -1));
 
         btn_TimluotThue.setText("Tìm");
-        btn_TimluotThue.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_TimluotThueActionPerformed(evt);
-            }
-        });
-        jPanel_LuotThue.add(btn_TimluotThue, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 440, -1, -1));
+        jPanel_LuotThue.add(btn_TimluotThue, new org.netbeans.lib.awtextra.AbsoluteConstraints(226, 350, -1, -1));
 
         tbl_LuotThue.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -379,11 +374,11 @@ public class MainForm extends javax.swing.JFrame {
         jPanel_LuotThue.add(jScrollPane_LuotThue, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 6, 940, 530));
 
         lbl_GhiChuLT.setText("Ghi Chú");
-        jPanel_LuotThue.add(lbl_GhiChuLT, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, -1, -1));
-        jPanel_LuotThue.add(txt_GhiChuLT, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 320, 160, -1));
+        jPanel_LuotThue.add(lbl_GhiChuLT, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 296, -1, -1));
+        jPanel_LuotThue.add(txt_GhiChuLT, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 295, 160, -1));
 
         Btn_LayDuLieuLuotThue.setText("Reset");
-        jPanel_LuotThue.add(Btn_LayDuLieuLuotThue, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 460, -1, -1));
+        jPanel_LuotThue.add(Btn_LayDuLieuLuotThue, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 390, -1, -1));
 
         lbl_MaPhongLT.setText("Mã Phòng");
         jPanel_LuotThue.add(lbl_MaPhongLT, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 75, -1, -1));
@@ -394,12 +389,12 @@ public class MainForm extends javax.swing.JFrame {
         jPanel_LuotThue.add(txt_MaNVLT, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 110, 160, -1));
 
         lbl_GioBD.setText("Giờ Bắt Đầu");
-        jPanel_LuotThue.add(lbl_GioBD, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, -1, -1));
+        jPanel_LuotThue.add(lbl_GioBD, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 184, -1, -1));
 
         lbl_GioKT.setText("Giờ Kết Thúc");
-        jPanel_LuotThue.add(lbl_GioKT, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, -1, -1));
-        jPanel_LuotThue.add(txt_GioBD, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 150, -1));
-        jPanel_LuotThue.add(txt_GioKT, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, 150, -1));
+        jPanel_LuotThue.add(lbl_GioKT, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 225, -1, -1));
+        jPanel_LuotThue.add(txt_GioBD, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 184, 160, -1));
+        jPanel_LuotThue.add(txt_GioKT, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 224, 160, -1));
 
         jTabbed_FrmMain.addTab("Lượt Thuê", jPanel_LuotThue);
 
@@ -647,6 +642,7 @@ public class MainForm extends javax.swing.JFrame {
         txt_CocLT.setText(String.valueOf(Coc));
 //        txt_TongTienLT.setText(String.valueOf(TongTien));
         txt_GhiChuLT.setText((String) GhiChu);
+        txt_MaLuotThue.setEnabled(false);
 
     }//GEN-LAST:event_tbl_LuotThueMouseClicked
 
@@ -658,6 +654,7 @@ public class MainForm extends javax.swing.JFrame {
         txt_MaKH.setText(MaKhachHang);
         txt_TenKhachHang.setText(HoTen);
         txt_SDTKhachHang.setText(SDT);
+        txt_MaKH.setEnabled(false);
     }//GEN-LAST:event_tbl_KhachHangMouseClicked
 
     private void tbl_PhongHopMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_PhongHopMouseClicked
@@ -668,6 +665,7 @@ public class MainForm extends javax.swing.JFrame {
         txt_MaPhong.setText(MaPhong);
         txt_LoaiPhong.setText(LoaiPhong);
         txt_GiaTien.setText(String.valueOf(GiaThue));
+        txt_MaPhong.setEnabled(false);
     }//GEN-LAST:event_tbl_PhongHopMouseClicked
 
     private void tbl_CSVCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_CSVCMouseClicked
@@ -679,7 +677,8 @@ public class MainForm extends javax.swing.JFrame {
         txt_MaCSVC.setText(MaCSVC);
         txt_TenVatTu.setText(TenVatTu);
         txt_GiaCSVC.setText(String.valueOf(GiaCSVC));
-        txt_GhiChuCSVC.setText(GhiChu);  
+        txt_GhiChuCSVC.setText(GhiChu);
+        txt_MaCSVC.setEnabled(false);
     }//GEN-LAST:event_tbl_CSVCMouseClicked
 
     private void tbl_NhanVienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_NhanVienMouseClicked
@@ -698,11 +697,9 @@ public class MainForm extends javax.swing.JFrame {
         txt_VaiTroNV.setText(VaiTro);
         txt_TaiKhoanNV.setText(TenTK);
         txt_MatKhauNV.setText(MK);
+        txt_MaNV.setEnabled(false);
+        txt_TaiKhoanNV.setEnabled(false);
     }//GEN-LAST:event_tbl_NhanVienMouseClicked
-
-    private void btn_TimluotThueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_TimluotThueActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_TimluotThueActionPerformed
 
     public JLabel getLbl_GioBD() {
         return lbl_GioBD;

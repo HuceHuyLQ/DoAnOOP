@@ -53,8 +53,8 @@ public class LuotThueFormController {
         LuotThueFormController.mainForm.getTxt_GioBD().setText("");
         LuotThueFormController.mainForm.getTxt_GioKT().setText("");
         LuotThueFormController.mainForm.getTxt_CocLT().setText("");
-//        LuotThueFormController.mainForm.getTxt_TongTienLT().setText("");
         LuotThueFormController.mainForm.getTxt_GhiChuLT().setText("");
+        mainForm.getTxt_MaLuotThue().setEnabled(true);
     }
     
     public LuotThueFormController(MainForm frm_LuotThue){
@@ -76,9 +76,14 @@ public class LuotThueFormController {
             String NgayThue = frm_LuotThue.getTxt_NgayGioLT().getText();
             String GioBatDau = frm_LuotThue.getTxt_GioBD().getText();
             String GioKetThuc = frm_LuotThue.getTxt_GioKT().getText();
-            double Coc = Double.parseDouble(frm_LuotThue.getTxt_CocLT().getText());
-//            double TongTien = Double.parseDouble(frm_LuotThue.getTxt_TongTienLT().getText());
-            double TongTien=0f;
+            Double Coc;
+            String CocTxt = frm_LuotThue.getTxt_Coc().getText();
+            if(CocTxt.isEmpty()){
+                Coc = null;
+            }else{
+                Coc =Double.parseDouble(CocTxt);
+            }
+            double TongTien=0;
             String GhiChu;
             if (frm_LuotThue.getTxt_GhiChuLT().getText().isEmpty()) {
                 GhiChu = "";
@@ -87,9 +92,14 @@ public class LuotThueFormController {
             }
             try {
                 boolean maTonTai = luotThueDao.kiemTraTonTai(MaLuotThue);
+                boolean phongTonTai = luotThueDao.kiemTraPhongTonTaiTrongKhoangTG(MaPhong, NgayThue, GioBatDau, GioKetThuc);
                 if(maTonTai){
                     JOptionPane.showMessageDialog(frm_LuotThue, "Mã Lượt Thuê Đã Tồn Taị!!!");
-                }
+                } else if(phongTonTai){
+                    JOptionPane.showMessageDialog(frm_LuotThue, "Phòng đã tồn tại trong khoảng thời gian này!");
+                } else if(MaLuotThue.equals("") || MaKhachHang.equals("")||MaPhong.equals("")||MaNhanVien.equals("")||NgayThue.equals("")||GioBatDau.equals("")||GioKetThuc.equals("")||Coc.equals("")){
+                    JOptionPane.showMessageDialog(frm_LuotThue, "Hãy nhập đầy đủ thông tin!");
+                } 
                 luotThueDao.themLuotThue(MaLuotThue, MaKhachHang, MaPhong, MaNhanVien, NgayThue, GioBatDau, GioKetThuc, Coc, TongTien, GhiChu);
                 JOptionPane.showMessageDialog(null, "Thêm Lượt Thuê Thành Công ");
                 updateTable();
@@ -125,16 +135,15 @@ public class LuotThueFormController {
                 LuotThue luotThueCu = luotThueDao.timLuotThueTheoMa(MaLuotThue); // Lấy thông tin lượt thuê cũ
                 if (!luotThueCu.getMaLuotThue().equals(MaLuotThue)) {
                     JOptionPane.showMessageDialog(null, "Không được sửa Mã Lượt Thuê!");
+                }else{
+                    luotThueDao.suaLuotThue(MaLuotThue, MaKhachHang, MaPhong, MaNhanVien, NgayThue, GioBatDau, GioKetThuc, Coc, TongTien, GhiChu);
+                    updateTable();
+                    clearForm();
                 }
-                luotThueDao.suaLuotThue(MaLuotThue, MaKhachHang, MaPhong, MaNhanVien, NgayThue, GioBatDau, GioKetThuc, Coc, TongTien, GhiChu);
-                updateTable();
-                clearForm();
             } catch (SQLException ex) {
                 Logger.getLogger(LuotThueFormController.class.getName()).log(Level.SEVERE, null, ex);
                 JOptionPane.showMessageDialog(frm_LuotThue, "Thất bại. Không tìm thấy dữ liệu!!!");
             }
-            updateTable();
-            clearForm();
         });
         
         // DELETE
@@ -157,18 +166,18 @@ public class LuotThueFormController {
         //SEARCH
         frm_LuotThue.getBtn_TimluotThue().addActionListener((ActionEvent e) ->{
             String MaLuotThue = frm_LuotThue.getTxt_MaLuotThue().getText();
-            LuotThue lt = null;
+            LuotThue lt=null;
             if(MaLuotThue.equals("")){
-                JOptionPane.showMessageDialog(null, "Không có thông tin để tìm kiếm. Vui lòng nhập Mã Lượt Thuê để tìm kiếm");
-            }else {
+                JOptionPane.showMessageDialog(null, "Vui lòng nhập Mã Lượt Thuê để tìm kiếm");
+            } else{
                 try{
                     lt = luotThueDao.timLuotThueTheoMa(MaLuotThue);
                     if(lt != null){
                         model = (DefaultTableModel) LuotThueFormController.mainForm.getTbl_LuotThue().getModel();
                         model.setRowCount(0); 
-                        Object[] rowData = {lt.getMaLuotThue(),lt.getMaKhachHang(),lt.getMaPhong(),lt.getMaNhanVien(),lt.getNgayThue(),lt.getCoc(),lt.getTongTien(),lt.getGhiChu()};
+                        Object[] rowData = {lt.getMaLuotThue(),lt.getMaKhachHang(),lt.getMaPhong(),lt.getMaNhanVien(),lt.getNgayThue(),lt.getGioBatDau(),lt.getGioKetThuc(),lt.getCoc(),lt.getTongTien(),lt.getGhiChu()};
                         model.addRow(rowData);
-                    }else{
+                    } else{
                         JOptionPane.showMessageDialog(null, "Không tìm thấy Lượt Thuê có mã "+MaLuotThue);
                     }
                 }catch(SQLException ex){
@@ -178,7 +187,5 @@ public class LuotThueFormController {
         });
         
         
-    }
-    
-    
+    } 
 }

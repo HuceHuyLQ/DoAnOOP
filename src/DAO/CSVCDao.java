@@ -32,6 +32,15 @@ public class CSVCDao {
         }
         return danhSachCSVC;
     }
+    
+    public boolean kiemTraTonTai(String MaCSVC) throws SQLException{
+        PreparedStatement ps = conn.prepareStatement("SELECT COUNT(*) FROM CSVC WHERE MaCSVC=?");
+        ps.setString(1, MaCSVC);
+        ResultSet rs = ps.executeQuery();
+        rs.next();
+        int rowCount = rs.getInt(1);
+        return rowCount>0;
+    }
 
     public void themCSVC(String MaCSVC, String TenVatTu, double GiaCSVC, String GhiChuCSVC) throws SQLException{
         PreparedStatement prepardStatement = conn.prepareStatement("INSERT INTO CSVC(MaCSVC, TenVatTu, Gia, GhiChu) VALUES(?,?,?,?)");
@@ -41,7 +50,7 @@ public class CSVCDao {
         prepardStatement.setString(4,GhiChuCSVC);
         prepardStatement.executeUpdate();
     }
-public CSVC timCSVCTheoMa(String MaCSVC) throws SQLException{
+    public CSVC timCSVCTheoMa(String MaCSVC) throws SQLException{
         String tenVatTu;
         Double giaCSVC;
         String ghiChuCSVC;
@@ -74,10 +83,10 @@ public CSVC timCSVCTheoMa(String MaCSVC) throws SQLException{
         if(TenVatTu.equals("")){
             //Chỉ sửa GiaCSVC
             if(rs.next()){
-                preparedStatement = conn.prepareStatement("UPDATE CSVC SET Gia = ? WHERE MaCSVC = ?");
+                preparedStatement = conn.prepareStatement("UPDATE CSVC SET Gia = ?, GhiChu=? WHERE MaCSVC = ?");
                 preparedStatement.setDouble(1,GiaCSVC);
-                preparedStatement.setString(2,MaCSVC);
-//                preparedStatement.setString(3, GhiChuCSVC);
+                preparedStatement.setString(3,MaCSVC);
+                preparedStatement.setString(2, GhiChuCSVC);
                 preparedStatement.execute();
                 JOptionPane.showMessageDialog(null, "Sửa thành công giá CSVC " + MaCSVC, "Thành Công", 1);
             }else{
@@ -86,10 +95,10 @@ public CSVC timCSVCTheoMa(String MaCSVC) throws SQLException{
         }else if(GiaCSVC==0){
             //Chỉ sửa TenVatTu
             if(rs.next()){
-                preparedStatement = conn.prepareStatement("UPDATE CSVC SET TenVatTu = ? WHERE MaCSVC = ?");
+                preparedStatement = conn.prepareStatement("UPDATE CSVC SET TenVatTu = ?, GhiChu=? WHERE MaCSVC = ?");
                 preparedStatement.setString(1, TenVatTu);
-                preparedStatement.setString(2,MaCSVC);
-//                preparedStatement.setString(3, GhiChuCSVC);
+                preparedStatement.setString(3,MaCSVC);
+                preparedStatement.setString(2, GhiChuCSVC);
                 preparedStatement.execute();
                 JOptionPane.showMessageDialog(null, "Sửa thành công tên vật tư " + MaCSVC, "Thành Công", 1);
             }else{
@@ -98,11 +107,11 @@ public CSVC timCSVCTheoMa(String MaCSVC) throws SQLException{
         }else{
             //Sửa GiaCSVC và TenVatTu
             if(rs.next()){
-                preparedStatement = conn.prepareStatement("UPDATE CSVC SET TenVatTu = ?, Gia = ? WHERE MaCSVC = ?");
+                preparedStatement = conn.prepareStatement("UPDATE CSVC SET TenVatTu = ?, Gia = ?, GhiChu = ? WHERE MaCSVC = ?");
                 preparedStatement.setString(1,TenVatTu);
                 preparedStatement.setDouble(2,GiaCSVC);
-                preparedStatement.setString(3,MaCSVC);
-//                preparedStatement.setString(4, GhiChuCSVC);
+                preparedStatement.setString(4,MaCSVC);
+                preparedStatement.setString(3, GhiChuCSVC);
                 preparedStatement.execute();
                 JOptionPane.showMessageDialog(null, "Sửa thành công thông tin CSVC " + MaCSVC, "Thành Công", 1);
             }else{

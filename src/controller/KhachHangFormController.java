@@ -46,6 +46,7 @@ public class KhachHangFormController {
         KhachHangFormController.mainForm.getTxt_MaKH().setText("");
         KhachHangFormController.mainForm.getTxt_TenKhachHang().setText("");
         KhachHangFormController.mainForm.getTxt_SDTKhachHang().setText("");
+        mainForm.getTxt_MaKH().setEnabled(true);
     }
     
     public KhachHangFormController(MainForm frm_khachhang) {
@@ -59,29 +60,39 @@ public class KhachHangFormController {
                 String makh = frm_khachhang.getTxt_MaKH().getText();
                 String hoten = frm_khachhang.getTxt_TenKhachHang().getText();
                 String sdt = frm_khachhang.getTxt_SDTKhachHang().getText();
-                khachhangdao.themKhachHang(makh, CapitalizeWords.capitalizeWords(hoten), sdt);
+                boolean maTonTai = khachhangdao.kiemTraTonTai(makh);
+                if(makh.equals("") || hoten.equals("") || sdt.equals("")){
+                    JOptionPane.showMessageDialog(mainForm, "Hãy nhập đầy đủ thông tin!");
+                } else if(maTonTai){
+                    JOptionPane.showMessageDialog(mainForm, "Mã Khách Hàng đã tồn tại!");
+                } else{
+                    khachhangdao.themKhachHang(makh, CapitalizeWords.capitalizeWords(hoten), sdt);
+                    JOptionPane.showMessageDialog(mainForm, "Thêm khách hàng thành công!");
+                    updateTableKH();
+                    clearForm();
+                }
             } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(mainForm, "Không thể thêm khách hàng!");
                 Logger.getLogger(KhachHangFormController.class.getName()).log(Level.SEVERE, null, ex);
             }
-            updateTableKH();
-            clearForm();
         });
         
         
         // delete
-        frm_khachhang.getBtn_XoaKhachHang().addActionListener((ActionEvent e) -> {
+        frm_khachhang.getBtn_XoaKhachHang().addActionListener((ActionEvent e) -> {         
             int row = frm_khachhang.getTbl_KhachHang().getSelectedRow();
             String cell = frm_khachhang.getTbl_KhachHang().getModel().getValueAt(row, 0).toString();
             int choice = JOptionPane.showConfirmDialog((Component)null,"Xoá khách hàng " + cell + "?","XOÁ",JOptionPane.YES_NO_OPTION);
-            if(choice == 0){
-                try {
-                    khachhangdao.xoaKhachHang(cell);
-                    JOptionPane.showMessageDialog(null, "Đã xoá khách hàng "+ cell);
-                    updateTableKH();
-                } catch (SQLException ex) {
-                    Logger.getLogger(KhachHangFormController.class.getName()).log(Level.SEVERE, null, ex);
+                if(choice == 0){
+                    try {
+                        khachhangdao.xoaKhachHang(cell);
+                        JOptionPane.showMessageDialog(null, "Đã xoá khách hàng "+ cell);
+                        updateTableKH();
+                    } catch (SQLException ex) {
+                        JOptionPane.showMessageDialog(mainForm, "Hãy chọn khách hàng cần xoá!");
+                        Logger.getLogger(KhachHangFormController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
-            }
             clearForm();
         });
         
@@ -154,12 +165,13 @@ public class KhachHangFormController {
             String hoTen = frm_khachhang.getTxt_TenKhachHang().getText();
             String sdt = frm_khachhang.getTxt_SDTKhachHang().getText();
             try {
-                khachhangdao.suaKhachHang(maKh, CapitalizeWords.capitalizeWords(hoTen), sdt);
+                    khachhangdao.suaKhachHang(maKh, CapitalizeWords.capitalizeWords(hoTen), sdt);
+                    updateTableKH();
+                    clearForm();
             } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(mainForm, "Hãy chọn khách hàng cần sửa thông tin!");                
                 Logger.getLogger(KhachHangFormController.class.getName()).log(Level.SEVERE, null, ex);
             }
-            updateTableKH();
-            clearForm();
         });
     }
     

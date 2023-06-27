@@ -348,6 +348,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="&#x110;&#xe3; c&#xf3; t&#xe0;i kho&#x1ea3;n"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="lbl_DaCoTKMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="Btn_DangKy">
               <Properties>
