@@ -77,6 +77,8 @@ public class CSVCFormController {
                     JOptionPane.showMessageDialog(mainForm, "Hãy nhập đầy đủ thông tin!");
                 }else if(maTonTai){
                     JOptionPane.showMessageDialog(mainForm, "Mã CSVC đã tồn tại!");
+                }else if(GiaCSVC<0){
+                    JOptionPane.showMessageDialog(mainForm, "Dữ liệu không phù hợp!");
                 }else{
                     csvcdao.themCSVC(MaCSVC, CapitalizeWords.capitalizeWords(TenVatTu), GiaCSVC, GhiChuCSVC);
                     JOptionPane.showMessageDialog(null, "Thêm thành công CSVC " + MaCSVC);
@@ -102,7 +104,11 @@ public class CSVCFormController {
                 giaCSVC = Double.valueOf(frm_CSVC.getTxt_GiaCSVC().getText());
             }
             try {
-                csvcdao.suaCSVC(maCSVC, CapitalizeWords.capitalizeWords(tenVatTu), giaCSVC, ghiChuCSVC);
+                if(giaCSVC<0){
+                    JOptionPane.showMessageDialog(mainForm, "Dữ liệu không phù hợp!");
+                }else{
+                    csvcdao.suaCSVC(maCSVC, CapitalizeWords.capitalizeWords(tenVatTu), giaCSVC, ghiChuCSVC);
+                }
             } catch (SQLException ex) {
                 Logger.getLogger(CSVCFormController.class.getName()).log(Level.SEVERE, null, ex);
             }

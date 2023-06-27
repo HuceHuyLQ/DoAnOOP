@@ -77,6 +77,8 @@ public class PhongFormController {
                     JOptionPane.showMessageDialog(mainForm, "Hãy nhập đầy đủ thông tin!");
                 }else if(maTonTai){
                     JOptionPane.showMessageDialog(frm_Phong, "Mã Phòng đã tồn tại!");
+                }else if(GiaThue<0){
+                    JOptionPane.showMessageDialog(frm_Phong, "Dữ liệu không phù hợp!");
                 }else{
                     phongdao.themPhong(MaPhong, CapitalizeWords.capitalizeWords(LoaiPhong), GiaThue);
                     JOptionPane.showMessageDialog(null, "Thêm thành công phòng " + MaPhong);
@@ -109,9 +111,13 @@ public class PhongFormController {
                 GiaThue =Float.parseFloat(GiaThueTxt);
             }
             try {
-                phongdao.suaPhong(maPhong, CapitalizeWords.capitalizeWords(loaiPhong), GiaThue);
-                updateTable();
-                clearForm();
+                if(GiaThue<0){
+                    JOptionPane.showMessageDialog(frm_Phong, "Dữ liệu không phù hợp!");
+                }else{
+                    phongdao.suaPhong(maPhong, CapitalizeWords.capitalizeWords(loaiPhong), GiaThue);
+                    updateTable();
+                    clearForm();
+                }
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(mainForm, "Hãy chọn phòng cẩn sửa!");
                 Logger.getLogger(PhongFormController.class.getName()).log(Level.SEVERE, null, ex);
