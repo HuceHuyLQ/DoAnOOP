@@ -51,6 +51,14 @@ public class NhanVienDao {
         int rowCount = rs.getInt(1);
         return rowCount>0;
     }
+    public boolean kiemTraTonTaiTK(String TaiKhoanNV) throws SQLException{
+        PreparedStatement ps = conn.prepareStatement("SELECT COUNT(*) FROM NhanVien WHERE TenTK=?");
+        ps.setString(1, TaiKhoanNV);
+        ResultSet rs = ps.executeQuery();
+        rs.next();
+        int rowCount = rs.getInt(1);
+        return rowCount>0;
+    }
     
     public void themNhanVien(String maNhanVien, String tenNhanVien, String sdtNhanVien, String emailNhanVien, String tenTK, String matKhau, String vaiTro) throws SQLException{
         PreparedStatement preparedStatement = conn.prepareStatement("INSERT INTO NhanVien(MaNhanVien, TenNhanVien, SdtNV, Email, TenTk, MatKhau, VaiTro) VALUES(?,?,?,?,?,?,?)");

@@ -178,12 +178,14 @@ public class NhanVienFormController {
             String VaiTro = mainForm.getTxt_VaiTroNV().getText();
             try {
                 boolean nncu = nvdao.kiemTraTonTai(MaNhanVien);
+                boolean tkcu = nvdao.kiemTraTonTaiTK(TaiKhoan);
                 if(MaNhanVien.equals("") || HoTen.equals("") || SDT.equals("") || Email.equals("") || TaiKhoan.equals("") || MatKhau.equals("") || VaiTro.equals("")){
                     JOptionPane.showMessageDialog(mainForm, "Hãy nhập đầy đủ thông tin!");
                 } else if(nncu){
                     JOptionPane.showMessageDialog(mainForm, "Mã nhân viên đã tồn tại!");
-                }
-                else{
+                } else if(tkcu){
+                    JOptionPane.showMessageDialog(mainForm, "Tài khoản đã tồn tại");
+                }else{
                     nvdao.themNhanVien(MaNhanVien, CapitalizeWords.capitalizeWords(HoTen), SDT,Email,TaiKhoan,MatKhau,CapitalizeWords.capitalizeWords(VaiTro));
                     JOptionPane.showMessageDialog(null, "Thêm thành công nhân viên" + MaNhanVien);
                     this.updateTable();
@@ -206,9 +208,14 @@ public class NhanVienFormController {
             String MatKhau = mainForm.getTxt_MatKhauNV().getText();
             String VaiTro = mainForm.getTxt_VaiTroNV().getText();
             try {
-                nvdao.suaNhanVien(MaNhanVien, CapitalizeWords.capitalizeWords(HoTen), SDT,Email,TaiKhoan,MatKhau,CapitalizeWords.capitalizeWords(VaiTro));
-                this.updateTable();
-                clearForm();
+                boolean tkcu = nvdao.kiemTraTonTaiTK(TaiKhoan);
+                if(tkcu){
+                    nvdao.suaNhanVien(MaNhanVien, CapitalizeWords.capitalizeWords(HoTen), SDT,Email,TaiKhoan,MatKhau,CapitalizeWords.capitalizeWords(VaiTro));
+                    this.updateTable();
+                    clearForm();
+                }else{
+                    JOptionPane.showMessageDialog(mainForm, "Không thể sửa tên Tài Khoản!");
+                }
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(mainForm, "Không thể sửa");
                 Logger.getLogger(PhongFormController.class.getName()).log(Level.SEVERE, null, ex);
