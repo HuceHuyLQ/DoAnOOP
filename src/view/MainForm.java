@@ -148,9 +148,6 @@ public class MainForm extends javax.swing.JFrame {
         lbl_Username = new javax.swing.JLabel();
         lbl_IdTag = new javax.swing.JLabel();
         lbl_headerMaNV = new javax.swing.JLabel();
-        jMenu_MainForm = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -567,14 +564,6 @@ public class MainForm extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanel_Header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1240, 120));
-
-        jMenu1.setText("File");
-        jMenu_MainForm.add(jMenu1);
-
-        jMenu2.setText("Edit");
-        jMenu_MainForm.add(jMenu2);
-
-        setJMenuBar(jMenu_MainForm);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -1077,30 +1066,6 @@ public class MainForm extends javax.swing.JFrame {
 
     public void setBtn_XoaPhong(JButton btn_XoaPhong) {
         this.btn_XoaPhong = btn_XoaPhong;
-    }
-
-    public JMenu getjMenu1() {
-        return jMenu1;
-    }
-
-    public void setjMenu1(JMenu jMenu1) {
-        this.jMenu1 = jMenu1;
-    }
-
-    public JMenu getjMenu2() {
-        return jMenu2;
-    }
-
-    public void setjMenu2(JMenu jMenu2) {
-        this.jMenu2 = jMenu2;
-    }
-
-    public JMenuBar getjMenu_MainForm() {
-        return jMenu_MainForm;
-    }
-
-    public void setjMenu_MainForm(JMenuBar jMenu_MainForm) {
-        this.jMenu_MainForm = jMenu_MainForm;
     }
 
     public JPanel getjPanel_CoSoVatChat() {
@@ -1646,9 +1611,6 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenu_MainForm;
     private javax.swing.JPanel jPanel_CoSoVatChat;
     private javax.swing.JPanel jPanel_Header;
     private javax.swing.JPanel jPanel_KhachHang;
