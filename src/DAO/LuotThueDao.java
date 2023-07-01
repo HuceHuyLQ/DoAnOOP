@@ -49,7 +49,7 @@ public class LuotThueDao {
     
     
     public boolean kiemTraPhongTonTaiTrongKhoangTG(String MaPhong, String NgayThue, String GioBatDau, String GioKetThuc) throws SQLException{
-        String query = "SELECT COUNT(*) FROM LuotThue WHERE MaPhong = ? AND NgayThue = ? AND GioBatDau <= ? AND GioKetThuc >=?";
+        String query = "SELECT COUNT(*) FROM LuotThue WHERE MaPhong = ? AND NgayThue = ? AND GioBatDau <= ? AND GioKetThuc >= ?";
         try (PreparedStatement statement = conn.prepareStatement(query)) {
             statement.setString(1, MaPhong);
             statement.setString(2, NgayThue);
@@ -70,8 +70,8 @@ public class LuotThueDao {
         try (PreparedStatement statement = conn.prepareStatement(query)) {
             statement.setString(1, MaPhong);
             statement.setString(2, NgayThue);
-            statement.setString(3, GioKetThuc);
-            statement.setString(4, GioBatDau);
+            statement.setString(3, GioBatDau);
+            statement.setString(4, GioKetThuc);
             statement.setString(5, MaLuotThue);
             try (ResultSet resultSet = statement.executeQuery()) {
                 if (resultSet.next()) {
@@ -281,10 +281,18 @@ public class LuotThueDao {
     
     public void suaLuotThuePro(String MaLuotThue, String MaKhachHang, String MaPhongLT, String MaNhanVien, String NgayThue, String GioBatDau, String GioKetThuc, double Coc, double TongTien, String GhiChu) throws SQLException{
         //Hàm sửa Luot thue
-        PreparedStatement preparedStatement = conn.prepareStatement("UPDATE luotthue AS lt " +
-                "SET MaKhachHang=?, MaPhong=?, MaNhanVien=?, NgayThue=?, GioBatDau=?, GioKetThuc=?, Coc=?, TongTien=?, GhiChu=? " +
-                "WHERE MaLuotThue=? AND NOT EXISTS (SELECT * FROM (SELECT * FROM LuotThue) AS tmp " +
-                "WHERE tmp.MaPhong = ? AND tmp.NgayThue = ? AND tmp.GioBatDau <= ? AND tmp.GioKetThuc >= ? AND tmp.MaLuotThue <> ?)");
+        PreparedStatement preparedStatement = conn.prepareStatement("UPDATE luotthue AS lt\n" +
+                    "SET MaKhachHang = ?, MaPhong = ?, MaNhanVien = ?, NgayThue = ?, GioBatDau = ?, GioKetThuc = ?, Coc = ?, TongTien = ?, GhiChu = ?\n" +
+                    "WHERE MaLuotThue = ?\n" +
+                    "AND NOT EXISTS (\n" +
+                    "    SELECT * FROM (\n" +
+                    "        SELECT * FROM LuotThue AS tmp\n" +
+                    "        WHERE tmp.MaPhong = ?\n" +
+                    "        AND tmp.NgayThue = ?\n" +
+                    "        AND (tmp.GioBatDau <= ? AND tmp.GioKetThuc >= ?) \n" +
+                    "        AND tmp.MaLuotThue <>?\n" +
+                    "    ) AS subquery\n" +
+                    ");");
         preparedStatement.setString(1, MaKhachHang);
         preparedStatement.setString(2, MaPhongLT);
         preparedStatement.setString(3, MaNhanVien);
@@ -297,8 +305,8 @@ public class LuotThueDao {
         preparedStatement.setString(10, MaLuotThue);
         preparedStatement.setString(11, MaPhongLT);
         preparedStatement.setString(12, NgayThue);
-        preparedStatement.setString(13, GioKetThuc);
-        preparedStatement.setString(14, GioBatDau);
+        preparedStatement.setString(13, GioBatDau);
+        preparedStatement.setString(14, GioKetThuc);
         preparedStatement.setString(15, MaLuotThue);
         int rs = preparedStatement.executeUpdate();
         if(rs>0){
@@ -309,3 +317,16 @@ public class LuotThueDao {
         }      
     }
 }
+
+
+//("UPDATE luotthue AS lt\n" +
+//                    "SET MaKhachHang=?, MaPhong=?, MaNhanVien=?, NgayThue=?, GioBatDau=?, GioKetThuc=?, Coc=?, TongTien=?, GhiChu=?\n" +
+//                    "WHERE MaLuotThue=? AND NOT EXISTS (\n" +
+//                    "    SELECT * FROM (\n" +
+//                    "        SELECT * FROM LuotThue\n" +
+//                    "        WHERE (GioBatDau <= ? AND GioKetThuc >= ?) \n" +
+//                    "    ) AS tmp\n" +
+//                    "    WHERE tmp.MaPhong = ? AND tmp.NgayThue = ? AND tmp.MaLuotThue <> ?\n" +
+//                    ")");
+
+//AND MaLuotThue <> ?

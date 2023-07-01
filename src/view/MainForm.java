@@ -604,7 +604,6 @@ public class MainForm extends javax.swing.JFrame {
         txt_GioBD.setText(GioBatDau);
         txt_GioKT.setText(GioKetThuc);
         txt_CocLT.setText(String.valueOf(Coc));
-//        txt_TongTienLT.setText(String.valueOf(TongTien));
         txt_GhiChuLT.setText((String) GhiChu);
         txt_MaLuotThue.setEnabled(false);
 
@@ -650,8 +649,14 @@ public class MainForm extends javax.swing.JFrame {
         String MaNV = tbl_NhanVien.getValueAt(row, 0).toString();
         String TenNV = tbl_NhanVien.getValueAt(row, 1).toString();
         String SDTNV = tbl_NhanVien.getValueAt(row, 2).toString();
-        String Email = tbl_NhanVien.getValueAt(row, 3).toString();
-        String VaiTro = tbl_NhanVien.getValueAt(row, 6).toString();
+        String Email = tbl_NhanVien.getValueAt(row, 3).toString(); 
+        String VaiTro;
+        Object VaiTro1 = tbl_NhanVien.getValueAt(row, 6);
+        if(VaiTro1 == null){
+            VaiTro = "";
+        }else{
+            VaiTro = VaiTro1.toString();
+        }
         String TenTK = tbl_NhanVien.getValueAt(row, 4).toString();
         String MK = tbl_NhanVien.getValueAt(row, 5).toString();
         txt_MaNV.setText(MaNV);
@@ -662,7 +667,6 @@ public class MainForm extends javax.swing.JFrame {
         txt_TaiKhoanNV.setText(TenTK);
         txt_MatKhauNV.setText(MK);
         txt_MaNV.setEnabled(false);
-        txt_TaiKhoanNV.setEnabled(false);
     }//GEN-LAST:event_tbl_NhanVienMouseClicked
 
     public JLabel getLbl_GioBD() {
@@ -739,14 +743,6 @@ public class MainForm extends javax.swing.JFrame {
         this.lbl_NgayGioLT = lbl_NgayGioLT;
     }
 
-//    public JLabel getLbl_TongTienLT() {
-//        return lbl_TongTienLT;
-//    }
-//
-//    public void setLbl_TongTienLT(JLabel lbl_TongTienLT) {
-//        this.lbl_TongTienLT = lbl_TongTienLT;
-//    }
-
     public JTextField getTxt_CocLT() {
         return txt_CocLT;
     }
@@ -787,63 +783,7 @@ public class MainForm extends javax.swing.JFrame {
         this.txt_NgayGioLT = txt_NgayGioLT;
     }
 
-    
-    
-//    public JTable getTbl_ThongKeKH() {
-//        return Tbl_ThongKeKH;
-//    }
-//
-//    public void setTbl_ThongKeKH(JTable Tbl_ThongKeKH) {
-//        this.Tbl_ThongKeKH = Tbl_ThongKeKH;
-//    }
-//
-//    public JScrollPane getTbl_ThongKeLuotThue() {
-//        return Tbl_ThongKeLuotThue;
-//    }
-//
-//    public void setTbl_ThongKeLuotThue(JScrollPane Tbl_ThongKeLuotThue) {
-//        this.Tbl_ThongKeLuotThue = Tbl_ThongKeLuotThue;
-//    }
-//
-//    public JScrollPane getTbl_ThongKePhong() {
-//        return Tbl_ThongKePhong;
-//    }
-//
-//    public void setTbl_ThongKePhong(JScrollPane Tbl_ThongKePhong) {
-//        this.Tbl_ThongKePhong = Tbl_ThongKePhong;
-//    }
-//
-//    public JPanel getjPanel1() {
-//        return jPanel1;
-//    }
-//
-//    public void setjPanel1(JPanel jPanel1) {
-//        this.jPanel1 = jPanel1;
-//    }
-//
-//    public JScrollPane getjScrollPane1() {
-//        return jScrollPane1;
-//    }
-//
-//    public void setjScrollPane1(JScrollPane jScrollPane1) {
-//        this.jScrollPane1 = jScrollPane1;
-//    }
-//
-//    public JTable getjTable2() {
-//        return jTable2;
-//    }
-//
-//    public void setjTable2(JTable jTable2) {
-//        this.jTable2 = jTable2;
-//    }
-//
-//    public JTable getjTable3() {
-//        return jTable3;
-//    }
-//
-//    public void setjTable3(JTable jTable3) {
-//        this.jTable3 = jTable3;
-//    }
+
 
     public JLabel getLbl_EmailNV() {
         return lbl_EmailNV;

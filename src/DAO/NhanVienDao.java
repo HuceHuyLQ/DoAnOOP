@@ -132,7 +132,7 @@ public class NhanVienDao {
     }
 
     
-    public static String getValueForQuery(String query, String TenNV, String SdtNV, String EmailNV, String MatKhauNV, String VaiTro) {
+    public static String getValueForQuery(String query, String TenNV, String SdtNV, String EmailNV, String MatKhauNV, String VaiTro, String TaiKhoanNV) {
         if (query.contains("TenNhanVien")) {
             return TenNV;
         } else if (query.contains("SdtNV")) {
@@ -143,6 +143,8 @@ public class NhanVienDao {
             return MatKhauNV;
         } else if (query.contains("VaiTro")) {
             return VaiTro;
+        } else if (query.contains("TenTK")){
+            return TaiKhoanNV;
         }
         return null;
     }
@@ -183,14 +185,16 @@ public class NhanVienDao {
                 updateQueries.add("UPDATE NhanVien SET VaiTro = ? WHERE MaNhanVien = ?");
 //                updateMessage.append("Cập nhật thành công vai trò nhân viên ").append(MaNV).append("\n");
             }
-                updateQueries.add("UPDATE NhanVien SET TenNhanVien = ? WHERE MaNhanVien = ?");
+            if(!TaiKhoanNV.equals("")){
+                updateQueries.add("UPDATE NhanVien SET TenTK = ? WHERE MaNhanVien = ?");
 //                updateMessage.append("Cập nhật thành công nhân viên ").append(MaNV).append("\n");
+            }
             ps.close();
 
             if (!updateQueries.isEmpty()) {
                 for (String query : updateQueries) {
                     ps = conn.prepareStatement(query);
-                    ps.setString(1, getValueForQuery(query, TenNV, SdtNV, EmailNV, MatKhauNV, VaiTro));
+                    ps.setString(1, getValueForQuery(query, TenNV, SdtNV, EmailNV, MatKhauNV, VaiTro, TaiKhoanNV));
                     ps.setString(2, MaNV);
                     ps.executeUpdate();
                 }

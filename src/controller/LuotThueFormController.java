@@ -141,21 +141,18 @@ public class LuotThueFormController {
             } else {
                 GhiChu = frm_LuotThue.getTxt_GhiChuLT().getText();
             }           
-            int SltRow = frm_LuotThue.getTbl_LuotThue().getSelectedRow();
-            String GioBatDauCu = (String) frm_LuotThue.getTbl_LuotThue().getValueAt(SltRow, 5);
-            String GioKetThucCu = (String) frm_LuotThue.getTbl_LuotThue().getValueAt(SltRow, 6);   
-            String MaLT = (String) frm_LuotThue.getTbl_LuotThue().getValueAt(SltRow, 0);  
             if (Coc < 0) {
                 JOptionPane.showMessageDialog(frm_LuotThue, "Dữ liệu không phù hợp!");
-            } else 
+            } else  {
                 try {
-                    luotThueDao.suaLuotThuePro(MaLuotThue, MaKhachHang, MaPhong, MaNhanVien, NgayThue, GioBatDau, GioKetThuc, Coc, TongTien, GhiChu);
-                    updateTable();
-                    clearForm();                  
+                        luotThueDao.suaLuotThuePro(MaLuotThue, MaKhachHang, MaPhong, MaNhanVien, NgayThue, GioBatDau, GioKetThuc, Coc, TongTien, GhiChu);
+                        updateTable();
+                        clearForm();          
                 } catch (SQLException ex) {
                     Logger.getLogger(LuotThueFormController.class.getName()).log(Level.SEVERE, null, ex);
                     JOptionPane.showMessageDialog(frm_LuotThue, "Thất bại!");
                 }
+            }
         });
         
         // DELETE
@@ -183,7 +180,7 @@ public class LuotThueFormController {
             String MaNhanVien = frm_LuotThue.getTxt_MaNVLT().getText();
             String NgayThue = frm_LuotThue.getTxt_NgayGioLT().getText();
             if(MaLuotThue.equals("") && MaKhachHang.equals("") && MaPhong.equals("") && MaNhanVien.equals("") && NgayThue.equals("")){
-                JOptionPane.showMessageDialog(null, "Không có thông tin để tìm kiếm. Vui lòng nhập Mã Lượt Thuê để tìm kiếm");
+                JOptionPane.showMessageDialog(null, "Không có thông tin để tìm kiếm!");
             }else if(MaKhachHang.equals("") && MaPhong.equals("") && MaNhanVien.equals("") && NgayThue.equals("")){
                 try{
                     LuotThue lt = luotThueDao.timLuotThueTheoMa(MaLuotThue);
