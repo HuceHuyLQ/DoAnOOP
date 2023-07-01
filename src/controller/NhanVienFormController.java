@@ -177,9 +177,13 @@ public class NhanVienFormController {
             String MatKhau = mainForm.getTxt_MatKhauNV().getText();
             String VaiTro = mainForm.getTxt_VaiTroNV().getText();
             try {
+                boolean nncu = nvdao.kiemTraTonTai(MaNhanVien);
                 if(MaNhanVien.equals("") || HoTen.equals("") || SDT.equals("") || Email.equals("") || TaiKhoan.equals("") || MatKhau.equals("") || VaiTro.equals("")){
                     JOptionPane.showMessageDialog(mainForm, "Hãy nhập đầy đủ thông tin!");
-                }else{
+                } else if(nncu){
+                    JOptionPane.showMessageDialog(mainForm, "Mã nhân viên đã tồn tại!");
+                }
+                else{
                     nvdao.themNhanVien(MaNhanVien, CapitalizeWords.capitalizeWords(HoTen), SDT,Email,TaiKhoan,MatKhau,CapitalizeWords.capitalizeWords(VaiTro));
                     JOptionPane.showMessageDialog(null, "Thêm thành công nhân viên" + MaNhanVien);
                     this.updateTable();

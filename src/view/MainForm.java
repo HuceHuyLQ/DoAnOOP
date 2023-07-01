@@ -69,6 +69,10 @@ public class MainForm extends javax.swing.JFrame {
         jScrollPane_Phong = new javax.swing.JScrollPane();
         tbl_PhongHop = new javax.swing.JTable();
         Btn_LayDuLieuPhong = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jPanel_CoSoVatChat = new javax.swing.JPanel();
         lbl_MaCSVC = new javax.swing.JLabel();
         txt_MaCSVC = new javax.swing.JTextField();
@@ -133,13 +137,6 @@ public class MainForm extends javax.swing.JFrame {
         txt_EmailNV = new javax.swing.JTextField();
         lbl_VaiTroNV = new javax.swing.JLabel();
         txt_VaiTroNV = new javax.swing.JTextField();
-        jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        Tbl_ThongKeKH = new javax.swing.JTable();
-        Tbl_ThongKeLuotThue = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        Tbl_ThongKePhong = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
         jPanel_Header = new javax.swing.JPanel();
         lbl_Logo = new javax.swing.JLabel();
         lbl_TieuDe = new javax.swing.JLabel();
@@ -265,6 +262,22 @@ public class MainForm extends javax.swing.JFrame {
 
         Btn_LayDuLieuPhong.setText("Reset");
         jPanel_PhongHop.add(Btn_LayDuLieuPhong, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, -1, -1));
+
+        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 16)); // NOI18N
+        jLabel1.setText("Phòng nhỏ: 10 người");
+        jPanel_PhongHop.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 0, 16)); // NOI18N
+        jLabel2.setText("Phòng vừa: 20 người");
+        jPanel_PhongHop.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Helvetica Neue", 0, 16)); // NOI18N
+        jLabel3.setText("Phòng lớn: 45 người");
+        jPanel_PhongHop.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
+        jLabel4.setText("*** Kích thước phòng:");
+        jPanel_PhongHop.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, -1, -1));
 
         jTabbed_FrmMain.addTab("Phòng Họp", jPanel_PhongHop);
 
@@ -464,55 +477,6 @@ public class MainForm extends javax.swing.JFrame {
         jPanel_NhanVien.add(txt_VaiTroNV, new org.netbeans.lib.awtextra.AbsoluteConstraints(145, 247, 203, -1));
 
         jTabbed_FrmMain.addTab("Nhân Viên", jPanel_NhanVien);
-
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        Tbl_ThongKeKH.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(Tbl_ThongKeKH);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 386, 230));
-
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        Tbl_ThongKeLuotThue.setViewportView(jTable2);
-
-        jPanel1.add(Tbl_ThongKeLuotThue, new org.netbeans.lib.awtextra.AbsoluteConstraints(424, 6, 386, 230));
-
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        Tbl_ThongKePhong.setViewportView(jTable3);
-
-        jPanel1.add(Tbl_ThongKePhong, new org.netbeans.lib.awtextra.AbsoluteConstraints(848, 6, 386, 230));
-
-        jTabbed_FrmMain.addTab("Thống Kê", jPanel1);
 
         getContentPane().add(jTabbed_FrmMain, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 125, 1240, 570));
 
@@ -825,61 +789,61 @@ public class MainForm extends javax.swing.JFrame {
 
     
     
-    public JTable getTbl_ThongKeKH() {
-        return Tbl_ThongKeKH;
-    }
-
-    public void setTbl_ThongKeKH(JTable Tbl_ThongKeKH) {
-        this.Tbl_ThongKeKH = Tbl_ThongKeKH;
-    }
-
-    public JScrollPane getTbl_ThongKeLuotThue() {
-        return Tbl_ThongKeLuotThue;
-    }
-
-    public void setTbl_ThongKeLuotThue(JScrollPane Tbl_ThongKeLuotThue) {
-        this.Tbl_ThongKeLuotThue = Tbl_ThongKeLuotThue;
-    }
-
-    public JScrollPane getTbl_ThongKePhong() {
-        return Tbl_ThongKePhong;
-    }
-
-    public void setTbl_ThongKePhong(JScrollPane Tbl_ThongKePhong) {
-        this.Tbl_ThongKePhong = Tbl_ThongKePhong;
-    }
-
-    public JPanel getjPanel1() {
-        return jPanel1;
-    }
-
-    public void setjPanel1(JPanel jPanel1) {
-        this.jPanel1 = jPanel1;
-    }
-
-    public JScrollPane getjScrollPane1() {
-        return jScrollPane1;
-    }
-
-    public void setjScrollPane1(JScrollPane jScrollPane1) {
-        this.jScrollPane1 = jScrollPane1;
-    }
-
-    public JTable getjTable2() {
-        return jTable2;
-    }
-
-    public void setjTable2(JTable jTable2) {
-        this.jTable2 = jTable2;
-    }
-
-    public JTable getjTable3() {
-        return jTable3;
-    }
-
-    public void setjTable3(JTable jTable3) {
-        this.jTable3 = jTable3;
-    }
+//    public JTable getTbl_ThongKeKH() {
+//        return Tbl_ThongKeKH;
+//    }
+//
+//    public void setTbl_ThongKeKH(JTable Tbl_ThongKeKH) {
+//        this.Tbl_ThongKeKH = Tbl_ThongKeKH;
+//    }
+//
+//    public JScrollPane getTbl_ThongKeLuotThue() {
+//        return Tbl_ThongKeLuotThue;
+//    }
+//
+//    public void setTbl_ThongKeLuotThue(JScrollPane Tbl_ThongKeLuotThue) {
+//        this.Tbl_ThongKeLuotThue = Tbl_ThongKeLuotThue;
+//    }
+//
+//    public JScrollPane getTbl_ThongKePhong() {
+//        return Tbl_ThongKePhong;
+//    }
+//
+//    public void setTbl_ThongKePhong(JScrollPane Tbl_ThongKePhong) {
+//        this.Tbl_ThongKePhong = Tbl_ThongKePhong;
+//    }
+//
+//    public JPanel getjPanel1() {
+//        return jPanel1;
+//    }
+//
+//    public void setjPanel1(JPanel jPanel1) {
+//        this.jPanel1 = jPanel1;
+//    }
+//
+//    public JScrollPane getjScrollPane1() {
+//        return jScrollPane1;
+//    }
+//
+//    public void setjScrollPane1(JScrollPane jScrollPane1) {
+//        this.jScrollPane1 = jScrollPane1;
+//    }
+//
+//    public JTable getjTable2() {
+//        return jTable2;
+//    }
+//
+//    public void setjTable2(JTable jTable2) {
+//        this.jTable2 = jTable2;
+//    }
+//
+//    public JTable getjTable3() {
+//        return jTable3;
+//    }
+//
+//    public void setjTable3(JTable jTable3) {
+//        this.jTable3 = jTable3;
+//    }
 
     public JLabel getLbl_EmailNV() {
         return lbl_EmailNV;
@@ -1718,9 +1682,6 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JButton Btn_LayDuLieuLuotThue;
     private javax.swing.JButton Btn_LayDuLieuNhanVien;
     private javax.swing.JButton Btn_LayDuLieuPhong;
-    private javax.swing.JTable Tbl_ThongKeKH;
-    private javax.swing.JScrollPane Tbl_ThongKeLuotThue;
-    private javax.swing.JScrollPane Tbl_ThongKePhong;
     private javax.swing.JButton btn_SuaCSVC;
     private javax.swing.JButton btn_SuaKhachHang;
     private javax.swing.JButton btn_SuaLuotThue;
@@ -1741,25 +1702,25 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JButton btn_XoaLuotThue;
     private javax.swing.JButton btn_XoaNhanVien;
     private javax.swing.JButton btn_XoaPhong;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenu_MainForm;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel_CoSoVatChat;
     private javax.swing.JPanel jPanel_Header;
     private javax.swing.JPanel jPanel_KhachHang;
     private javax.swing.JPanel jPanel_LuotThue;
     private javax.swing.JPanel jPanel_NhanVien;
     private javax.swing.JPanel jPanel_PhongHop;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPaneKhachHang;
     private javax.swing.JScrollPane jScrollPane_CSVC;
     private javax.swing.JScrollPane jScrollPane_LuotThue;
     private javax.swing.JScrollPane jScrollPane_NhanVien;
     private javax.swing.JScrollPane jScrollPane_Phong;
     private javax.swing.JTabbedPane jTabbed_FrmMain;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
     private javax.swing.JLabel lbl_CocLT;
     private javax.swing.JLabel lbl_DeTai;
     private javax.swing.JLabel lbl_EmailNV;
