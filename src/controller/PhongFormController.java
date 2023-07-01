@@ -29,7 +29,7 @@ public class PhongFormController {
     private DefaultTableModel model = (DefaultTableModel)mainForm.getTbl_PhongHop().getModel();
     private void updateTable() {
         model = (DefaultTableModel) PhongFormController.mainForm.getTbl_PhongHop().getModel();
-        
+         
         try {
             model.setRowCount(0);
             List<Phong> dsPhong = phongdao.layDanhSachPhong();
@@ -97,12 +97,6 @@ public class PhongFormController {
             int row = frm_Phong.getTbl_PhongHop().getSelectedRow();
             String maPhong = frm_Phong.getTbl_PhongHop().getModel().getValueAt(row, 0).toString();
             String loaiPhong = frm_Phong.getTxt_LoaiPhong().getText();
-//            float giaThue;
-//            if(frm_Phong.getTxt_GiaTien().getText().equals("")){
-//                giaThue = 0;
-//            }else{
-//                giaThue = Float.valueOf(frm_Phong.getTxt_GiaTien().getText());
-//            }
             Float GiaThue;
             String GiaThueTxt = frm_Phong.getTxt_GiaTien().getText();
             if(GiaThueTxt.isEmpty()){
