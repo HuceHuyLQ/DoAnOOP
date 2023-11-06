@@ -50,6 +50,8 @@ public class NhanVienFormController {
         mainForm.getTxt_TaiKhoanNV().setText("");
         mainForm.getTxt_MatKhauNV().setText("");
         mainForm.getTxt_VaiTroNV().setText("");
+        mainForm.getTxt_MaNV().setEnabled(true);
+        mainForm.getTxt_TaiKhoanNV().setEnabled(true);
     }
     
     NhanVienFormController(MainForm mainForm){
@@ -175,14 +177,24 @@ public class NhanVienFormController {
             String MatKhau = mainForm.getTxt_MatKhauNV().getText();
             String VaiTro = mainForm.getTxt_VaiTroNV().getText();
             try {
-                nvdao.themNhanVien(MaNhanVien, CapitalizeWords.capitalizeWords(HoTen), SDT,Email,TaiKhoan,MatKhau,CapitalizeWords.capitalizeWords(VaiTro));
-                JOptionPane.showMessageDialog(null, "Thêm thành công nhân viên" + MaNhanVien);
-                this.updateTable();
+                boolean nncu = nvdao.kiemTraTonTai(MaNhanVien);
+                boolean tkcu = nvdao.kiemTraTonTaiTK(TaiKhoan);
+                if(MaNhanVien.equals("") || HoTen.equals("") || SDT.equals("") || Email.equals("") || TaiKhoan.equals("") || MatKhau.equals("") || VaiTro.equals("")){
+                    JOptionPane.showMessageDialog(mainForm, "Hãy nhập đầy đủ thông tin!");
+                } else if(nncu){
+                    JOptionPane.showMessageDialog(mainForm, "Mã nhân viên đã tồn tại!");
+                } else if(tkcu){
+                    JOptionPane.showMessageDialog(mainForm, "Tài khoản đã tồn tại");
+                }else{
+                    nvdao.themNhanVien(MaNhanVien, CapitalizeWords.capitalizeWords(HoTen), SDT,Email,TaiKhoan,MatKhau,CapitalizeWords.capitalizeWords(VaiTro));
+                    JOptionPane.showMessageDialog(null, "Thêm thành công nhân viên" + MaNhanVien);
+                    this.updateTable();
+                    clearForm();
+                }
             } catch (SQLException ex) {
                 Logger.getLogger(PhongFormController.class.getName()).log(Level.SEVERE, null, ex);
                 JOptionPane.showMessageDialog(null, "Thêm thất bại nhân viên " + MaNhanVien);
             }
-            clearForm();
         });
         
         // update
@@ -196,12 +208,18 @@ public class NhanVienFormController {
             String MatKhau = mainForm.getTxt_MatKhauNV().getText();
             String VaiTro = mainForm.getTxt_VaiTroNV().getText();
             try {
-                nvdao.suaNhanVien(MaNhanVien, CapitalizeWords.capitalizeWords(HoTen), SDT,Email,TaiKhoan,MatKhau,CapitalizeWords.capitalizeWords(VaiTro));
-                this.updateTable();
+                boolean tkcu = nvdao.kiemTraTonTaiTK(TaiKhoan);
+                if(tkcu){
+                    nvdao.suaNhanVien(MaNhanVien, CapitalizeWords.capitalizeWords(HoTen), SDT,Email,TaiKhoan,MatKhau,CapitalizeWords.capitalizeWords(VaiTro));
+                    this.updateTable();
+                    clearForm();
+                }else{
+                    JOptionPane.showMessageDialog(mainForm, "Không thể sửa tên Tài Khoản!");
+                }
             } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(mainForm, "Không thể sửa");
                 Logger.getLogger(PhongFormController.class.getName()).log(Level.SEVERE, null, ex);
             }
-            clearForm();
         });
     }
 }

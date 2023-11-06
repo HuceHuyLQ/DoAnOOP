@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -28,7 +29,7 @@ public class PhongFormController {
     private DefaultTableModel model = (DefaultTableModel)mainForm.getTbl_PhongHop().getModel();
     private void updateTable() {
         model = (DefaultTableModel) PhongFormController.mainForm.getTbl_PhongHop().getModel();
-        
+         
         try {
             model.setRowCount(0);
             List<Phong> dsPhong = phongdao.layDanhSachPhong();
@@ -45,6 +46,7 @@ public class PhongFormController {
         PhongFormController.mainForm.getTxt_GiaTien().setText("");
         PhongFormController.mainForm.getTxt_LoaiPhong().setText("");
         PhongFormController.mainForm.getTxt_MaPhong().setText("");
+        mainForm.getTxt_MaPhong().setEnabled(true);
     }
     
     public PhongFormController(MainForm frm_Phong) {
@@ -62,16 +64,31 @@ public class PhongFormController {
         frm_Phong.getBtn_ThemPhong().addActionListener((ActionEvent e) ->{
             String MaPhong = frm_Phong.getTxt_MaPhong().getText();
             String LoaiPhong = frm_Phong.getTxt_LoaiPhong().getText();
-            Float GiaThue = Float.parseFloat(frm_Phong.getTxt_GiaTien().getText());
+            Float GiaThue;
+            String GiaThueTxt = frm_Phong.getTxt_GiaTien().getText();
+            if(GiaThueTxt.isEmpty()){
+                GiaThue = null;
+            }else{
+                GiaThue =Float.parseFloat(GiaThueTxt);
+            }
             try {
-                phongdao.themPhong(MaPhong, CapitalizeWords.capitalizeWords(LoaiPhong), GiaThue);
-                JOptionPane.showMessageDialog(null, "Thêm thành công phòng " + MaPhong);
-                this.updateTable();
+                boolean maTonTai = phongdao.kiemTraTonTai(MaPhong);
+                if(MaPhong.equals("") || LoaiPhong.equals("") || GiaThue.equals("")){
+                    JOptionPane.showMessageDialog(mainForm, "Hãy nhập đầy đủ thông tin!");
+                }else if(maTonTai){
+                    JOptionPane.showMessageDialog(frm_Phong, "Mã Phòng đã tồn tại!");
+                }else if(GiaThue<0){
+                    JOptionPane.showMessageDialog(frm_Phong, "Dữ liệu không phù hợp!");
+                }else{
+                    phongdao.themPhong(MaPhong, CapitalizeWords.capitalizeWords(LoaiPhong), GiaThue);
+                    JOptionPane.showMessageDialog(null, "Thêm thành công phòng " + MaPhong);
+                    this.updateTable();
+                    clearForm();
+                }
             } catch (SQLException ex) {
                 Logger.getLogger(PhongFormController.class.getName()).log(Level.SEVERE, null, ex);
-                JOptionPane.showMessageDialog(null, "Thêm thất bại phòng " + MaPhong);
+                JOptionPane.showMessageDialog(null, "Thêm phòng thất bại " + MaPhong);
             }
-            clearForm();
         });
         
         
@@ -80,19 +97,25 @@ public class PhongFormController {
             int row = frm_Phong.getTbl_PhongHop().getSelectedRow();
             String maPhong = frm_Phong.getTbl_PhongHop().getModel().getValueAt(row, 0).toString();
             String loaiPhong = frm_Phong.getTxt_LoaiPhong().getText();
-            float giaThue;
-            if(frm_Phong.getTxt_GiaTien().getText().equals("")){
-                giaThue = 0;
+            Float GiaThue;
+            String GiaThueTxt = frm_Phong.getTxt_GiaTien().getText();
+            if(GiaThueTxt.isEmpty()){
+                GiaThue = null;
             }else{
-                giaThue = Float.valueOf(frm_Phong.getTxt_GiaTien().getText());
+                GiaThue =Float.parseFloat(GiaThueTxt);
             }
             try {
-                phongdao.suaPhong(maPhong, CapitalizeWords.capitalizeWords(loaiPhong), giaThue);
+                if(GiaThue<0){
+                    JOptionPane.showMessageDialog(frm_Phong, "Dữ liệu không phù hợp!");
+                }else{
+                    phongdao.suaPhong(maPhong, CapitalizeWords.capitalizeWords(loaiPhong), GiaThue);
+                    updateTable();
+                    clearForm();
+                }
             } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(mainForm, "Hãy chọn phòng cẩn sửa!");
                 Logger.getLogger(PhongFormController.class.getName()).log(Level.SEVERE, null, ex);
             }
-            updateTable();
-            clearForm();
         });
         
         //Delete Button 
@@ -102,14 +125,16 @@ public class PhongFormController {
             int choice = JOptionPane.showConfirmDialog((Component)null,"Xoá phòng " + cell + "?","XOÁ",JOptionPane.YES_NO_OPTION);
             if(choice == 0){
                 try{
-                    phongdao.xoaPhong(cell);
-                    JOptionPane.showMessageDialog(null, "Xóa thành công phòng "+cell);
-                    updateTable();
+                        phongdao.xoaPhong(cell);
+                        JOptionPane.showMessageDialog(null, "Xóa thành công phòng "+cell);
+                        updateTable();
+                        clearForm();
+                    
                 }catch(SQLException ex){
+                    JOptionPane.showMessageDialog(frm_Phong, "Hãy chọn phòng cần xoá!");
                     Logger.getLogger(PhongFormController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            clearForm();
         });
         //Search Button
         frm_Phong.getBtn_TimPhong().addActionListener((ActionEvent e) -> {

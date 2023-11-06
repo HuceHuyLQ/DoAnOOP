@@ -31,6 +31,16 @@ public class KhachHangDao {
         return danhSachKH;
     }
     
+    public boolean kiemTraTonTai(String MaKH) throws SQLException{
+        PreparedStatement ps = conn.prepareStatement("SELECT COUNT(*) FROM KhachHang WHERE MaKhachHang=?");
+        ps.setString(1, MaKH);
+        ResultSet rs = ps.executeQuery();
+        rs.next();
+        int rowCount = rs.getInt(1);
+        return rowCount>0;
+    }
+    
+    
     public void themKhachHang(String makh, String hoten, String sdt) throws SQLException{
         PreparedStatement preparedStatement = conn.prepareStatement("INSERT INTO KhachHang(MaKhachHang, HoTenKhachHang, SdtKhachHang) VALUES(?,?,?)");
         preparedStatement.setString(1,makh);

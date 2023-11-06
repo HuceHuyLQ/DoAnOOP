@@ -44,6 +44,7 @@ public class CSVCFormController {
         CSVCFormController.mainForm.getTxt_GhiChuCSVC().setText("");
         CSVCFormController.mainForm.getTxt_TenVatTu().setText("");
         CSVCFormController.mainForm.getTxt_MaCSVC().setText("");
+        mainForm.getTxt_MaCSVC().setEnabled(true);
         
     }
     
@@ -62,17 +63,32 @@ public class CSVCFormController {
         frm_CSVC.getBtn_ThemCSVC().addActionListener((ActionEvent e) ->{
             String MaCSVC = frm_CSVC.getTxt_MaCSVC().getText();
             String TenVatTu = frm_CSVC.getTxt_TenVatTu().getText();
-            Double GiaCSVC = Double.parseDouble(frm_CSVC.getTxt_GiaCSVC().getText());
+            Double GiaCSVC;
             String GhiChuCSVC = frm_CSVC.getTxt_GhiChuCSVC().getText();
+            String GiaCSVCTxt = frm_CSVC.getTxt_GiaCSVC().getText();
+            if(GiaCSVCTxt.isEmpty()){
+                GiaCSVC = null;
+            }else{
+                GiaCSVC =Double.parseDouble(GiaCSVCTxt);
+            }
             try {
-                csvcdao.themCSVC(MaCSVC, CapitalizeWords.capitalizeWords(TenVatTu), GiaCSVC, GhiChuCSVC);
-                JOptionPane.showMessageDialog(null, "Thêm thành công CSVC " + MaCSVC);
-                this.updateTable();
+                boolean maTonTai = csvcdao.kiemTraTonTai(MaCSVC);
+                if(MaCSVC.equals("")|| TenVatTu.equals("") || GiaCSVC.equals("") || GhiChuCSVC.equals("")){
+                    JOptionPane.showMessageDialog(mainForm, "Hãy nhập đầy đủ thông tin!");
+                }else if(maTonTai){
+                    JOptionPane.showMessageDialog(mainForm, "Mã CSVC đã tồn tại!");
+                }else if(GiaCSVC<0){
+                    JOptionPane.showMessageDialog(mainForm, "Dữ liệu không phù hợp!");
+                }else{
+                    csvcdao.themCSVC(MaCSVC, CapitalizeWords.capitalizeWords(TenVatTu), GiaCSVC, GhiChuCSVC);
+                    JOptionPane.showMessageDialog(null, "Thêm thành công CSVC " + MaCSVC);
+                    this.updateTable();
+                    clearForm();
+                }
             } catch (SQLException ex) {
                 Logger.getLogger(CSVCFormController.class.getName()).log(Level.SEVERE, null, ex);
                 JOptionPane.showMessageDialog(null, "Thêm thất bại csvc " + MaCSVC);
             }
-            clearForm();
         });
         
         // update
@@ -88,7 +104,11 @@ public class CSVCFormController {
                 giaCSVC = Double.valueOf(frm_CSVC.getTxt_GiaCSVC().getText());
             }
             try {
-                csvcdao.suaCSVC(maCSVC, CapitalizeWords.capitalizeWords(tenVatTu), giaCSVC, ghiChuCSVC);
+                if(giaCSVC<0){
+                    JOptionPane.showMessageDialog(mainForm, "Dữ liệu không phù hợp!");
+                }else{
+                    csvcdao.suaCSVC(maCSVC, CapitalizeWords.capitalizeWords(tenVatTu), giaCSVC, ghiChuCSVC);
+                }
             } catch (SQLException ex) {
                 Logger.getLogger(CSVCFormController.class.getName()).log(Level.SEVERE, null, ex);
             }

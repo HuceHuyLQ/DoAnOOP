@@ -143,6 +143,11 @@ public class JFrame_DangKy extends javax.swing.JFrame {
         lbl_XacNhan.setText("Xác Nhận Mật Khẩu:");
 
         lbl_DaCoTK.setText("Đã có tài khoản");
+        lbl_DaCoTK.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbl_DaCoTKMouseClicked(evt);
+            }
+        });
 
         Btn_DangKy.setBackground(new java.awt.Color(0, 42, 92));
         Btn_DangKy.setForeground(new java.awt.Color(255, 255, 255));
@@ -389,6 +394,10 @@ public class JFrame_DangKy extends javax.swing.JFrame {
     private void txt_SDTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_SDTActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_SDTActionPerformed
+
+    private void lbl_DaCoTKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_DaCoTKMouseClicked
+        
+    }//GEN-LAST:event_lbl_DaCoTKMouseClicked
 
     /**
      * @param args the command line arguments

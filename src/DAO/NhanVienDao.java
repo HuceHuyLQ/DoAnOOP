@@ -43,6 +43,23 @@ public class NhanVienDao {
         return dsnv;
     }
     
+    public boolean kiemTraTonTai(String MaNV) throws SQLException{
+        PreparedStatement ps = conn.prepareStatement("SELECT COUNT(*) FROM NhanVien WHERE MaNhanVien=?");
+        ps.setString(1, MaNV);
+        ResultSet rs = ps.executeQuery();
+        rs.next();
+        int rowCount = rs.getInt(1);
+        return rowCount>0;
+    }
+    public boolean kiemTraTonTaiTK(String TaiKhoanNV) throws SQLException{
+        PreparedStatement ps = conn.prepareStatement("SELECT COUNT(*) FROM NhanVien WHERE TenTK=?");
+        ps.setString(1, TaiKhoanNV);
+        ResultSet rs = ps.executeQuery();
+        rs.next();
+        int rowCount = rs.getInt(1);
+        return rowCount>0;
+    }
+    
     public void themNhanVien(String maNhanVien, String tenNhanVien, String sdtNhanVien, String emailNhanVien, String tenTK, String matKhau, String vaiTro) throws SQLException{
         PreparedStatement preparedStatement = conn.prepareStatement("INSERT INTO NhanVien(MaNhanVien, TenNhanVien, SdtNV, Email, TenTk, MatKhau, VaiTro) VALUES(?,?,?,?,?,?,?)");
         preparedStatement.setString(1,maNhanVien);
@@ -92,7 +109,7 @@ public class NhanVienDao {
     }
 
     public static NhanVien layThongTinNhanVienTheoUsername(String username) throws SQLException {
-        List<NhanVien> results = executeQuery("SELECT * FROM NhanVien WHERE TenTK LIKE CONCAT('%', ?, '%')", username);
+        List<NhanVien> results = executeQuery("SELECT * FROM NhanVien WHERE TenTK =?", username);
         return results.isEmpty() ? null : results.get(0);
     }
 
@@ -123,7 +140,7 @@ public class NhanVienDao {
     }
 
     
-    public static String getValueForQuery(String query, String TenNV, String SdtNV, String EmailNV, String MatKhauNV, String VaiTro) {
+    public static String getValueForQuery(String query, String TenNV, String SdtNV, String EmailNV, String MatKhauNV, String VaiTro, String TaiKhoanNV) {
         if (query.contains("TenNhanVien")) {
             return TenNV;
         } else if (query.contains("SdtNV")) {
@@ -134,6 +151,8 @@ public class NhanVienDao {
             return MatKhauNV;
         } else if (query.contains("VaiTro")) {
             return VaiTro;
+        } else if (query.contains("TenTK")){
+            return TaiKhoanNV;
         }
         return null;
     }
@@ -154,38 +173,40 @@ public class NhanVienDao {
         StringBuilder updateMessage = new StringBuilder();
 
         if (rs.next()) {
-//            if (!TenNV.equals("")) {
-//                updateQueries.add("UPDATE NhanVien SET TenNhanVien = ? WHERE MaNhanVien = ?");
-//                updateMessage.append("Cập nhật thành công họ tên nhân viên ").append(MaNV).append("\n");
-//            }
-//            if (!SdtNV.equals("")) {
-//                updateQueries.add("UPDATE NhanVien SET SdtNV = ? WHERE MaNhanVien = ?");
-//                updateMessage.append("Cập nhật thành công số điện thoại nhân viên ").append(MaNV).append("\n");
-//            }
-//            if (!EmailNV.equals("")) {
-//                updateQueries.add("UPDATE NhanVien SET Email = ? WHERE MaNhanVien = ?");
-//                updateMessage.append("Cập nhật thành công email nhân viên ").append(MaNV).append("\n");
-//            }
-//            if (!MatKhauNV.equals("")) {
-//                updateQueries.add("UPDATE NhanVien SET MatKhau = ? WHERE MaNhanVien = ?");
-//                updateMessage.append("Cập nhật thành công mật khẩu nhân viên ").append(MaNV).append("\n");
-//            }
-//            if (!VaiTro.equals("")) {
-//                updateQueries.add("UPDATE NhanVien SET VaiTro = ? WHERE MaNhanVien = ?");
-//                updateMessage.append("Cập nhật thành công vai trò nhân viên ").append(MaNV).append("\n");
-//            }
+            if (!TenNV.equals("")) {
                 updateQueries.add("UPDATE NhanVien SET TenNhanVien = ? WHERE MaNhanVien = ?");
-                updateMessage.append("Cập nhật thành công nhân viên ").append(MaNV).append("\n");
+//                updateMessage.append("Cập nhật thành công họ tên nhân viên ").append(MaNV).append("\n");
+            }
+            if (!SdtNV.equals("")) {
+                updateQueries.add("UPDATE NhanVien SET SdtNV = ? WHERE MaNhanVien = ?");
+//                updateMessage.append("Cập nhật thành công số điện thoại nhân viên ").append(MaNV).append("\n");
+            }
+            if (!EmailNV.equals("")) {
+                updateQueries.add("UPDATE NhanVien SET Email = ? WHERE MaNhanVien = ?");
+//                updateMessage.append("Cập nhật thành công email nhân viên ").append(MaNV).append("\n");
+            }
+            if (!MatKhauNV.equals("")) {
+                updateQueries.add("UPDATE NhanVien SET MatKhau = ? WHERE MaNhanVien = ?");
+//                updateMessage.append("Cập nhật thành công mật khẩu nhân viên ").append(MaNV).append("\n");
+            }
+            if (!VaiTro.equals("")) {
+                updateQueries.add("UPDATE NhanVien SET VaiTro = ? WHERE MaNhanVien = ?");
+//                updateMessage.append("Cập nhật thành công vai trò nhân viên ").append(MaNV).append("\n");
+            }
+            if(!TaiKhoanNV.equals("")){
+                updateQueries.add("UPDATE NhanVien SET TenTK = ? WHERE MaNhanVien = ?");
+//                updateMessage.append("Cập nhật thành công nhân viên ").append(MaNV).append("\n");
+            }
             ps.close();
 
             if (!updateQueries.isEmpty()) {
                 for (String query : updateQueries) {
                     ps = conn.prepareStatement(query);
-                    ps.setString(1, getValueForQuery(query, TenNV, SdtNV, EmailNV, MatKhauNV, VaiTro));
+                    ps.setString(1, getValueForQuery(query, TenNV, SdtNV, EmailNV, MatKhauNV, VaiTro, TaiKhoanNV));
                     ps.setString(2, MaNV);
                     ps.executeUpdate();
                 }
-                JOptionPane.showMessageDialog(null, updateMessage.toString());
+                JOptionPane.showMessageDialog(null, "Cập nhật nhân viên thành công!");
             } else {
                 JOptionPane.showMessageDialog(null, "Không có thông tin để cập nhật");
             }
